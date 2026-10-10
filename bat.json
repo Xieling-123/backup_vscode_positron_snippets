@@ -1,0 +1,9 @@
+{
+  "echo": {
+    "prefix": "echo",
+    "body": [
+      "echo vscode snippets 推送成功。${0}"
+    ],
+    "description": "echo"
+  }
+}
