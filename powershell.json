@@ -1,0 +1,21 @@
+{
+  "首次推送项目到github": {
+    "prefix": "push_first",
+    "body": [
+      "# 全局配置",
+      "git config --global user.name \"Xieling-123\"",
+      "git config --global user.eamil \"xieling00315@163.com\"",
+      "git config --global credential.helper store",
+      "",
+      "# 首次推送vscode的相关文件到仓库里面",
+      "cd \"C:\\Users\\20503\\AppData\\Roaming\\Code\\User\\snippets\"",
+      "git init #初始化",
+      "git add . #提交全部修改过的文件",
+      "git commit -m \"first push vscode\" #注释修改原因",
+      "git remote add origin https://github.com/Xieling-123/backup_vscode_positron_snippets.git #首次链接到创建好的仓库",
+      "git branch -M vscode #创建分支",
+      "git push -u origin vscode #推送分支${0}"
+    ],
+    "description": "首次推送"
+  }
+}
