@@ -1,9 +1,1683 @@
 {
-  "测试": {
-    "prefix": "测试",
+  "基础_变量与类型": {
+    "prefix": "pybasic",
     "body": [
-      "pip install${0}"
+      "name: str = \"${1:value}\"",
+      "count: int = ${2:0}",
+      "ratio: float = ${3:0.0}",
+      "flag: bool = ${4:True}"
     ],
-    "description": "测试"
+    "description": "【必须掌握】变量与类型注解。理解：Python 动态类型 + 类型注解；注解不强制运行时；mypy/pyright 做静态检查。实战：所有函数/变量加注解。"
+  },
+  "基础_字符串f-string": {
+    "prefix": "pyfstr",
+    "body": [
+      "print(f\"${1:name}={${1:name}}\")"
+    ],
+    "description": "【必须掌握】f-string。理解：3.6+ 首选；f\"{x=}\" 自动打印变量名；支持表达式、格式说明符 f\"{x:.2f}\"；比 % 和 format 快。"
+  },
+  "基础_条件分支": {
+    "prefix": "pyif",
+    "body": [
+      "if ${1:condition}:",
+      "\t$0",
+      "elif ${2:cond2}:",
+      "\t",
+      "else:",
+      "\t"
+    ],
+    "description": "【必须掌握】if/elif/else。理解：Python 用缩进不用大括号；条件表达式 `x if c else y`；空值判断用 `is None` 不用 `== None`。"
+  },
+  "基础_计数循环": {
+    "prefix": "pyfor",
+    "body": [
+      "for ${1:i} in range(${2:n}):",
+      "\t$0"
+    ],
+    "description": "【必须掌握】for + range。理解：range(n) 从 0；range(a,b) 左闭右开；enumerate 取索引；zip 并行遍历。"
+  },
+  "基础_遍历可迭代": {
+    "prefix": "pyforeach",
+    "body": [
+      "for ${1:item} in ${2:items}:",
+      "\t$0"
+    ],
+    "description": "【必须掌握】for ... in。理解：任何可迭代对象；遍历 dict 默认键；.items() 取键值；.values() 取值。"
+  },
+  "基础_枚举遍历": {
+    "prefix": "pyenumerate",
+    "body": [
+      "for ${1:i}, ${2:item} in enumerate(${3:items}):",
+      "\t$0"
+    ],
+    "description": "【必须掌握】enumerate。理解：同时拿索引与值；start 参数指定起始；比 range(len(x)) 更 Pythonic。"
+  },
+  "基础_并行遍历": {
+    "prefix": "pyzip",
+    "body": [
+      "for ${1:a}, ${2:b} in zip(${3:xs}, ${4:ys}):",
+      "\t$0"
+    ],
+    "description": "【必须掌握】zip。理解：按最短截断；strict=True（3.10+）长度不等报错；zip(*matrix) 转置。"
+  },
+  "基础_while循环": {
+    "prefix": "pywhile",
+    "body": [
+      "while ${1:condition}:",
+      "\t$0"
+    ],
+    "description": "【必须掌握】while。理解：循环不变式；break/continue/else；避免死循环。"
+  },
+  "基础_函数定义": {
+    "prefix": "pydef",
+    "body": [
+      "def ${1:func}(${2:arg}: ${3:str}) -> ${4:None}:",
+      "\t\"\"\"${5:简短描述}\"\"\"",
+      "\t$0"
+    ],
+    "description": "【必须掌握】函数定义。理解：类型注解 + docstring；参数默认值、关键字参数、*args/**kwargs；返回类型注解。"
+  },
+  "基础_默认参数": {
+    "prefix": "pydefdefault",
+    "body": [
+      "def ${1:func}(${2:x}: int, ${3:n}: int = ${4:10}) -> int:",
+      "\treturn ${2:x} ** ${3:n}"
+    ],
+    "description": "【必须理解】默认参数。坑：默认值只求值一次，不要用 [] / {} 可变对象；用 None 代替再内部初始化。"
+  },
+  "基础_可变参数": {
+    "prefix": "pyvarargs",
+    "body": [
+      "def ${1:func}(*${2:args}, **${3:kwargs}):",
+      "\t$0"
+    ],
+    "description": "【必须理解】*args / **kwargs。理解：*args 收集位置参数为 tuple；**kwargs 收集关键字参数为 dict；调用时 *list / **dict 解包。"
+  },
+  "基础_lambda": {
+    "prefix": "pylambda",
+    "body": [
+      "lambda ${1:x}: ${2:x * 2}"
+    ],
+    "description": "【必须理解】lambda。理解：匿名函数单表达式；用于 sorted/map/filter key；复杂逻辑用 def 更可读。"
+  },
+  "基础_列表推导": {
+    "prefix": "pycomp",
+    "body": [
+      "[${1:x} for ${1:x} in ${2:items} if ${3:condition}]"
+    ],
+    "description": "【必须掌握】列表推导。理解：比 for + append 快；可嵌套；可带条件；复杂度别超过两层否则拆函数。"
+  },
+  "基础_字典推导": {
+    "prefix": "pydictcomp",
+    "body": [
+      "{${1:k}: ${2:v} for ${1:k}, ${2:v} in ${3:items}}"
+    ],
+    "description": "【必须掌握】字典推导。理解：构建映射；set 推导 {x for x in ...}；生成器表达式 (x for x in ...) 惰性求值。"
+  },
+  "基础_三元表达式": {
+    "prefix": "pyternary",
+    "body": [
+      "${1:value} if ${2:condition} else ${3:other}"
+    ],
+    "description": "【必须掌握】三元表达式。理解：`x if c else y`；嵌套可读性差用 if 代替。"
+  },
+  "基础_解包赋值": {
+    "prefix": "pyunpack",
+    "body": [
+      "${1:a}, ${2:b} = ${3:pair}",
+      "${4:first}, *${5:rest} = ${6:items}"
+    ],
+    "description": "【必须掌握】解包。理解：多变量赋值；*rest 收集剩余；swap a, b = b, a；函数返回元组解包。"
+  },
+  "基础_异常处理": {
+    "prefix": "pytry",
+    "body": [
+      "try:",
+      "\t$0",
+      "except ${1:ValueError} as ${2:e}:",
+      "\tprint(f\"${3:error}: {${2:e}}\")",
+      "finally:",
+      "\t"
+    ],
+    "description": "【必须掌握】try/except/finally。理解：捕获具体异常而非裸 except；as e 取异常对象；finally 必执行；else 无异常时执行。"
+  },
+  "基础_抛异常": {
+    "prefix": "pyraise",
+    "body": [
+      "raise ${1:ValueError}(\"${2:message}\")"
+    ],
+    "description": "【必须理解】raise。理解：抛标准异常；from e 保留链；自定义异常继承 Exception；不要抛裸 Exception。"
+  },
+  "基础_自定义异常": {
+    "prefix": "pyexception",
+    "body": [
+      "class ${1:MyError}(Exception):",
+      "\t\"\"\"${2:描述}\"\"\"",
+      "\tpass"
+    ],
+    "description": "【必须理解】自定义异常。理解：业务异常继承 Exception；命名以 Error 结尾；带字段时重写 __init__。"
+  },
+  "基础_with上下文": {
+    "prefix": "pywith",
+    "body": [
+      "with open(${1:path}, \"r\", encoding=\"utf-8\") as ${2:f}:",
+      "\t$0"
+    ],
+    "description": "【必须掌握】with。理解：自动释放资源；文件、锁、连接都该用；多资源可 with a as x, b as y。"
+  },
+  "基础_类型转换": {
+    "prefix": "pyconvert",
+    "body": [
+      "int(${1:x})",
+      "float(${1:x})",
+      "str(${1:x})",
+      "bool(${1:x})",
+      "list(${1:x})",
+      "tuple(${1:x})",
+      "set(${1:x})",
+      "dict(${1:x})"
+    ],
+    "description": "【必须掌握】类型转换。理解：显式转换；int(\"12\") 可能抛 ValueError；bool 空值判定；list/set 可去重（set）。"
+  },
+  "基础_is与==": {
+    "prefix": "pyis",
+    "body": [
+      "if ${1:x} is None:",
+      "\t$0",
+      "if ${1:x} is not None:",
+      "\t"
+    ],
+    "description": "【必须理解】is vs ==。理解：is 比较身份，== 比较值；None/True/False 用 is；小整数/字符串缓存不可依赖 is。"
+  },
+  "基础库_os路径": {
+    "prefix": "pyos",
+    "body": [
+      "import os",
+      "",
+      "path = os.path.join(${1:\"dir\"}, ${2:\"file.txt\"})",
+      "print(os.getcwd())",
+      "print(os.environ.get(\"${3:HOME}\"))"
+    ],
+    "description": "【必须掌握】os。理解：路径拼接用 os.path.join 跨平台；环境变量 os.environ.get；os.makedirs(exist_ok=True)。"
+  },
+  "基础库_pathlib": {
+    "prefix": "pypathlib",
+    "body": [
+      "from pathlib import Path",
+      "",
+      "p = Path(${1:\"data\"}) / ${2:\"file.txt\"}",
+      "if p.exists():",
+      "\tprint(p.read_text(encoding=\"utf-8\"))"
+    ],
+    "description": "【必须掌握】pathlib。理解：面向对象路径；/ 拼接；read_text/write_text/read_bytes；比 os.path 更现代，新代码优先。"
+  },
+  "基础库_读写文件": {
+    "prefix": "pyopenfile",
+    "body": [
+      "with open(${1:path}, \"r\", encoding=\"utf-8\") as ${2:f}:",
+      "\tfor ${3:line} in ${2:f}:",
+      "\t\tprint(${3:line}.rstrip())"
+    ],
+    "description": "【必须掌握】文件读写。理解：encoding=\"utf-8\" 必写；逐行迭代内存友好；写用 \"w\"/\"a\"；二进制加 \"b\"。"
+  },
+  "基础库_json": {
+    "prefix": "pyjson",
+    "body": [
+      "import json",
+      "",
+      "with open(${1:path}, encoding=\"utf-8\") as f:",
+      "\tdata = json.load(f)",
+      "",
+      "text = json.dumps(data, ensure_ascii=False, indent=2)"
+    ],
+    "description": "【必须掌握】json。理解：load/loads/dump/dumps；ensure_ascii=False 保留中文；indent 美化；大数据用 orjson 替代。"
+  },
+  "基础库_regex": {
+    "prefix": "pyre",
+    "body": [
+      "import re",
+      "",
+      "m = re.search(r\"${1:\\\\d+}\", ${2:text})",
+      "if m:",
+      "\tprint(m.group())",
+      "",
+      "items = re.findall(r\"${1:\\\\d+}\", ${2:text})",
+      "new = re.sub(r\"${1:\\\\d+}\", \"${3:X}\", ${2:text})"
+    ],
+    "description": "【必须掌握】re。理解：search/match/findall/sub/split；原始字符串 r\"\"；命名组 (?P<name>...)；预编译 re.compile 提速。"
+  },
+  "基础库_datetime": {
+    "prefix": "pydatetime",
+    "body": [
+      "from datetime import datetime, timedelta, timezone",
+      "",
+      "now = datetime.now(timezone.utc)",
+      "later = now + timedelta(hours=1)",
+      "iso = now.isoformat()",
+      "parsed = datetime.fromisoformat(iso)"
+    ],
+    "description": "【必须掌握】datetime。理解：timezone-aware 优于 naive；isoformat/fromisoformat；timedelta 算差值；时区转换用 zoneinfo。"
+  },
+  "基础库_collections": {
+    "prefix": "pycollections",
+    "body": [
+      "from collections import defaultdict, Counter, deque, OrderedDict, namedtuple",
+      "",
+      "counter = Counter(${1:items})",
+      "dd = defaultdict(list)",
+      "q = deque([${2:1, 2, 3}], maxlen=${3:10})"
+    ],
+    "description": "【必须掌握】collections。理解：defaultdict 避免 KeyError；Counter 计数；deque 双端队列 O(1)；namedtuple 轻量记录。"
+  },
+  "基础库_itertools": {
+    "prefix": "pyitertools",
+    "body": [
+      "from itertools import chain, groupby, islice, product, permutations, combinations",
+      "",
+      "list(chain(${1:a}, ${2:b}))",
+      "list(islice(${3:gen}, ${4:10}))",
+      "list(product(${5:a}, ${6:b}))"
+    ],
+    "description": "【必须掌握】itertools。理解：惰性迭代器；chain 连接；groupby 需先排序；islice 切片；product/permutations/combinations 组合。"
+  },
+  "基础库_functools": {
+    "prefix": "pyfunctools",
+    "body": [
+      "from functools import lru_cache, cache, partial, reduce, wraps",
+      "",
+      "@cache",
+      "def ${1:fib}(n: int) -> int:",
+      "\treturn n if n < 2 else ${1:fib}(n - 1) + ${1:fib}(n - 2)"
+    ],
+    "description": "【必须掌握】functools。理解：cache/lru_cache 记忆化；partial 固定参数；reduce 累积；wraps 装饰器保留元信息。"
+  },
+  "基础库_typing": {
+    "prefix": "pytyping",
+    "body": [
+      "from typing import Optional, Union, List, Dict, Tuple, Set, Any, Callable, Iterable, Sequence, Literal, Protocol",
+      "",
+      "def ${1:func}(x: Optional[int] = None) -> List[str]:",
+      "\treturn []"
+    ],
+    "description": "【必须掌握】typing。理解：3.10+ 用 X | None 替代 Optional；list[str] 替代 List[str]；Literal 限定字面量；Protocol 结构化类型。"
+  },
+  "基础库_asyncio": {
+    "prefix": "pyasyncio",
+    "body": [
+      "import asyncio",
+      "",
+      "async def ${1:fetch}(${2:url}: str) -> str:",
+      "\tawait asyncio.sleep(${3:1})",
+      "\treturn ${2:url}",
+      "",
+      "async def main() -> None:",
+      "\tresults = await asyncio.gather(*[${1:fetch}(u) for u in ${4:urls}])",
+      "",
+      "asyncio.run(main())"
+    ],
+    "description": "【必须掌握】asyncio。理解：async/await；gather 并发；create_task 建任务；asyncio.run 入口；不要阻塞事件循环。"
+  },
+  "基础库_logging": {
+    "prefix": "pylogging",
+    "body": [
+      "import logging",
+      "",
+      "logging.basicConfig(",
+      "\tlevel=logging.INFO,",
+      "\tformat=\"%(asctime)s [%(levelname)s] %(name)s: %(message)s\",",
+      ")",
+      "",
+      "logger = logging.getLogger(__name__)",
+      "logger.info(\"${1:message}\")"
+    ],
+    "description": "【必须掌握】logging。理解：getLogger(__name__)；级别 DEBUG/INFO/WARNING/ERROR；不要用 print 调试生产代码；loguru 更友好。"
+  },
+  "基础库_argparse": {
+    "prefix": "pyargparse",
+    "body": [
+      "import argparse",
+      "",
+      "def main() -> None:",
+      "\tparser = argparse.ArgumentParser(description=\"${1:描述}\")",
+      "\tparser.add_argument(\"${2:input}\", help=\"${3:输入文件}\")",
+      "\tparser.add_argument(\"--${4:verbose}\", action=\"store_true\")",
+      "\targs = parser.parse_args()",
+      "\tprint(args.${2:input})",
+      "",
+      "if __name__ == \"__main__\":",
+      "\tmain()"
+    ],
+    "description": "【必须掌握】argparse。理解：add_argument 定义参数；store_true 开关；type=int 类型转换；复杂 CLI 用 click/typer。"
+  },
+  "基础库_subprocess": {
+    "prefix": "pysubprocess",
+    "body": [
+      "import subprocess",
+      "",
+      "result = subprocess.run(",
+      "\t[${1:\"ls\"}, ${2:\"-l\"}],",
+      "\tcapture_output=True,",
+      "\ttext=True,",
+      "\tcheck=True,",
+      ")"
+    ],
+    "description": "【必须掌握】subprocess。理解：用 list 传参避免 shell 注入；capture_output + text 取输出；check=True 非零抛异常；shell=True 慎用。"
+  },
+  "基础库_shutil": {
+    "prefix": "pyshutil",
+    "body": [
+      "import shutil",
+      "",
+      "shutil.copy2(${1:src}, ${2:dst})",
+      "shutil.copytree(${3:src_dir}, ${4:dst_dir}, dirs_exist_ok=True)",
+      "shutil.rmtree(${5:path})"
+    ],
+    "description": "【必须掌握】shutil。理解：copy2 保留元数据；copytree 递归；rmtree 危险（无回收站）；move 移动。"
+  },
+  "基础库_uuid与hash": {
+    "prefix": "pyuuid",
+    "body": [
+      "import uuid, hashlib",
+      "",
+      "uid = uuid.uuid4()",
+      "h = hashlib.sha256(b\"${1:data}\").hexdigest()"
+    ],
+    "description": "【必须掌握】uuid/hashlib。理解：uuid4 随机唯一；hashlib.sha256 安全哈希；md5 已不安全；密码用 bcrypt/argon2。"
+  },
+  "基础库_随机数": {
+    "prefix": "pyrandom",
+    "body": [
+      "import secrets, random",
+      "",
+      "token = secrets.token_urlsafe(32)",
+      "n = random.randint(1, 100)"
+    ],
+    "description": "【必须掌握】secrets 与 random。理解：安全场景用 secrets；random 用于模拟；random.seed 可复现；不要用 random 生成密码。"
+  },
+  "基础库_环境变量": {
+    "prefix": "pyenv",
+    "body": [
+      "import os",
+      "",
+      "port = int(os.environ.get(\"${1:PORT}\", \"${2:8000}\"))",
+      "debug = os.environ.get(\"${3:DEBUG}\", \"false\").lower() == \"true\""
+    ],
+    "description": "【必须掌握】os.environ。理解：所有值为字符串；get 带默认；生产用 pydantic-settings / python-dotenv 校验。"
+  },
+  "基础库_sqlite3": {
+    "prefix": "pysqlite",
+    "body": [
+      "import sqlite3",
+      "",
+      "with sqlite3.connect(\"${1:app.db}\") as conn:",
+      "\tconn.row_factory = sqlite3.Row",
+      "\tcur = conn.execute(\"SELECT * FROM ${2:users} WHERE ${3:id} = ?\", (${4:1},))",
+      "\tfor row in cur:",
+      "\t\tprint(dict(row))"
+    ],
+    "description": "【必须掌握】sqlite3。理解：占位符 ? 防注入；Row 工厂按列名访问；with 自动提交；生产用 SQLAlchemy/asyncpg。"
+  },
+  "基础库_dataclass": {
+    "prefix": "pydataclass",
+    "body": [
+      "from dataclasses import dataclass, field",
+      "",
+      "@dataclass(frozen=True, slots=True)",
+      "class ${1:User}:",
+      "\tname: str",
+      "\tage: int = 0",
+      "\ttags: list[str] = field(default_factory=list)"
+    ],
+    "description": "【必须掌握】dataclass。理解：自动 __init__/__repr__/__eq__；frozen 不可变；slots 省内存；可变默认用 field(default_factory=list)。"
+  },
+  "基础库_enum": {
+    "prefix": "pyenum",
+    "body": [
+      "from enum import Enum, StrEnum, IntEnum, auto",
+      "",
+      "class ${1:Status}(StrEnum):",
+      "\t${2:IDLE} = auto()",
+      "\t${3:RUNNING} = auto()"
+    ],
+    "description": "【必须掌握】Enum。理解：避免魔数；StrEnum 可序列化；IntEnum 可与整数比较；auto() 自动赋值。"
+  },
+  "基础库_contextlib": {
+    "prefix": "pycontextlib",
+    "body": [
+      "from contextlib import contextmanager",
+      "",
+      "@contextmanager",
+      "def ${1:resource}():",
+      "\tprint(\"acquire\")",
+      "\ttry:",
+      "\t\tyield ${2:value}",
+      "\tfinally:",
+      "\t\tprint(\"release\")"
+    ],
+    "description": "【必须掌握】contextmanager。理解：把 yield 前的当作 acquire、后当作 release；必须 try/finally；配合 with 使用。"
+  },
+  "高级_装饰器": {
+    "prefix": "pydecorator",
+    "body": [
+      "from functools import wraps",
+      "",
+      "def ${1:timer}(func):",
+      "\t@wraps(func)",
+      "\tdef wrapper(*args, **kwargs):",
+      "\t\t$0",
+      "\t\treturn func(*args, **kwargs)",
+      "\treturn wrapper"
+    ],
+    "description": "【必须掌握】装饰器。理解：函数即对象；@wraps 保留元信息；带参装饰器嵌套三层；类装饰器、装饰器类。"
+  },
+  "高级_带参数装饰器": {
+    "prefix": "pydecoratorargs",
+    "body": [
+      "from functools import wraps",
+      "",
+      "def ${1:retry}(times: int = 3):",
+      "\tdef decorator(func):",
+      "\t\t@wraps(func)",
+      "\t\tdef wrapper(*args, **kwargs):",
+      "\t\t\tfor _ in range(times):",
+      "\t\t\t\ttry:",
+      "\t\t\t\t\treturn func(*args, **kwargs)",
+      "\t\t\t\texcept Exception:",
+      "\t\t\t\t\tcontinue",
+      "\t\t\traise",
+      "\t\treturn wrapper",
+      "\treturn decorator"
+    ],
+    "description": "【必须理解】带参数装饰器。理解：三层函数；外层收参数，中层收函数，内层收调用参数；用 functools.wraps 保元信息。"
+  },
+  "高级_生成器": {
+    "prefix": "pygenerator",
+    "body": [
+      "def ${1:read_lines}(${2:path}):",
+      "\twith open(${2:path}, encoding=\"utf-8\") as f:",
+      "\t\tfor line in f:",
+      "\t\t\tyield line.rstrip()"
+    ],
+    "description": "【必须掌握】生成器。理解：yield 惰性求值；内存友好；可 next/send/throw/close；生成器表达式 (x for x in ...)。"
+  },
+  "高级_异步生成器": {
+    "prefix": "pyasyncgen",
+    "body": [
+      "async def ${1:stream}(${2:urls}):",
+      "\tfor url in ${2:urls}:",
+      "\t\tyield await ${3:fetch}(url)"
+    ],
+    "description": "【必须理解】异步生成器。理解：async def + yield；用 async for 消费；适合流式处理、分页拉取。"
+  },
+  "高级_描述符": {
+    "prefix": "pydescriptor",
+    "body": [
+      "class ${1:Positive}:",
+      "\tdef __set_name__(self, owner, name):",
+      "\t\tself.name = name",
+      "",
+      "\tdef __get__(self, obj, objtype=None):",
+      "\t\treturn obj.__dict__[self.name]",
+      "",
+      "\tdef __set__(self, obj, value):",
+      "\t\tif value < 0:",
+      "\t\t\traise ValueError(\"${2:must be >= 0}\")",
+      "\t\tobj.__dict__[self.name] = value"
+    ],
+    "description": "【必须理解】描述符。理解：__get__/__set__/__delete__；属性校验的底层；property、classmethod、staticmethod 都是描述符。"
+  },
+  "高级_property": {
+    "prefix": "pyproperty",
+    "body": [
+      "class ${1:User}:",
+      "\tdef __init__(self, ${2:name}: str) -> None:",
+      "\t\tself._${2:name} = ${2:name}",
+      "",
+      "\t@property",
+      "\tdef ${2:name}(self) -> str:",
+      "\t\treturn self._${2:name}",
+      "",
+      "\t@${2:name}.setter",
+      "\tdef ${2:name}(self, value: str) -> None:",
+      "\t\tself._${2:name} = value"
+    ],
+    "description": "【必须掌握】property。理解：getter/setter 一致接口；@property 只读；@x.setter 可写；支持惰性计算。"
+  },
+  "高级_元类": {
+    "prefix": "pymetaclass",
+    "body": [
+      "class ${1:Meta}(type):",
+      "\tdef __new__(mcs, name, bases, namespace):",
+      "\t\tcls = super().__new__(mcs, name, bases, namespace)",
+      "\t\t$0",
+      "\t\treturn cls"
+    ],
+    "description": "【必须理解】元类。理解：类是元类的实例；__new__ 在类创建时执行；99% 场景用装饰器或 __init_subclass__ 替代。"
+  },
+  "高级_init_subclass": {
+    "prefix": "pyinitsubclass",
+    "body": [
+      "class ${1:Base}:",
+      "\tdef __init_subclass__(cls, **kwargs):",
+      "\t\tsuper().__init_subclass__(**kwargs)",
+      "\t\t$0"
+    ],
+    "description": "【必须理解】__init_subclass__。理解：子类定义时触发；替代元类的常用场景；注册、校验、自动装饰。"
+  },
+  "高级_dunder方法": {
+    "prefix": "pydunder",
+    "body": [
+      "class ${1:Point}:",
+      "\tdef __init__(self, x: int, y: int) -> None:",
+      "\t\tself.x, self.y = x, y",
+      "",
+      "\tdef __repr__(self) -> str:",
+      "\t\treturn f\"${1:Point}({self.x}, {self.y})\"",
+      "",
+      "\tdef __eq__(self, other: object) -> bool:",
+      "\t\tif not isinstance(other, ${1:Point}):",
+      "\t\t\treturn NotImplemented",
+      "\t\treturn (self.x, self.y) == (other.x, other.y)",
+      "",
+      "\tdef __hash__(self) -> int:",
+      "\t\treturn hash((self.x, self.y))"
+    ],
+    "description": "【必须掌握】dunder。理解：__repr__ 调试；__eq__ 值比较；__hash__ 可放入 set/dict；__len__/__iter__/__enter__ 等协议。"
+  },
+  "高级_协议Protocol": {
+    "prefix": "pyprotocol",
+    "body": [
+      "from typing import Protocol",
+      "",
+      "class ${1:Logger}(Protocol):",
+      "\tdef log(self, msg: str) -> None: ..."
+    ],
+    "description": "【必须理解】Protocol。理解：结构化子类型；不需要显式继承；静态检查鸭子类型；runtime_checkable 支持 isinstance。"
+  },
+  "高级_类型变量": {
+    "prefix": "pytypevar",
+    "body": [
+      "from typing import TypeVar, Generic",
+      "",
+      "T = TypeVar(\"T\")",
+      "",
+      "def ${1:first}(items: list[T]) -> T:",
+      "\treturn items[0]"
+    ],
+    "description": "【必须理解】TypeVar/Generic。理解：泛型函数/类；PEP 695 新版语法 `def first[T](items: list[T]) -> T`；bound 约束类型。"
+  },
+  "高级_类型守卫": {
+    "prefix": "pyisinstance",
+    "body": [
+      "from typing import TypeGuard",
+      "",
+      "def is_${1:str_list}(x: object) -> TypeGuard[list[str]]:",
+      "\treturn isinstance(x, list) and all(isinstance(i, str) for i in x)"
+    ],
+    "description": "【必须理解】TypeGuard。理解：让静态检查器收窄类型；必须自己做运行时检查；3.10+ 支持。"
+  },
+  "高级_类方法静态方法": {
+    "prefix": "pyclassmethod",
+    "body": [
+      "class ${1:User}:",
+      "\tdef __init__(self, name: str) -> None:",
+      "\t\tself.name = name",
+      "",
+      "\t@classmethod",
+      "\tdef ${2:from_dict}(cls, data: dict) -> \"${1:User}\":",
+      "\t\treturn cls(data[\"name\"])",
+      "",
+      "\t@staticmethod",
+      "\tdef ${3:validate}(name: str) -> bool:",
+      "\t\treturn bool(name)"
+    ],
+    "description": "【必须掌握】classmethod/staticmethod。理解：classmethod 收 cls，可作替代构造器；staticmethod 无 self/cls，纯工具函数。"
+  },
+  "高级_slots": {
+    "prefix": "pyslots",
+    "body": [
+      "class ${1:Point}:",
+      "\t__slots__ = (\"x\", \"y\")",
+      "",
+      "\tdef __init__(self, x: int, y: int) -> None:",
+      "\t\tself.x, self.y = x, y"
+    ],
+    "description": "【必须理解】__slots__。理解：省内存、禁止动态属性；大量实例时收益大；与多继承冲突需谨慎。"
+  },
+  "高级_模块入口": {
+    "prefix": "pymain",
+    "body": [
+      "def main() -> None:",
+      "\t$0",
+      "",
+      "if __name__ == \"__main__\":",
+      "\tmain()"
+    ],
+    "description": "【必须掌握】main 入口。理解：__name__ == \"__main__\" 区分直接运行与被导入；避免导入时执行副作用。"
+  },
+  "高级_包与模块": {
+    "prefix": "pypackage",
+    "body": [
+      "# __init__.py",
+      "from .${1:module} import ${2:func}",
+      "",
+      "__all__ = [\"${2:func}\"]"
+    ],
+    "description": "【必须理解】包与模块。理解：__init__.py 标记包；__all__ 控制 export；相对导入 .module；现代项目用 namespace package 也可。"
+  },
+  "高级_热重载与性能": {
+    "prefix": "pyprofile",
+    "body": [
+      "python -m cProfile -o ${1:out.prof} ${2:main.py}",
+      "python -m pstats ${1:out.prof}"
+    ],
+    "description": "【必须理解】性能分析。理解：cProfile 逐函数统计；pstats 交互；py-spy 可采样运行中进程；line_profiler 逐行。"
+  },
+  "生态_包管理uv": {
+    "prefix": "pyuv",
+    "body": [
+      "uv init ${1:myproject}",
+      "uv add ${2:requests}",
+      "uv sync",
+      "uv run python ${3:main.py}"
+    ],
+    "description": "【必须掌握】uv。理解：Rust 实现、极快；替代 pip/poetry/pyenv；pyproject.toml 依赖；uv.lock 锁定版本；推荐新项目首选。"
+  },
+  "生态_包管理pyproject": {
+    "prefix": "pypyproject",
+    "body": [
+      "[project]",
+      "name = \"${1:my-project}\"",
+      "version = \"0.1.0\"",
+      "requires-python = \">=${2:3.11}\"",
+      "dependencies = [",
+      "    \"${3:requests}\",",
+      "]",
+      "",
+      "[project.optional-dependencies]",
+      "dev = [\"${4:pytest}\", \"${5:ruff}\", \"${6:mypy}\"]",
+      "",
+      "[build-system]",
+      "requires = [\"hatchling\"]",
+      "build-backend = \"hatchling.build\""
+    ],
+    "description": "【必须掌握】pyproject.toml。理解：现代项目标准；dependencies 运行时依赖；optional-dependencies 分组；取代 setup.py。"
+  },
+  "生态_依赖锁定requirements": {
+    "prefix": "pyrequirements",
+    "body": [
+      "# requirements.txt",
+      "${1:fastapi}==${2:0.115.0}",
+      "${3:uvicorn}[standard]==${4:0.32.0}"
+    ],
+    "description": "【必须理解】requirements.txt。理解：锁定版本 ==；可分组 requirements-dev.txt；生产用 pip-compile 或 uv lock 生成。"
+  },
+  "生态_格式化ruff": {
+    "prefix": "pyruff",
+    "body": [
+      "# pyproject.toml",
+      "[tool.ruff]",
+      "line-length = 100",
+      "target-version = \"py311\"",
+      "",
+      "[tool.ruff.lint]",
+      "select = [\"E\", \"F\", \"I\", \"N\", \"UP\", \"B\", \"SIM\"]",
+      "ignore = [\"E501\"]",
+      "",
+      "[tool.ruff.format]",
+      "quote-style = \"double\""
+    ],
+    "description": "【必须掌握】ruff。理解：Rust 实现极快；同时替代 flake8/isort/black；lint + format；editor 集成保存自动格式化。"
+  },
+  "生态_类型检查mypy": {
+    "prefix": "pymypy",
+    "body": [
+      "# pyproject.toml",
+      "[tool.mypy]",
+      "python_version = \"3.11\"",
+      "strict = true",
+      "warn_unused_ignores = true",
+      "disallow_untyped_defs = true"
+    ],
+    "description": "【必须掌握】mypy。理解：strict 全套检查；注解必须完整；pyright 是替代；CI 中作为类型门禁。"
+  },
+  "生态_测试pytest": {
+    "prefix": "pypytest",
+    "body": [
+      "import pytest",
+      "",
+      "def test_${1:add}():",
+      "\tassert ${2:add(1, 2)} == ${3:3}",
+      "",
+      "@pytest.mark.parametrize(\"${4:x, expected}\", [(${5:1}, ${6:1}), (${7:2}, ${8:4})])",
+      "def test_${9:square}(${4:x, expected}):",
+      "\tassert ${9:square}(${4:x}) == ${5:expected}"
+    ],
+    "description": "【必须掌握】pytest。理解：assert 即可；fixture 复用；parametrize 参数化；conftest.py 全局配置；比 unittest 简洁。"
+  },
+  "生态_测试fixture": {
+    "prefix": "pypytestfixture",
+    "body": [
+      "import pytest",
+      "",
+      "@pytest.fixture",
+      "def ${1:client}():",
+      "\t${2:resource} = ${3:create_client}()",
+      "\tyield ${2:resource}",
+      "\t${2:resource}.close()"
+    ],
+    "description": "【必须掌握】fixture。理解：yield 前 setup、后 teardown；scope=function/class/module/session；通过参数注入使用。"
+  },
+  "生态_测试mock": {
+    "prefix": "pypytestmock",
+    "body": [
+      "from unittest.mock import patch, MagicMock",
+      "",
+      "def test_${1:fetch}():",
+      "\twith patch(\"${2:myapp.client.get}\") as mock_get:",
+      "\t\tmock_get.return_value = MagicMock(json=lambda: {\"ok\": True})",
+      "\t\tassert ${1:fetch}()[\"ok\"] is True"
+    ],
+    "description": "【必须掌握】unittest.mock。理解：patch 替换目标；return_value/side_effect；patch 路径是「使用处」不是定义处。"
+  },
+  "生态_Web框架FastAPI": {
+    "prefix": "pyfastapi",
+    "body": [
+      "from fastapi import FastAPI",
+      "from pydantic import BaseModel",
+      "",
+      "app = FastAPI()",
+      "",
+      "class ${1:Item}(BaseModel):",
+      "\tname: str",
+      "\tprice: float",
+      "",
+      "@app.get(\"/${2:items}/{item_id}\")",
+      "def get_${3:item}(item_id: int) -> ${1:Item}:",
+      "\treturn ${1:Item}(name=\"${4:x}\", price=${5:0.0})"
+    ],
+    "description": "【必须掌握】FastAPI。理解：类型注解 + Pydantic 自动校验；自动 OpenAPI 文档；async def 支持；依赖注入 Depends。"
+  },
+  "生态_Web框架FastAPI依赖": {
+    "prefix": "pyfastapideps",
+    "body": [
+      "from fastapi import Depends, HTTPException",
+      "",
+      "def get_${1:db}():",
+      "\t${2:db} = ${3:create_session}()",
+      "\ttry:",
+      "\t\tyield ${2:db}",
+      "\tfinally:",
+      "\t\t${2:db}.close()",
+      "",
+      "@app.get(\"/items\")",
+      "def list_items(${2:db} = Depends(get_${1:db})):",
+      "\t$0"
+    ],
+    "description": "【必须掌握】FastAPI Depends。理解：依赖即函数；yield 支持清理；Depends 可嵌套；Authorization/Header 都可注入。"
+  },
+  "生态_校验Pydantic": {
+    "prefix": "pypydantic",
+    "body": [
+      "from pydantic import BaseModel, Field, EmailStr",
+      "",
+      "class ${1:User}(BaseModel):",
+      "\tid: int",
+      "\tname: str = Field(min_length=1, max_length=64)",
+      "\temail: EmailStr",
+      "\tage: int | None = None"
+    ],
+    "description": "【必须掌握】Pydantic。理解：运行时校验 + 类型推导；Field 约束；EmailStr 需 email-validator；v2 用 model_validate/model_dump。"
+  },
+  "生态_校验Pydantic设置": {
+    "prefix": "pypydanticsettings",
+    "body": [
+      "from pydantic_settings import BaseSettings, SettingsConfigDict",
+      "",
+      "class ${1:Settings}(BaseSettings):",
+      "\tmodel_config = SettingsConfigDict(env_file=\".env\", extra=\"ignore\")",
+      "",
+      "\t${2:port}: int = ${3:8000}",
+      "\t${4:database_url}: str",
+      "",
+      "settings = ${1:Settings}()"
+    ],
+    "description": "【必须掌握】pydantic-settings。理解：从环境变量/.env 读取；类型自动转换；启动时校验失败快速暴露；替代 os.environ 手写校验。"
+  },
+  "生态_Web框架Flask": {
+    "prefix": "pyflask",
+    "body": [
+      "from flask import Flask, jsonify, request",
+      "",
+      "app = Flask(__name__)",
+      "",
+      "@app.get(\"/${1:items}\")",
+      "def list_${1:items}():",
+      "\treturn jsonify({${2:items}: []})",
+      "",
+      "@app.post(\"/${1:items}\")",
+      "def create_${3:item}():",
+      "\tdata = request.get_json()",
+      "\treturn jsonify(data), 201"
+    ],
+    "description": "【必须掌握】Flask。理解：轻量 WSGI 框架；路由装饰器；request.get_json；jsonify；生产用 gunicorn/uwsgi。"
+  },
+  "生态_Web框架Django": {
+    "prefix": "pydjango",
+    "body": [
+      "# models.py",
+      "from django.db import models",
+      "",
+      "class ${1:User}(models.Model):",
+      "\tname = models.CharField(max_length=64)",
+      "\tcreated_at = models.DateTimeField(auto_now_add=True)"
+    ],
+    "description": "【必须掌握】Django。理解：MTV 模式；ORM 定义模型；migrate 迁移；admin 后台；适合内容型/企业级项目。"
+  },
+  "生态_ORM SQLAlchemy": {
+    "prefix": "pysqlalchemy",
+    "body": [
+      "from sqlalchemy import create_engine, String, select",
+      "from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, Session",
+      "",
+      "class Base(DeclarativeBase):",
+      "\tpass",
+      "",
+      "class ${1:User}(Base):",
+      "\t__tablename__ = \"${2:users}\"",
+      "\tid: Mapped[int] = mapped_column(primary_key=True)",
+      "\tname: Mapped[str] = mapped_column(String(64))"
+    ],
+    "description": "【必须掌握】SQLAlchemy 2.0。理解：DeclarativeBase + Mapped；select() 新语法；Session 生命周期；同步/异步都支持。"
+  },
+  "生态_ORM SQLModel": {
+    "prefix": "pysqlmodel",
+    "body": [
+      "from sqlmodel import SQLModel, Field",
+      "",
+      "class ${1:User}(SQLModel, table=True):",
+      "\tid: int | None = Field(default=None, primary_key=True)",
+      "\tname: str = Field(max_length=64)"
+    ],
+    "description": "【必须掌握】SQLModel。理解：FastAPI 作者出品；Pydantic + SQLAlchemy 结合；一份模型两用；适合小型项目。"
+  },
+  "生态_数据库PostgreSQL": {
+    "prefix": "pypsycopg",
+    "body": [
+      "import psycopg",
+      "",
+      "with psycopg.connect(\"${1:postgresql://user:pwd@localhost/db}\") as conn:",
+      "\twith conn.cursor() as cur:",
+      "\t\tcur.execute(\"SELECT * FROM ${2:users} WHERE ${3:id} = %s\", (${4:1},))",
+      "\t\tfor row in cur:",
+      "\t\t\tprint(row)"
+    ],
+    "description": "【必须掌握】psycopg。理解：PostgreSQL 官方推荐；%s 占位符；with 自动提交/回滚；连接池用 psycopg_pool。"
+  },
+  "生态_数据库Redis": {
+    "prefix": "pyredis",
+    "body": [
+      "import redis",
+      "",
+      "r = redis.Redis(host=\"${1:localhost}\", port=${2:6379}, decode_responses=True)",
+      "r.set(\"${3:key}\", \"${4:value}\", ex=${5:60})",
+      "print(r.get(\"${3:key}\"))"
+    ],
+    "description": "【必须掌握】redis-py。理解：decode_responses 自动 UTF-8；ex 过期秒；连接池；生产用 redis.asyncio。"
+  },
+  "生态_HTTP请求httpx": {
+    "prefix": "pyhttpx",
+    "body": [
+      "import httpx",
+      "",
+      "with httpx.Client(base_url=\"${1:https://api.example.com}\", timeout=${2:10}) as client:",
+      "\tresp = client.get(\"/${3:users}\")",
+      "\tresp.raise_for_status()",
+      "\tdata = resp.json()"
+    ],
+    "description": "【必须掌握】httpx。理解：同步/异步同 API；timeout 必设；raise_for_status；替代 requests；HTTP/2 支持。"
+  },
+  "生态_HTTP请求async": {
+    "prefix": "pyhttpxasync",
+    "body": [
+      "import asyncio, httpx",
+      "",
+      "async def main():",
+      "\tasync with httpx.AsyncClient(timeout=10) as client:",
+      "\t\tresp = await client.get(\"${1:https://api.example.com}\")",
+      "\t\treturn resp.json()",
+      "",
+      "asyncio.run(main())"
+    ],
+    "description": "【必须掌握】httpx 异步。理解：AsyncClient + async with；并发用 asyncio.gather；不要阻塞事件循环。"
+  },
+  "生态_HTTP请求requests": {
+    "prefix": "pyrequests",
+    "body": [
+      "import requests",
+      "",
+      "resp = requests.get(\"${1:https://api.example.com}\", timeout=${2:10})",
+      "resp.raise_for_status()",
+      "data = resp.json()"
+    ],
+    "description": "【必须掌握】requests。理解：经典同步库；timeout 必设；Session 复用；新项目优先 httpx。"
+  },
+  "生态_CLI Typer": {
+    "prefix": "pytyper",
+    "body": [
+      "import typer",
+      "",
+      "app = typer.Typer()",
+      "",
+      "@app.command()",
+      "def ${1:hello}(name: str, count: int = 1) -> None:",
+      "\tfor _ in range(count):",
+      "\t\ttyper.echo(f\"Hello {name}\")",
+      "",
+      "if __name__ == \"__main__\":",
+      "\tapp()"
+    ],
+    "description": "【必须掌握】Typer。理解：基于类型注解生成 CLI；比 argparse 简洁；自动 help；依赖 click。"
+  },
+  "生态_CLI Click": {
+    "prefix": "pyclick",
+    "body": [
+      "import click",
+      "",
+      "@click.command()",
+      "@click.option(\"--count\", default=1, help=\"${1:次数}\")",
+      "@click.argument(\"name\")",
+      "def ${2:hello}(name: str, count: int) -> None:",
+      "\tfor _ in range(count):",
+      "\t\tclick.echo(f\"Hello {name}\")"
+    ],
+    "description": "【必须掌握】Click。理解：装饰器定义命令；option/argument；组命令 group；Typer 底层就是 click。"
+  },
+  "生态_日志Loguru": {
+    "prefix": "pyloguru",
+    "body": [
+      "from loguru import logger",
+      "",
+      "logger.add(\"${1:app.log}\", rotation=\"${2:10 MB}\", retention=\"${3:7 days}\", encoding=\"utf-8\")",
+      "logger.info(\"${4:message}\")"
+    ],
+    "description": "【必须掌握】loguru。理解：开箱即用；add 支持轮转/保留；默认彩色；替代 logging；生产配置 JSON 输出更友好。"
+  },
+  "生态_日志Structlog": {
+    "prefix": "pystructlog",
+    "body": [
+      "import structlog",
+      "",
+      "logger = structlog.get_logger()",
+      "logger.info(\"${1:event}\", ${2:user_id}=${3:1}, ${4:action}=\"${5:login}\")"
+    ],
+    "description": "【必须掌握】structlog。理解：结构化日志；key=value；JSON 友好；适合 ELK/Loki；与 logging 集成。"
+  },
+  "生态_配置dotenv": {
+    "prefix": "pydotenv",
+    "body": [
+      "from dotenv import load_dotenv",
+      "import os",
+      "",
+      "load_dotenv()",
+      "value = os.environ[\"${1:KEY}\"]"
+    ],
+    "description": "【必须理解】python-dotenv。理解：加载 .env；.env 永不入库；生产用系统环境变量；更好用 pydantic-settings。"
+  },
+  "生态_任务队列Celery": {
+    "prefix": "pycelery",
+    "body": [
+      "from celery import Celery",
+      "",
+      "app = Celery(\"${1:tasks}\", broker=\"${2:redis://localhost:6379/0}\")",
+      "",
+      "@app.task",
+      "def ${3:add}(x: int, y: int) -> int:",
+      "\treturn x + y"
+    ],
+    "description": "【必须掌握】Celery。理解：分布式任务队列；broker 用 Redis/RabbitMQ；@task 注册；延迟/定时任务；结果后端可配。"
+  },
+  "生态_数据NumPy": {
+    "prefix": "pynumpy",
+    "body": [
+      "import numpy as np",
+      "",
+      "arr = np.array([${1:1, 2, 3}])",
+      "mean = arr.mean()",
+      "reshaped = arr.reshape(${2:3, 1})"
+    ],
+    "description": "【必须掌握】NumPy。理解：ndarray 向量化；比 list 快；broadcasting；切片共享内存；科学计算基础。"
+  },
+  "生态_数据Pandas": {
+    "prefix": "pypandas",
+    "body": [
+      "import pandas as pd",
+      "",
+      "df = pd.read_csv(\"${1:data.csv}\")",
+      "df = df.dropna().query(\"${2:age > 18}\")",
+      "df.to_parquet(\"${3:out.parquet}\")"
+    ],
+    "description": "【必须掌握】pandas。理解：DataFrame 表格；read_csv/read_parquet；query 过滤；to_parquet 高效；大数据用 polars。"
+  },
+  "生态_数据Polars": {
+    "prefix": "pypolars",
+    "body": [
+      "import polars as pl",
+      "",
+      "df = pl.read_csv(\"${1:data.csv}\")",
+      "out = df.filter(pl.col(\"${2:age}\") > ${3:18}).select([\"${4:name}\"])"
+    ],
+    "description": "【必须掌握】polars。理解：Rust 实现；惰性求值；比 pandas 快；表达式 API；大数据首选。"
+  },
+  "生态_爬虫BeautifulSoup": {
+    "prefix": "pybs4",
+    "body": [
+      "from bs4 import BeautifulSoup",
+      "",
+      "soup = BeautifulSoup(${1:html}, \"html.parser\")",
+      "titles = [h.get_text(strip=True) for h in soup.select(\"${2:h2}\")]"
+    ],
+    "description": "【必须掌握】BeautifulSoup。理解：解析 HTML/XML；select CSS 选择器；get_text 取文本；requests + bs4 是经典组合。"
+  },
+  "生态_爬虫Scrapy": {
+    "prefix": "pyscrapy",
+    "body": [
+      "import scrapy",
+      "",
+      "class ${1:MySpider}(scrapy.Spider):",
+      "\tname = \"${2:myspider}\"",
+      "\tstart_urls = [\"${3:https://example.com}\"]",
+      "",
+      "\tdef parse(self, response):",
+      "\t\t$0"
+    ],
+    "description": "【必须理解】Scrapy。理解：爬虫框架；Spider/Item/Pipeline；并发高；学习曲线陡；简单任务用 httpx + bs4。"
+  },
+  "生态_图像Pillow": {
+    "prefix": "pypillow",
+    "body": [
+      "from PIL import Image",
+      "",
+      "img = Image.open(\"${1:in.png}\")",
+      "img = img.resize((${2:256}, ${3:256}))",
+      "img.save(\"${4:out.png}\")"
+    ],
+    "description": "【必须掌握】Pillow。理解：图像读写/裁剪/缩放/滤镜；EXIF 处理；转格式；OpenCV 用于 CV 场景。"
+  },
+  "生态_序列化orjson": {
+    "prefix": "pyorjson",
+    "body": [
+      "import orjson",
+      "",
+      "data = orjson.loads(b'{\"${1:k}\": ${2:1}}')",
+      "out = orjson.dumps(data)"
+    ],
+    "description": "【必须理解】orjson。理解：Rust 实现；比标准 json 快几倍；dumps 返回 bytes；不兼容所有参数。"
+  },
+  "生态_序列化msgspec": {
+    "prefix": "pymsgspec",
+    "body": [
+      "import msgspec",
+      "",
+      "class ${1:User}(msgspec.Struct):",
+      "\tid: int",
+      "\tname: str",
+      "",
+      "u = msgspec.json.decode(b'{\"id\":1,\"name\":\"${2:x}\"}', type=${1:User})"
+    ],
+    "description": "【必须理解】msgspec。理解：极快序列化 + 校验；Struct 类替代 dataclass；支持 JSON/MessagePack/YAML；与 Pydantic 同类。"
+  },
+  "生态_重试tenacity": {
+    "prefix": "pytenacity",
+    "body": [
+      "from tenacity import retry, stop_after_attempt, wait_exponential",
+      "",
+      "@retry(stop=stop_after_attempt(${1:3}), wait=wait_exponential(multiplier=${2:1}, max=${3:10}))",
+      "def ${4:call}():",
+      "\t$0"
+    ],
+    "description": "【必须掌握】tenacity。理解：重试装饰器；stop/wait/retry 条件；指数退避；网络/DB 调用必备。"
+  },
+  "生态_进度条tqdm": {
+    "prefix": "pytqdm",
+    "body": [
+      "from tqdm import tqdm",
+      "",
+      "for item in tqdm(${1:items}, desc=\"${2:processing}\"):",
+      "\t$0"
+    ],
+    "description": "【必须掌握】tqdm。理解：进度条；desc/unit/ncols；tqdm.write 与日志共存；大循环调试友好。"
+  },
+  "生态_日期arrow": {
+    "prefix": "pyarrow",
+    "body": [
+      "import arrow",
+      "",
+      "now = arrow.now()",
+      "later = now.shift(hours=1)",
+      "print(now.format(\"YYYY-MM-DD HH:mm:ss\"))"
+    ],
+    "description": "【必须理解】arrow。理解：比 datetime 更人性化；时区友好；shift 加减；format 简化；大数据项目 arrow 是 Apache 项目另说。"
+  },
+  "生态_加密passlib": {
+    "prefix": "pypasslib",
+    "body": [
+      "from passlib.context import CryptContext",
+      "",
+      "pwd = CryptContext(schemes=[\"bcrypt\"], deprecated=\"auto\")",
+      "hashed = pwd.hash(\"${1:password}\")",
+      "ok = pwd.verify(\"${1:password}\", hashed)"
+    ],
+    "description": "【必须掌握】passlib。理解：密码哈希；bcrypt/argon2；绝不存明文；verify 恒定时间比较。"
+  },
+  "生态_配置dynaconf": {
+    "prefix": "pydynaconf",
+    "body": [
+      "from dynaconf import Dynaconf",
+      "",
+      "settings = Dynaconf(settings_files=[\"${1:settings.toml}\", \"${2:.secrets.toml}\"], environments=True)",
+      "print(settings.${3:key})"
+    ],
+    "description": "【必须理解】dynaconf。理解：多环境配置；支持 toml/yaml/json/env；settings_files 加载；pydantic-settings 更轻。"
+  },
+  "生态_异步任务anyio": {
+    "prefix": "pyanyio",
+    "body": [
+      "import anyio",
+      "",
+      "async def main():",
+      "\tasync with anyio.create_task_group() as tg:",
+      "\t\ttg.start_soon(${1:worker})",
+      "",
+      "anyio.run(main)"
+    ],
+    "description": "【必须理解】anyio。理解：兼容 asyncio/trio；task group 结构化并发；比裸 asyncio 更安全；FastAPI 底层之一。"
+  },
+  "生态_日志与追踪OpenTelemetry": {
+    "prefix": "pyotel",
+    "body": [
+      "from opentelemetry import trace",
+      "",
+      "tracer = trace.get_tracer(__name__)",
+      "",
+      "with tracer.start_as_current_span(\"${1:operation}\"):",
+      "\t$0"
+    ],
+    "description": "【必须理解】OpenTelemetry。理解：分布式追踪；span 表示一次操作；可对接 Jaeger/Tempo；服务网格可观测性基础。"
+  },
+  "模板_源文件": {
+    "prefix": "pyfile",
+    "body": [
+      "\"\"\"${1:模块描述}.\"\"\"",
+      "",
+      "from __future__ import annotations",
+      "",
+      "import logging",
+      "from typing import Any",
+      "",
+      "logger = logging.getLogger(__name__)",
+      "",
+      "",
+      "def ${2:main}(${3:arg}: str) -> ${4:None}:",
+      "\t\"\"\"${5:简短描述}.\"\"\"",
+      "\t$0"
+    ],
+    "description": "【必须掌握】Python 源文件模板。理解：模块 docstring；from __future__ import annotations 延迟求值；logger 按模块；类型注解。"
+  },
+  "模板_类定义": {
+    "prefix": "pyclass",
+    "body": [
+      "class ${1:User}:",
+      "\t\"\"\"${2:描述}.\"\"\"",
+      "",
+      "\tdef __init__(self, ${3:name}: str, ${4:age}: int = 0) -> None:",
+      "\t\tself.${3:name} = ${3:name}",
+      "\t\tself.${4:age} = ${4:age}",
+      "",
+      "\tdef __repr__(self) -> str:",
+      "\t\treturn f\"${1:User}(name={self.${3:name}!r}, age={self.${4:age}!r})\""
+    ],
+    "description": "【必须掌握】类模板。理解：docstring；__init__ 初始化；__repr__ 调试友好；dataclass 可替代简单场景。"
+  },
+  "模板_异步函数": {
+    "prefix": "pyasyncfunc",
+    "body": [
+      "async def ${1:fetch}(${2:url}: str) -> ${3:dict[str, Any]}:",
+      "\t\"\"\"${4:描述}.\"\"\"",
+      "\tasync with ${5:httpx.AsyncClient()}() as client:",
+      "\t\tresp = await client.get(${2:url})",
+      "\t\tresp.raise_for_status()",
+      "\t\treturn resp.json()"
+    ],
+    "description": "【必须掌握】异步函数模板。理解：async def；async with 管资源；await 调用；别在 async 里做阻塞 IO。"
+  },
+  "模板_上下文管理器": {
+    "prefix": "pycontextman",
+    "body": [
+      "from contextlib import contextmanager",
+      "from typing import Iterator",
+      "",
+      "@contextmanager",
+      "def ${1:resource}() -> Iterator[${2:Any}]:",
+      "\t${3:r} = ${4:acquire}()",
+      "\ttry:",
+      "\t\tyield ${3:r}",
+      "\tfinally:",
+      "\t\t${5:release}(${3:r})"
+    ],
+    "description": "【必须掌握】上下文管理器。理解：yield 前 acquire；finally 释放；用 with 保证异常也释放；类实现用 __enter__/__exit__。"
+  },
+  "模板_装饰器": {
+    "prefix": "pydecoratortpl",
+    "body": [
+      "from functools import wraps",
+      "from typing import Callable, TypeVar, ParamSpec",
+      "",
+      "P = ParamSpec(\"P\")",
+      "R = TypeVar(\"R\")",
+      "",
+      "def ${1:decorator}(func: Callable[P, R]) -> Callable[P, R]:",
+      "\t@wraps(func)",
+      "\tdef wrapper(*args: P.args, **kwargs: P.kwargs) -> R:",
+      "\t\t$0",
+      "\t\treturn func(*args, **kwargs)",
+      "\treturn wrapper"
+    ],
+    "description": "【必须掌握】类型安全装饰器。理解：ParamSpec 保留参数类型；TypeVar 保留返回类型；@wraps 保元信息。"
+  },
+  "模板_数据模型dataclass": {
+    "prefix": "pydataclasstpl",
+    "body": [
+      "from dataclasses import dataclass, field, asdict",
+      "",
+      "@dataclass(slots=True)",
+      "class ${1:Config}:",
+      "\t${2:host}: str = \"${3:localhost}\"",
+      "\t${4:port}: int = ${5:8080}",
+      "\t${6:tags}: list[str] = field(default_factory=list)"
+    ],
+    "description": "【必须掌握】dataclass 模板。理解：slots 省内存；field 处理可变默认；asdict 转 dict；frozen 不可变。"
+  },
+  "模板_枚举": {
+    "prefix": "pyenumtpl",
+    "body": [
+      "from enum import StrEnum, auto",
+      "",
+      "class ${1:Status}(StrEnum):",
+      "\t\"\"\"${2:描述}.\"\"\"",
+      "\t${3:IDLE} = auto()",
+      "\t${4:RUNNING} = auto()",
+      "\t${5:DONE} = auto()"
+    ],
+    "description": "【必须掌握】Enum 模板。理解：StrEnum 可与字符串比较；auto() 自动赋值；避免魔法字符串。"
+  },
+  "模板_pytest测试": {
+    "prefix": "pytestfile",
+    "body": [
+      "\"\"\"${1:模块}测试.\"\"\"",
+      "",
+      "import pytest",
+      "",
+      "from ${2:myapp.${3:module}} import ${4:func}",
+      "",
+      "",
+      "class Test${5:Func}:",
+      "\tdef test_${6:happy}(self) -> None:",
+      "\t\tassert ${4:func}(${7:input}) == ${8:expected}",
+      "",
+      "\tdef test_${9:error}(self) -> None:",
+      "\t\twith pytest.raises(${10:ValueError}):",
+      "\t\t\t${4:func}(${11:bad})"
+    ],
+    "description": "【必须掌握】pytest 测试文件。理解：test_ 前缀发现；pytest.raises 断言异常；类分组；参数化 parametrize。"
+  },
+  "模板_pyproject": {
+    "prefix": "pyprojecttpl",
+    "body": [
+      "[project]",
+      "name = \"${1:my-project}\"",
+      "version = \"0.1.0\"",
+      "description = \"${2:描述}\"",
+      "requires-python = \">=${3:3.11}\"",
+      "dependencies = [",
+      "    \"${4:httpx}\",",
+      "]",
+      "",
+      "[project.optional-dependencies]",
+      "dev = [\"pytest\", \"ruff\", \"mypy\"]",
+      "",
+      "[build-system]",
+      "requires = [\"hatchling\"]",
+      "build-backend = \"hatchling.build\"",
+      "",
+      "[tool.ruff]",
+      "line-length = 100",
+      "",
+      "[tool.mypy]",
+      "strict = true",
+      "",
+      "[tool.pytest.ini_options]",
+      "testpaths = [\"tests\"]"
+    ],
+    "description": "【必须掌握】pyproject.toml 模板。理解：现代项目标准；依赖 + 工具配置统一；hatchling/uv 都支持。"
+  },
+  "模板_Dockerfile": {
+    "prefix": "pydockerfile",
+    "body": [
+      "FROM python:${1:3.12}-slim AS builder",
+      "WORKDIR /app",
+      "COPY pyproject.toml uv.lock ./",
+      "RUN pip install uv && uv sync --frozen --no-dev",
+      "",
+      "FROM python:${1:3.12}-slim",
+      "WORKDIR /app",
+      "COPY --from=builder /app/.venv /app/.venv",
+      "COPY . .",
+      "ENV PATH=\"/app/.venv/bin:$PATH\"",
+      "EXPOSE ${2:8000}",
+      "CMD [\"python\", \"-m\", \"${3:app}\"]"
+    ],
+    "description": "【必须理解】多阶段 Dockerfile。理解：builder 装依赖；runtime 只带 venv；减体积；uv sync --frozen 可复现。"
+  },
+  "模板_compose": {
+    "prefix": "pycompose",
+    "body": [
+      "services:",
+      "\t${1:app}:",
+      "\t\tbuild: .",
+      "\t\tports:",
+      "\t\t\t- \"${2:8000}:8000\"",
+      "\t\tenvironment:",
+      "\t\t\t- ${3:DATABASE_URL}=postgresql://user:pwd@db:5432/app",
+      "\t\tdepends_on:",
+      "\t\t\t- ${4:db}",
+      "",
+      "\t${4:db}:",
+      "\t\timage: postgres:16",
+      "\t\tenvironment:",
+      "\t\t\t- POSTGRES_PASSWORD=pwd",
+      "\t\tvolumes:",
+      "\t\t\t- pgdata:/var/lib/postgresql/data",
+      "",
+      "volumes:",
+      "\tpgdata:"
+    ],
+    "description": "【必须掌握】docker-compose。理解：多服务本地编排；depends_on 控制启动顺序；volumes 持久化；环境变量注入。"
+  },
+  "模板_gitignore": {
+    "prefix": "pygitignore",
+    "body": [
+      "__pycache__/",
+      "*.py[cod]",
+      "*.egg-info/",
+      "",
+      ".venv/",
+      "venv/",
+      "env/",
+      "",
+      ".pytest_cache/",
+      ".mypy_cache/",
+      ".ruff_cache/",
+      "",
+      "dist/",
+      "build/",
+      "",
+      ".env",
+      ".env.*",
+      "!.env.example",
+      "",
+      ".coverage",
+      "htmlcov/",
+      "",
+      ".DS_Store",
+      ".idea/",
+      ".vscode/"
+    ],
+    "description": "【必须掌握】.gitignore。理解：忽略缓存/虚拟环境/构建产物/.env；.env 绝不入库；.env.example 保留模板。"
+  },
+  "模板_README": {
+    "prefix": "pyreadme",
+    "body": [
+      "# ${1:项目名}",
+      "",
+      "## 简介",
+      "${2:一句话描述}",
+      "",
+      "## 安装",
+      "```bash",
+      "uv sync",
+      "```",
+      "",
+      "## 运行",
+      "```bash",
+      "uv run python -m ${3:app}",
+      "```",
+      "",
+      "## 测试",
+      "```bash",
+      "uv run pytest",
+      "```",
+      "",
+      "## License",
+      "${4:MIT}"
+    ],
+    "description": "【必须掌握】README。理解：简介/安装/运行/测试；让别人 5 分钟跑起来。"
+  },
+  "模板_Makefile": {
+    "prefix": "pymakefile",
+    "body": [
+      ".PHONY: install dev test lint format typecheck",
+      "",
+      "install:",
+      "\tuv sync",
+      "",
+      "dev:",
+      "\tuv run python -m ${1:app}",
+      "",
+      "test:",
+      "\tuv run pytest -q",
+      "",
+      "lint:",
+      "\tuv run ruff check .",
+      "",
+      "format:",
+      "\tuv run ruff format .",
+      "",
+      "typecheck:",
+      "\tuv run mypy ${2:src}"
+    ],
+    "description": "【必须掌握】Makefile。理解：统一开发命令入口；.PHONY 防同名文件；CI 直接复用。"
+  },
+  "工程_项目结构": {
+    "prefix": "pyprojectstruct",
+    "body": [
+      "${1:my-project}/",
+      "├── src/",
+      "│   └── ${2:myapp}/",
+      "│       ├── __init__.py",
+      "│       ├── __main__.py",
+      "│       ├── config.py",
+      "│       ├── models/",
+      "│       ├── services/",
+      "│       └── utils/",
+      "├── tests/",
+      "│   ├── conftest.py",
+      "│   └── test_${3:module}.py",
+      "├── pyproject.toml",
+      "├── uv.lock",
+      "├── .env.example",
+      "├── .gitignore",
+      "├── Makefile",
+      "└── README.md"
+    ],
+    "description": "【必须掌握】Python 项目结构。理解：src layout 防导入混乱；__main__.py 支持 python -m；tests 独立；conftest 共享 fixture。"
+  },
+  "工程_CI工作流": {
+    "prefix": "pyci",
+    "body": [
+      "name: CI",
+      "",
+      "on:",
+      "\tpush:",
+      "\t\tbranches: [main]",
+      "\tpull_request:",
+      "",
+      "jobs:",
+      "\ttest:",
+      "\t\truns-on: ubuntu-latest",
+      "\t\tsteps:",
+      "\t\t\t- uses: actions/checkout@v4",
+      "\t\t\t- uses: astral-sh/setup-uv@v3",
+      "\t\t\t- run: uv sync --frozen",
+      "\t\t\t- run: uv run ruff check .",
+      "\t\t\t- run: uv run mypy src",
+      "\t\t\t- run: uv run pytest -q"
+    ],
+    "description": "【必须掌握】CI。理解：setup-uv 缓存；uv sync --frozen 可复现；lint + typecheck + test 三件套。"
+  },
+  "工程_环境变量校验": {
+    "prefix": "pyenvsettings",
+    "body": [
+      "from pydantic_settings import BaseSettings, SettingsConfigDict",
+      "",
+      "class ${1:Settings}(BaseSettings):",
+      "\tmodel_config = SettingsConfigDict(env_file=\".env\", extra=\"ignore\")",
+      "",
+      "\t${2:database_url}: str",
+      "\t${3:port}: int = ${4:8000}",
+      "\t${5:debug}: bool = False",
+      "",
+      "settings = ${1:Settings}()  # 启动时校验"
+    ],
+    "description": "【必须掌握】配置校验。理解：启动时校验失败快速暴露；类型自动转换；.env 仅开发用；生产用环境变量。"
+  },
+  "工程_日志配置": {
+    "prefix": "pyloggingconfig",
+    "body": [
+      "import logging.config",
+      "",
+      "LOGGING = {",
+      "\t\"version\": 1,",
+      "\t\"disable_existing_loggers\": False,",
+      "\t\"formatters\": {",
+      "\t\t\"default\": {\"format\": \"%(asctime)s [%(levelname)s] %(name)s: %(message)s\"},",
+      "\t},",
+      "\t\"handlers\": {",
+      "\t\t\"console\": {\"class\": \"logging.StreamHandler\", \"formatter\": \"default\"},",
+      "\t},",
+      "\t\"root\": {\"level\": \"INFO\", \"handlers\": [\"console\"]},",
+      "}",
+      "",
+      "logging.config.dictConfig(LOGGING)"
+    ],
+    "description": "【必须掌握】logging 配置。理解：dictConfig 集中配置；formatter/handler/logger 三层；生产可换 JSON formatter。"
+  },
+  "工程_依赖注入": {
+    "prefix": "pydi",
+    "body": [
+      "from typing import Protocol",
+      "",
+      "class ${1:Repo}(Protocol):",
+      "\tdef get(self, id: int) -> ${2:dict}: ...",
+      "",
+      "class ${3:Service}:",
+      "\tdef __init__(self, repo: ${1:Repo}) -> None:",
+      "\t\tself.repo = repo"
+    ],
+    "description": "【必须掌握】依赖注入。理解：依赖抽象 Protocol；构造注入；便于测试 mock；FastAPI Depends 内置。"
+  },
+  "工程_结构化异常": {
+    "prefix": "pyerrors",
+    "body": [
+      "class ${1:AppError}(Exception):",
+      "\t\"\"\"${2:应用基础异常}.\"\"\"",
+      "",
+      "class ${3:NotFound}(${1:AppError}):",
+      "\t\"\"\"${4:资源不存在}.\"\"\"",
+      "",
+      "class ${5:ValidationError}(${1:AppError}):",
+      "\t\"\"\"${6:校验失败}.\"\"\""
+    ],
+    "description": "【必须掌握】异常层次。理解：业务异常继承 AppError；区分 NotFound/Validation/Conflict；API 层统一转换状态码。"
+  },
+  "工程_重试与超时": {
+    "prefix": "pyretrytimeout",
+    "body": [
+      "import httpx",
+      "from tenacity import retry, stop_after_attempt, wait_exponential",
+      "",
+      "@retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, max=10))",
+      "def ${1:call}() -> dict:",
+      "\twith httpx.Client(timeout=httpx.Timeout(10.0, connect=2.0)) as client:",
+      "\t\tresp = client.get(\"${2:https://api.example.com}\")",
+      "\t\tresp.raise_for_status()",
+      "\t\treturn resp.json()"
+    ],
+    "description": "【必须掌握】重试 + 超时。理解：网络必设 timeout；tenacity 指数退避；幂等操作才重试；记录失败原因。"
+  },
+  "工程_性能分析": {
+    "prefix": "pyprofilers",
+    "body": [
+      "python -m cProfile -o out.prof ${1:main.py}",
+      "python -m pstats out.prof",
+      "# 或 line_profiler",
+      "kernprof -l -v ${1:main.py}",
+      "# 或 py-spy（运行中）",
+      "py-spy top --pid ${2:1234}"
+    ],
+    "description": "【必须掌握】性能分析。理解：cProfile 函数级；line_profiler 行级；py-spy 采样；先 profile 再优化。"
+  },
+  "工程_内存分析": {
+    "prefix": "pymem",
+    "body": [
+      "python -X tracemalloc ${1:main.py}",
+      "# 或代码内",
+      "import tracemalloc",
+      "tracemalloc.start()",
+      "# ...",
+      "snapshot = tracemalloc.take_snapshot()",
+      "for stat in snapshot.statistics(\"lineno\")[:10]:",
+      "\tprint(stat)"
+    ],
+    "description": "【必须理解】内存分析。理解：tracemalloc 追踪分配；memray 更强大；__slots__/生成器省内存。"
+  },
+  "工程_虚拟环境": {
+    "prefix": "pyvenv",
+    "body": [
+      "# 标准库",
+      "python -m venv .venv",
+      "source .venv/bin/activate  # Windows: .venv\\Scripts\\activate",
+      "",
+      "# 或 uv（推荐）",
+      "uv venv",
+      "uv sync"
+    ],
+    "description": "【必须掌握】虚拟环境。理解：隔离依赖；.venv 目录不入库；uv 更快更现代；poetry 是另一选择。"
+  },
+  "工程_类型检查CI": {
+    "prefix": "pymypyci",
+    "body": [
+      "uv run mypy --strict ${1:src}",
+      "uv run pyright ${1:src}"
+    ],
+    "description": "【必须掌握】类型检查。理解：mypy 严格模式；pyright 更快；CI 门禁；注解覆盖率与代码质量正相关。"
+  },
+  "工程_预提交Hook": {
+    "prefix": "pyprecommit",
+    "body": [
+      "# .pre-commit-config.yaml",
+      "repos:",
+      "\t- repo: https://github.com/astral-sh/ruff-pre-commit",
+      "\t\trev: ${1:v0.7.0}",
+      "\t\thooks:",
+      "\t\t\t- id: ruff",
+      "\t\t\t  args: [--fix]",
+      "\t\t\t- id: ruff-format",
+      "\t- repo: https://github.com/pre-commit/mirrors-mypy",
+      "\t\trev: ${2:v1.11.0}",
+      "\t\thooks:",
+      "\t\t\t- id: mypy"
+    ],
+    "description": "【必须掌握】pre-commit。理解：提交前自动跑 lint/format/typecheck；避免脏代码入库；团队统一。"
   }
 }
