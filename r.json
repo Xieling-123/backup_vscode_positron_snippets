@@ -1,2167 +1,1869 @@
 {
-  "100 项目创建": {
-    "prefix": "here-here",
-    "body": [
-      "# 用途：查看当前项目根目录",
-      "# 依赖：here",
-      "here::here()"
-    ],
-    "description": "项目路径管理"
-  },
-  "101 包管理": {
-    "prefix": "base-library",
-    "body": [
-      "# 用途：加载包并查看版本",
-      "# 依赖：dplyr",
-      "library(dplyr)",
-      "packageVersion('dplyr')"
-    ],
-    "description": "包加载与版本"
-  },
-  "102 帮助系统": {
-    "prefix": "base-help",
-    "body": [
-      "# 用途：查看函数帮助与示例",
-      "?mean",
-      "example('mean')"
-    ],
-    "description": "帮助系统"
-  },
-  "103 会话信息": {
-    "prefix": "base-session",
-    "body": [
-      "# 用途：查看会话与库路径",
-      "sessionInfo()",
-      ".libPaths()"
-    ],
-    "description": "会话信息"
-  },
-  "104 依赖锁定": {
-    "prefix": "renv-init",
-    "body": [
-      "# 用途：初始化 renv 锁定依赖",
-      "# 注意：需交互，首次运行会创建 renv/",
-      "# renv::init()",
-      "# renv::snapshot()"
-    ],
-    "description": "renv 依赖锁定"
-  },
-  "105 赋值与运算符": {
-    "prefix": "base-assign",
-    "body": [
-      "# 用途：赋值与成员运算",
-      "x <- 1",
-      "y = 2",
-      "x + y",
-      "x %in% c(1,2,3)"
-    ],
-    "description": "基础语法"
-  },
-  "106 特殊值": {
-    "prefix": "base-na",
-    "body": [
-      "# 用途：特殊值判断",
-      "NA",
-      "NULL",
-      "is.na(c(1,NA))",
-      "is.null(NULL)"
-    ],
-    "description": "特殊值"
-  },
-  "107 类型判断与转换": {
-    "prefix": "base-type",
-    "body": [
-      "# 用途：查看与转换类型",
-      "class(1)",
-      "typeof(1)",
-      "as.character(1)"
-    ],
-    "description": "类型系统"
-  },
-  "108 因子": {
-    "prefix": "base-factor",
-    "body": [
-      "# 用途：创建因子并查看水平",
-      "f <- factor(c('a','b','a'))",
-      "levels(f)",
-      "table(f)"
-    ],
-    "description": "因子"
-  },
-  "109 属性": {
-    "prefix": "base-attr",
-    "body": [
-      "# 用途：查看对象属性",
-      "attributes(mtcars)",
-      "names(mtcars)",
-      "dim(mtcars)"
-    ],
-    "description": "属性系统"
-  },
-  "110 向量": {
-    "prefix": "base-vector",
-    "body": [
-      "# 用途：创建向量",
-      "c(1,2,3)",
-      "seq(1,10)",
-      "rep(1,3)",
-      "length(1:10)"
-    ],
-    "description": "向量"
-  },
-  "111 矩阵": {
-    "prefix": "base-matrix",
-    "body": [
-      "# 用途：创建矩阵",
-      "m <- matrix(1:9, nrow=3)",
-      "dim(m)",
-      "rownames(m)"
-    ],
-    "description": "矩阵"
-  },
-  "112 数组": {
-    "prefix": "base-array",
-    "body": [
-      "# 用途：创建数组",
-      "a <- array(1:12, dim=c(2,3,2))",
-      "dim(a)"
-    ],
-    "description": "数组"
-  },
-  "113 列表": {
-    "prefix": "base-list",
-    "body": [
-      "# 用途：创建列表并索引",
-      "lst <- list(name='a', value=1)",
-      "lst[['name']]",
-      "lst$name"
-    ],
-    "description": "列表"
-  },
-  "114 数据框": {
-    "prefix": "base-dataframe",
-    "body": [
-      "# 用途：创建数据框并查看结构",
-      "df <- data.frame(x=1:3, y=letters[1:3])",
-      "str(df)",
-      "head(df)"
-    ],
-    "description": "数据框"
-  },
-  "115 数据框索引": {
-    "prefix": "base-index",
-    "body": [
-      "# 用途：数据框索引",
-      "mtcars[1:3,1:2]",
-      "mtcars[['mpg']]",
-      "mtcars$mpg",
-      "mtcars[mtcars$mpg>20,]"
-    ],
-    "description": "索引"
-  },
-  "116 CSV 读写": {
-    "prefix": "readr-csv",
-    "body": [
-      "# 用途：CSV 读写",
-      "# 依赖：readr",
-      "tf <- tempfile(fileext='.csv')",
-      "readr::write_csv(mtcars, tf)",
-      "readr::read_csv(tf)"
-    ],
-    "description": "CSV 读写"
-  },
-  "117 TSV 读写": {
-    "prefix": "readr-tsv",
-    "body": [
-      "# 用途：TSV 读写",
-      "# 依赖：readr",
-      "tf <- tempfile(fileext='.tsv')",
-      "readr::write_tsv(mtcars, tf)",
-      "readr::read_tsv(tf)"
-    ],
-    "description": "TSV 读写"
-  },
-  "118 分隔文件读写": {
-    "prefix": "readr-delim",
-    "body": [
-      "# 用途：读取自定义分隔文件",
-      "# 依赖：readr",
-      "tf <- tempfile(fileext='.txt')",
-      "writeLines('a|b\\n1|2', tf)",
-      "readr::read_delim(tf, delim='|')"
-    ],
-    "description": "分隔文件"
-  },
-  "119 Excel 读写": {
-    "prefix": "readxl-excel",
-    "body": [
-      "# 用途：Excel 读写",
-      "# 依赖：readxl, writexl",
-      "tf <- tempfile(fileext='.xlsx')",
-      "writexl::write_xlsx(mtcars, tf)",
-      "readxl::read_excel(tf)"
-    ],
-    "description": "Excel IO"
-  },
-  "120 JSON 读写": {
-    "prefix": "jsonlite-json",
-    "body": [
-      "# 用途：JSON 读写",
-      "# 依赖：jsonlite",
-      "tf <- tempfile(fileext='.json')",
-      "jsonlite::write_json(mtcars, tf)",
-      "jsonlite::fromJSON(tf)"
-    ],
-    "description": "JSON IO"
-  },
-  "121 RDS 读写": {
-    "prefix": "base-rds",
-    "body": [
-      "# 用途：RDS 保存与读取",
-      "tf <- tempfile(fileext='.rds')",
-      "saveRDS(mtcars, tf)",
-      "readRDS(tf)"
-    ],
-    "description": "RDS 序列化"
-  },
-  "122 RData 读写": {
-    "prefix": "base-rdata",
-    "body": [
-      "# 用途：RData 保存与读取",
-      "tf <- tempfile(fileext='.RData')",
-      "save(mtcars, file=tf)",
-      "load(tf)"
-    ],
-    "description": "RData 序列化"
-  },
-  "123 统计软件数据": {
-    "prefix": "haven-read",
-    "body": [
-      "# 用途：读取 SPSS/Stata/SAS 数据",
-      "# 依赖：haven",
-      "# 注意：需真实文件",
-      "# haven::read_sav('file.sav')",
-      "# haven::read_dta('file.dta')"
-    ],
-    "description": "统计软件数据"
-  },
-  "200 管道": {
-    "prefix": "base-pipe",
-    "body": [
-      "# 用途：管道筛选",
-      "# 依赖：dplyr",
-      "mtcars |> dplyr::filter(mpg > 20)"
-    ],
-    "description": "管道"
-  },
-  "201 dplyr 筛选行": {
-    "prefix": "dplyr-filter",
-    "body": [
-      "# 用途：按条件筛选行",
-      "# 依赖：dplyr",
-      "dplyr::filter(mtcars, cyl==4, hp>100)"
-    ],
-    "description": "筛选行"
-  },
-  "202 dplyr 选择列": {
-    "prefix": "dplyr-select",
-    "body": [
-      "# 用途：选择列",
-      "# 依赖：dplyr",
-      "dplyr::select(mtcars, mpg, cyl, hp)"
-    ],
-    "description": "选择列"
-  },
-  "203 dplyr 新增列": {
-    "prefix": "dplyr-mutate",
-    "body": [
-      "# 用途：新增或修改列",
-      "# 依赖：dplyr",
-      "dplyr::mutate(mtcars, hp_per_cyl=hp/cyl)"
-    ],
-    "description": "新增列"
-  },
-  "204 dplyr 排序": {
-    "prefix": "dplyr-arrange",
-    "body": [
-      "# 用途：排序",
-      "# 依赖：dplyr",
-      "dplyr::arrange(mtcars, mpg, dplyr::desc(hp))"
-    ],
-    "description": "排序"
-  },
-  "205 dplyr 汇总": {
-    "prefix": "dplyr-summarise",
-    "body": [
-      "# 用途：汇总统计",
-      "# 依赖：dplyr",
-      "dplyr::summarise(mtcars, mean_mpg=mean(mpg))"
-    ],
-    "description": "汇总"
-  },
-  "206 dplyr 分组": {
-    "prefix": "dplyr-group_by",
-    "body": [
-      "# 用途：分组汇总",
-      "# 依赖：dplyr",
-      "mtcars |> dplyr::group_by(cyl) |> dplyr::summarise(mean_mpg=mean(mpg))"
-    ],
-    "description": "分组"
-  },
-  "207 dplyr 取消分组": {
-    "prefix": "dplyr-ungroup",
-    "body": [
-      "# 用途：取消分组",
-      "# 依赖：dplyr",
-      "mtcars |> dplyr::group_by(cyl) |> dplyr::ungroup()"
-    ],
-    "description": "取消分组"
-  },
-  "208 dplyr 计数": {
-    "prefix": "dplyr-count",
-    "body": [
-      "# 用途：计数",
-      "# 依赖：dplyr",
-      "dplyr::count(mtcars, cyl)"
-    ],
-    "description": "计数"
-  },
-  "209 dplyr 去重": {
-    "prefix": "dplyr-distinct",
-    "body": [
-      "# 用途：去重",
-      "# 依赖：dplyr",
-      "dplyr::distinct(mtcars, cyl, .keep_all=TRUE)"
-    ],
-    "description": "去重"
-  },
-  "210 dplyr 重命名列": {
-    "prefix": "dplyr-rename",
-    "body": [
-      "# 用途：重命名列",
-      "# 依赖：dplyr",
-      "dplyr::rename(mtcars, mpg_new=mpg)"
-    ],
-    "description": "重命名"
-  },
-  "211 dplyr 调整列顺序": {
-    "prefix": "dplyr-relocate",
-    "body": [
-      "# 用途：调整列顺序",
-      "# 依赖：dplyr",
-      "dplyr::relocate(mtcars, cyl, .before=mpg)"
-    ],
-    "description": "列顺序"
-  },
-  "212 dplyr 提取列": {
-    "prefix": "dplyr-pull",
-    "body": [
-      "# 用途：提取列为向量",
-      "# 依赖：dplyr",
-      "dplyr::pull(mtcars, mpg)"
-    ],
-    "description": "提取列"
-  },
-  "213 dplyr 按行选取": {
-    "prefix": "dplyr-slice",
-    "body": [
-      "# 用途：按行号选取",
-      "# 依赖：dplyr",
-      "dplyr::slice(mtcars, 1:5)"
-    ],
-    "description": "按行选取"
-  },
-  "214 dplyr 批量操作": {
-    "prefix": "dplyr-across",
-    "body": [
-      "# 用途：批量操作数值列",
-      "# 依赖：dplyr",
-      "mtcars |> dplyr::summarise(dplyr::across(dplyr::where(is.numeric), mean))"
-    ],
-    "description": "across"
-  },
-  "215 dplyr 任一条件": {
-    "prefix": "dplyr-if_any",
-    "body": [
-      "# 用途：任一列满足条件",
-      "# 依赖：dplyr",
-      "dplyr::filter(mtcars, dplyr::if_any(c(mpg,hp), ~ .x>0))"
-    ],
-    "description": "if_any"
-  },
-  "216 dplyr 所有条件": {
-    "prefix": "dplyr-if_all",
-    "body": [
-      "# 用途：所有列满足条件",
-      "# 依赖：dplyr",
-      "dplyr::filter(mtcars, dplyr::if_all(c(mpg,hp), ~ .x>0))"
-    ],
-    "description": "if_all"
-  },
-  "217 dplyr 多条件分支": {
-    "prefix": "dplyr-case_when",
-    "body": [
-      "# 用途：多条件赋值",
-      "# 依赖：dplyr",
-      "dplyr::mutate(mtcars, new=dplyr::case_when(mpg>20 ~ 'high', TRUE ~ 'low'))"
-    ],
-    "description": "case_when"
-  },
-  "218 dplyr 合并缺失值": {
-    "prefix": "dplyr-coalesce",
-    "body": [
-      "# 用途：合并缺失值",
-      "# 依赖：dplyr",
-      "dplyr::coalesce(c(1,NA), c(2,3))"
-    ],
-    "description": "coalesce"
-  },
-  "219 dplyr 条件转 NA": {
-    "prefix": "dplyr-na_if",
-    "body": [
-      "# 用途：将特定值转为 NA",
-      "# 依赖：dplyr",
-      "dplyr::na_if(c('a', ''), '')"
-    ],
-    "description": "na_if"
-  },
-  "220 dplyr 左连接": {
-    "prefix": "dplyr-left_join",
-    "body": [
-      "# 用途：左连接",
-      "# 依赖：dplyr",
-      "dplyr::left_join(mtcars, mtcars, by='cyl')"
-    ],
-    "description": "左连接"
-  },
-  "221 dplyr 内连接": {
-    "prefix": "dplyr-inner_join",
-    "body": [
-      "# 用途：内连接",
-      "# 依赖：dplyr",
-      "dplyr::inner_join(mtcars, mtcars, by='cyl')"
-    ],
-    "description": "内连接"
-  },
-  "222 dplyr 右连接": {
-    "prefix": "dplyr-right_join",
-    "body": [
-      "# 用途：右连接",
-      "# 依赖：dplyr",
-      "dplyr::right_join(mtcars, mtcars, by='cyl')"
-    ],
-    "description": "右连接"
-  },
-  "223 dplyr 全连接": {
-    "prefix": "dplyr-full_join",
-    "body": [
-      "# 用途：全连接",
-      "# 依赖：dplyr",
-      "dplyr::full_join(mtcars, mtcars, by='cyl')"
-    ],
-    "description": "全连接"
-  },
-  "224 dplyr 半连接": {
-    "prefix": "dplyr-semi_join",
-    "body": [
-      "# 用途：半连接，保留匹配行",
-      "# 依赖：dplyr",
-      "dplyr::semi_join(mtcars, mtcars, by='cyl')"
-    ],
-    "description": "半连接"
-  },
-  "225 dplyr 反连接": {
-    "prefix": "dplyr-anti_join",
-    "body": [
-      "# 用途：反连接，保留不匹配行",
-      "# 依赖：dplyr",
-      "dplyr::anti_join(mtcars, mtcars, by='cyl')"
-    ],
-    "description": "反连接"
-  },
-  "226 dplyr 按行合并": {
-    "prefix": "dplyr-bind_rows",
-    "body": [
-      "# 用途：按行合并数据框",
-      "# 依赖：dplyr",
-      "dplyr::bind_rows(mtcars, mtcars)"
-    ],
-    "description": "按行合并"
-  },
-  "227 dplyr 按列合并": {
-    "prefix": "dplyr-bind_cols",
-    "body": [
-      "# 用途：按列合并数据框",
-      "# 依赖：dplyr",
-      "dplyr::bind_cols(mtcars, mtcars)"
-    ],
-    "description": "按列合并"
-  },
-  "228 tidyr 宽转长": {
-    "prefix": "tidyr-pivot_longer",
-    "body": [
-      "# 用途：宽表转长表",
-      "# 依赖：tidyr",
-      "tidyr::pivot_longer(mtcars, cols=c(mpg,cyl), names_to='name', values_to='value')"
-    ],
-    "description": "宽转长"
-  },
-  "229 tidyr 长转宽": {
-    "prefix": "tidyr-pivot_wider",
-    "body": [
-      "# 用途：长表转宽表",
-      "# 依赖：tidyr",
-      "tidyr::pivot_wider(mtcars, names_from=cyl, values_from=mpg)"
-    ],
-    "description": "长转宽"
-  },
-  "230 tidyr 拆分列": {
-    "prefix": "tidyr-separate",
-    "body": [
-      "# 用途：按分隔符拆分列",
-      "# 依赖：tidyr",
-      "df <- data.frame(x=c('a_1','b_2'))",
-      "tidyr::separate(df, x, into=c('letter','num'), sep='_')"
-    ],
-    "description": "拆分列"
-  },
-  "231 tidyr 合并列": {
-    "prefix": "tidyr-unite",
-    "body": [
-      "# 用途：合并多列为一列",
-      "# 依赖：tidyr",
-      "tidyr::unite(mtcars, new_col, mpg, cyl, sep='_')"
-    ],
-    "description": "合并列"
-  },
-  "232 tidyr 删除缺失行": {
-    "prefix": "tidyr-drop_na",
-    "body": [
-      "# 用途：删除含缺失值的行",
-      "# 依赖：tidyr",
-      "tidyr::drop_na(mtcars)"
-    ],
-    "description": "删除缺失"
-  },
-  "233 tidyr 替换缺失值": {
-    "prefix": "tidyr-replace_na",
-    "body": [
-      "# 用途：替换缺失值",
-      "# 依赖：tidyr",
-      "tidyr::replace_na(mtcars, list(mpg=0, cyl=0))"
-    ],
-    "description": "替换缺失"
-  },
-  "234 tidyr 填充缺失值": {
-    "prefix": "tidyr-fill",
-    "body": [
-      "# 用途：用相邻值填充缺失",
-      "# 依赖：tidyr",
-      "tidyr::fill(mtcars, mpg, .direction='down')"
-    ],
-    "description": "填充缺失"
-  },
-  "235 tidyr 嵌套": {
-    "prefix": "tidyr-nest",
-    "body": [
-      "# 用途：嵌套数据框",
-      "# 依赖：tidyr",
-      "tidyr::nest(mtcars, data=c(mpg, cyl))"
-    ],
-    "description": "嵌套"
-  },
-  "236 tidyr 展开嵌套": {
-    "prefix": "tidyr-unnest",
-    "body": [
-      "# 用途：展开嵌套列",
-      "# 依赖：tidyr",
-      "nested <- tidyr::nest(mtcars, data=c(mpg, cyl))",
-      "tidyr::unnest(nested, data)"
-    ],
-    "description": "展开嵌套"
-  },
-  "237 stringr 检测模式": {
-    "prefix": "stringr-str_detect",
-    "body": [
-      "# 用途：检测字符串模式",
-      "# 依赖：stringr",
-      "stringr::str_detect('abc', 'a')"
-    ],
-    "description": "检测"
-  },
-  "238 stringr 替换首个": {
-    "prefix": "stringr-str_replace",
-    "body": [
-      "# 用途：替换首个匹配",
-      "# 依赖：stringr",
-      "stringr::str_replace('abc', 'a', 'x')"
-    ],
-    "description": "替换"
-  },
-  "239 stringr 替换所有": {
-    "prefix": "stringr-str_replace_all",
-    "body": [
-      "# 用途：替换所有匹配",
-      "# 依赖：stringr",
-      "stringr::str_replace_all('abcabc', 'a', 'x')"
-    ],
-    "description": "替换所有"
-  },
-  "240 stringr 拆分字符串": {
-    "prefix": "stringr-str_split",
-    "body": [
-      "# 用途：按分隔符拆分",
-      "# 依赖：stringr",
-      "stringr::str_split('a,b', ',')"
-    ],
-    "description": "拆分"
-  },
-  "241 stringr 去空白": {
-    "prefix": "stringr-str_trim",
-    "body": [
-      "# 用途：去除首尾空白",
-      "# 依赖：stringr",
-      "stringr::str_trim('  a  ')"
-    ],
-    "description": "去空白"
-  },
-  "242 stringr 截取子串": {
-    "prefix": "stringr-str_sub",
-    "body": [
-      "# 用途：按位置截取子串",
-      "# 依赖：stringr",
-      "stringr::str_sub('abc', 1, 2)"
-    ],
-    "description": "截取"
-  },
-  "243 stringr 提取匹配": {
-    "prefix": "stringr-str_extract",
-    "body": [
-      "# 用途：提取匹配内容",
-      "# 依赖：stringr",
-      "stringr::str_extract('abc123', '[0-9]+')"
-    ],
-    "description": "提取"
-  },
-  "244 stringr 连接字符串": {
-    "prefix": "stringr-str_c",
-    "body": [
-      "# 用途：连接字符串",
-      "# 依赖：stringr",
-      "stringr::str_c('a', 'b', sep=' ')"
-    ],
-    "description": "连接"
-  },
-  "245 stringr 大小写转换": {
-    "prefix": "stringr-str_to_lower",
-    "body": [
-      "# 用途：大小写转换",
-      "# 依赖：stringr",
-      "stringr::str_to_lower('ABC')",
-      "stringr::str_to_upper('abc')"
-    ],
-    "description": "大小写"
-  },
-  "246 lubridate 解析日期": {
-    "prefix": "lubridate-ymd",
-    "body": [
-      "# 用途：解析日期",
-      "# 依赖：lubridate",
-      "lubridate::ymd('2024-01-01')",
-      "lubridate::mdy('01/01/2024')"
-    ],
-    "description": "解析日期"
-  },
-  "247 lubridate 解析日期时间": {
-    "prefix": "lubridate-ymd_hms",
-    "body": [
-      "# 用途：解析日期时间",
-      "# 依赖：lubridate",
-      "lubridate::ymd_hms('2024-01-01 12:00:00')"
-    ],
-    "description": "日期时间"
-  },
-  "248 lubridate 日期取整": {
-    "prefix": "lubridate-floor_date",
-    "body": [
-      "# 用途：日期向下取整",
-      "# 依赖：lubridate",
-      "lubridate::floor_date(as.Date('2024-01-01'), 'month')"
-    ],
-    "description": "取整"
-  },
-  "249 lubridate 提取日期成分": {
-    "prefix": "lubridate-year",
-    "body": [
-      "# 用途：提取年/月/日等成分",
-      "# 依赖：lubridate",
-      "date <- as.Date('2024-01-01')",
-      "lubridate::year(date)",
-      "lubridate::month(date)"
-    ],
-    "description": "日期成分"
-  },
-  "250 lubridate 区间运算": {
-    "prefix": "lubridate-interval",
-    "body": [
-      "# 用途：区间与月份加减",
-      "# 依赖：lubridate",
-      "date <- as.Date('2024-01-01')",
-      "lubridate::interval(date, date+1)",
-      "date %m+% months(1)"
-    ],
-    "description": "区间"
-  },
-  "251 forcats 重排水平": {
-    "prefix": "forcats-fct_relevel",
-    "body": [
-      "# 用途：重设因子水平顺序",
-      "# 依赖：forcats",
-      "f <- factor(c('a','b','a'))",
-      "forcats::fct_relevel(f, 'b')"
-    ],
-    "description": "重排"
-  },
-  "252 forcats 按数值排序": {
-    "prefix": "forcats-fct_reorder",
-    "body": [
-      "# 用途：按数值排序水平",
-      "# 依赖：forcats",
-      "f <- factor(c('a','b','a'))",
-      "forcats::fct_reorder(f, c(1,2,1))"
-    ],
-    "description": "排序"
-  },
-  "253 forcats 按频数排序": {
-    "prefix": "forcats-fct_infreq",
-    "body": [
-      "# 用途：按频率排序水平",
-      "# 依赖：forcats",
-      "f <- factor(c('a','b','a'))",
-      "forcats::fct_infreq(f)"
-    ],
-    "description": "频数"
-  },
-  "254 forcats 合并稀有水平": {
-    "prefix": "forcats-fct_lump",
-    "body": [
-      "# 用途：合并稀有水平",
-      "# 依赖：forcats",
-      "f <- factor(c('a','b','a'))",
-      "forcats::fct_lump(f, n=1)"
-    ],
-    "description": "合并"
-  },
-  "255 forcats 合并水平": {
-    "prefix": "forcats-fct_collapse",
-    "body": [
-      "# 用途：合并指定水平",
-      "# 依赖：forcats",
-      "f <- factor(c('a','b','a'))",
-      "forcats::fct_collapse(f, new=c('a','b'))"
-    ],
-    "description": "合并水平"
-  },
-  "256 forcats 重编码水平": {
-    "prefix": "forcats-fct_recode",
-    "body": [
-      "# 用途：重命名因子水平",
-      "# 依赖：forcats",
-      "f <- factor(c('a','b','a'))",
-      "forcats::fct_recode(f, new='a')"
-    ],
-    "description": "重编码"
-  },
-  "257 forcats 其他类别": {
-    "prefix": "forcats-fct_other",
-    "body": [
-      "# 用途：保留或合并其他类别",
-      "# 依赖：forcats",
-      "f <- factor(c('a','b','a'))",
-      "forcats::fct_other(f, keep=c('a'))"
-    ],
-    "description": "其他"
-  },
-  "258 janitor 清洗列名": {
-    "prefix": "janitor-clean_names",
-    "body": [
-      "# 用途：标准化列名",
-      "# 依赖：janitor",
-      "janitor::clean_names(mtcars)"
-    ],
-    "description": "清洗列名"
-  },
-  "259 janitor 频数表": {
-    "prefix": "janitor-tabyl",
-    "body": [
-      "# 用途：生成频数表",
-      "# 依赖：janitor",
-      "janitor::tabyl(mtcars, cyl)"
-    ],
-    "description": "频数表"
-  },
-  "260 janitor 删除空列": {
-    "prefix": "janitor-remove_empty",
-    "body": [
-      "# 用途：删除空行空列",
-      "# 依赖：janitor",
-      "janitor::remove_empty(mtcars)"
-    ],
-    "description": "删除空"
-  },
-  "300 if 分支": {
-    "prefix": "base-if",
-    "body": [
-      "# 用途：条件分支",
-      "if (TRUE) { 1 } else { 2 }"
-    ],
-    "description": "分支"
-  },
-  "301 case_when": {
-    "prefix": "base-case_when",
-    "body": [
-      "# 用途：多条件赋值",
-      "# 依赖：dplyr",
-      "dplyr::case_when(mtcars$mpg>20 ~ 'high', TRUE ~ 'low')"
-    ],
-    "description": "多条件"
-  },
-  "302 for 循环": {
-    "prefix": "base-for",
-    "body": [
-      "# 用途：for 循环",
-      "for (i in 1:3) { print(i) }"
-    ],
-    "description": "循环"
-  },
-  "303 自定义函数": {
-    "prefix": "base-function",
-    "body": [
-      "# 用途：定义函数",
-      "my_fun <- function(x, y=1) { x + y }",
-      "my_fun(1,2)"
-    ],
-    "description": "函数"
-  },
-  "304 错误处理": {
-    "prefix": "base-tryCatch",
-    "body": [
-      "# 用途：捕获错误",
-      "tryCatch(stop('error'), error=function(e) NULL)"
-    ],
-    "description": "错误处理"
-  },
-  "305 apply 族": {
-    "prefix": "base-apply",
-    "body": [
-      "# 用途：apply 族遍历",
-      "apply(matrix(1:9,3), 1, mean)",
-      "lapply(1:3, function(x) x+1)"
-    ],
-    "description": "apply"
-  },
-  "306 purrr map": {
-    "prefix": "purrr-map",
-    "body": [
-      "# 用途：函数式遍历",
-      "# 依赖：purrr",
-      "purrr::map(1:3, ~ .x+1)",
-      "purrr::map_dbl(1:3, ~ mean(.x))"
-    ],
-    "description": "map"
-  },
-  "307 purrr map2": {
-    "prefix": "purrr-map2",
-    "body": [
-      "# 用途：双输入遍历",
-      "# 依赖：purrr",
-      "purrr::map2(1:3, 4:6, ~ .x+.y)"
-    ],
-    "description": "map2"
-  },
-  "308 purrr pmap": {
-    "prefix": "purrr-pmap",
-    "body": [
-      "# 用途：多输入遍历",
-      "# 依赖：purrr",
-      "purrr::pmap(list(1:3, 4:6), ~ ..1+..2)"
-    ],
-    "description": "pmap"
-  },
-  "309 purrr walk": {
-    "prefix": "purrr-walk",
-    "body": [
-      "# 用途：遍历执行副作用",
-      "# 依赖：purrr",
-      "purrr::walk(1:3, ~ print(.x))"
-    ],
-    "description": "walk"
-  },
-  "310 purrr safely": {
-    "prefix": "purrr-safely",
-    "body": [
-      "# 用途：安全执行函数",
-      "# 依赖：purrr",
-      "purrr::safely(mean)(1:10)",
-      "purrr::possibly(mean, otherwise=NULL)(1:10)"
-    ],
-    "description": "safely"
-  },
-  "311 purrr reduce": {
-    "prefix": "purrr-reduce",
-    "body": [
-      "# 用途：归约与累积",
-      "# 依赖：purrr",
-      "purrr::reduce(1:3, `+`)",
-      "purrr::accumulate(1:3, `+`)"
-    ],
-    "description": "reduce"
-  },
-  "312 ggplot 基础": {
-    "prefix": "ggplot2-ggplot",
-    "body": [
-      "# 用途：初始化图形",
-      "# 依赖：ggplot2",
-      "ggplot2::ggplot(mtcars, ggplot2::aes(mpg, hp)) + ggplot2::geom_point()"
-    ],
-    "description": "ggplot"
-  },
-  "313 ggplot 散点图": {
-    "prefix": "ggplot2-geom_point",
-    "body": [
-      "# 用途：散点图",
-      "# 依赖：ggplot2",
-      "ggplot2::ggplot(mtcars, ggplot2::aes(mpg, hp)) + ggplot2::geom_point()"
-    ],
-    "description": "散点"
-  },
-  "314 ggplot 折线图": {
-    "prefix": "ggplot2-geom_line",
-    "body": [
-      "# 用途：折线图",
-      "# 依赖：ggplot2",
-      "ggplot2::ggplot(mtcars, ggplot2::aes(mpg, hp)) + ggplot2::geom_line()"
-    ],
-    "description": "折线"
-  },
-  "315 ggplot 柱状图": {
-    "prefix": "ggplot2-geom_col",
-    "body": [
-      "# 用途：柱状图",
-      "# 依赖：ggplot2",
-      "ggplot2::ggplot(mtcars, ggplot2::aes(factor(cyl))) + ggplot2::geom_col()"
-    ],
-    "description": "柱状"
-  },
-  "316 ggplot 箱线图": {
-    "prefix": "ggplot2-geom_boxplot",
-    "body": [
-      "# 用途：箱线图",
-      "# 依赖：ggplot2",
-      "ggplot2::ggplot(mtcars, ggplot2::aes(factor(cyl), mpg)) + ggplot2::geom_boxplot()"
-    ],
-    "description": "箱线"
-  },
-  "317 ggplot 直方图": {
-    "prefix": "ggplot2-geom_histogram",
-    "body": [
-      "# 用途：直方图",
-      "# 依赖：ggplot2",
-      "ggplot2::ggplot(mtcars, ggplot2::aes(mpg)) + ggplot2::geom_histogram(bins=30)"
-    ],
-    "description": "直方"
-  },
-  "318 ggplot 密度图": {
-    "prefix": "ggplot2-geom_density",
-    "body": [
-      "# 用途：密度图",
-      "# 依赖：ggplot2",
-      "ggplot2::ggplot(mtcars, ggplot2::aes(mpg)) + ggplot2::geom_density()"
-    ],
-    "description": "密度"
-  },
-  "319 ggplot 拟合线": {
-    "prefix": "ggplot2-geom_smooth",
-    "body": [
-      "# 用途：添加拟合线",
-      "# 依赖：ggplot2",
-      "ggplot2::ggplot(mtcars, ggplot2::aes(mpg, hp)) + ggplot2::geom_smooth(method='lm')"
-    ],
-    "description": "拟合"
-  },
-  "320 ggplot 分面": {
-    "prefix": "ggplot2-facet_wrap",
-    "body": [
-      "# 用途：按变量分面",
-      "# 依赖：ggplot2",
-      "ggplot2::ggplot(mtcars, ggplot2::aes(mpg, hp)) + ggplot2::geom_point() + ggplot2::facet_wrap(~ cyl)"
-    ],
-    "description": "分面"
-  },
-  "321 ggplot 手动颜色": {
-    "prefix": "ggplot2-scale_fill_manual",
-    "body": [
-      "# 用途：手动填充色",
-      "# 依赖：ggplot2",
-      "ggplot2::ggplot(mtcars, ggplot2::aes(factor(cyl), fill=factor(cyl))) + ggplot2::geom_bar() + ggplot2::scale_fill_manual(values=c('red','blue','green'))"
-    ],
-    "description": "颜色"
-  },
-  "322 ggplot 调色板": {
-    "prefix": "ggplot2-scale_fill_brewer",
-    "body": [
-      "# 用途：使用调色板",
-      "# 依赖：ggplot2",
-      "ggplot2::ggplot(mtcars, ggplot2::aes(factor(cyl), fill=factor(cyl))) + ggplot2::geom_bar() + ggplot2::scale_fill_brewer(palette='Set1')"
-    ],
-    "description": "调色板"
-  },
-  "323 ggplot 标签": {
-    "prefix": "ggplot2-labs",
-    "body": [
-      "# 用途：添加标题与轴标签",
-      "# 依赖：ggplot2",
-      "ggplot2::ggplot(mtcars, ggplot2::aes(mpg, hp)) + ggplot2::geom_point() + ggplot2::labs(title='标题', x='X', y='Y')"
-    ],
-    "description": "标签"
-  },
-  "324 ggplot 主题": {
-    "prefix": "ggplot2-theme_minimal",
-    "body": [
-      "# 用途：简洁主题",
-      "# 依赖：ggplot2",
-      "ggplot2::ggplot(mtcars, ggplot2::aes(mpg, hp)) + ggplot2::geom_point() + ggplot2::theme_minimal()"
-    ],
-    "description": "主题"
-  },
-  "325 ggplot 保存": {
-    "prefix": "ggplot2-ggsave",
-    "body": [
-      "# 用途：保存图形",
-      "# 依赖：ggplot2",
-      "p <- ggplot2::ggplot(mtcars, ggplot2::aes(mpg, hp)) + ggplot2::geom_point()",
-      "ggplot2::ggsave(tempfile(fileext='.png'), plot=p)"
-    ],
-    "description": "保存"
-  },
-  "326 ggplot 翻转坐标轴": {
-    "prefix": "ggplot2-coord_flip",
-    "body": [
-      "# 用途：翻转坐标轴",
-      "# 依赖：ggplot2",
-      "ggplot2::ggplot(mtcars, ggplot2::aes(factor(cyl))) + ggplot2::geom_bar() + ggplot2::coord_flip()"
-    ],
-    "description": "坐标轴"
-  },
-  "327 描述统计": {
-    "prefix": "base-summary",
-    "body": [
-      "# 用途：描述统计",
-      "summary(mtcars)",
-      "mean(mtcars$mpg)",
-      "sd(mtcars$mpg)"
-    ],
-    "description": "描述统计"
-  },
-  "400 假设检验": {
-    "prefix": "stats-test",
-    "body": [
-      "# 用途：t 检验与相关检验",
-      "t.test(mpg ~ am, data=mtcars)",
-      "cor.test(mtcars$mpg, mtcars$hp)"
-    ],
-    "description": "假设检验"
-  },
-  "401 线性回归": {
-    "prefix": "stats-lm",
-    "body": [
-      "# 用途：线性回归",
-      "fit <- lm(mpg ~ cyl + hp, data=mtcars)",
-      "summary(fit)"
-    ],
-    "description": "线性回归"
-  },
-  "402 广义线性模型": {
-    "prefix": "stats-glm",
-    "body": [
-      "# 用途：logistic 回归",
-      "fit <- glm(am ~ mpg + hp, data=mtcars, family=binomial)",
-      "summary(fit)"
-    ],
-    "description": "GLM"
-  },
-  "403 方差分析": {
-    "prefix": "stats-aov",
-    "body": [
-      "# 用途：单因素方差分析",
-      "fit <- aov(mpg ~ factor(cyl), data=mtcars)",
-      "anova(fit)"
-    ],
-    "description": "方差分析"
-  },
-  "404 模型诊断": {
-    "prefix": "stats-lm-diag",
-    "body": [
-      "# 用途：回归诊断图与残差",
-      "fit <- lm(mpg ~ cyl, data=mtcars)",
-      "plot(fit)",
-      "residuals(fit)"
-    ],
-    "description": "诊断"
-  },
-  "405 broom 整理模型": {
-    "prefix": "broom-tidy",
-    "body": [
-      "# 用途：整理模型结果",
-      "# 依赖：broom",
-      "fit <- lm(mpg ~ cyl, data=mtcars)",
-      "broom::tidy(fit)",
-      "broom::glance(fit)"
-    ],
-    "description": "模型整理"
-  },
-  "406 performance 模型诊断": {
-    "prefix": "performance-check_model",
-    "body": [
-      "# 用途：模型诊断",
-      "# 依赖：performance",
-      "fit <- lm(mpg ~ cyl, data=mtcars)",
-      "performance::check_model(fit)"
-    ],
-    "description": "诊断"
-  },
-  "407 parameters 参数提取": {
-    "prefix": "parameters-model_parameters",
-    "body": [
-      "# 用途：提取模型参数",
-      "# 依赖：parameters",
-      "fit <- lm(mpg ~ cyl, data=mtcars)",
-      "parameters::model_parameters(fit)"
-    ],
-    "description": "参数"
-  },
-  "408 effectsize 效应量": {
-    "prefix": "effectsize-eta_squared",
-    "body": [
-      "# 用途：计算效应量",
-      "# 依赖：effectsize",
-      "fit <- lm(mpg ~ cyl, data=mtcars)",
-      "effectsize::eta_squared(fit)"
-    ],
-    "description": "效应量"
-  },
-  "409 modelsummary 多模型表": {
-    "prefix": "modelsummary-modelsummary",
-    "body": [
-      "# 用途：多模型对比表",
-      "# 依赖：modelsummary",
-      "fit <- lm(mpg ~ cyl, data=mtcars)",
-      "modelsummary::modelsummary(list(fit, fit))"
-    ],
-    "description": "多模型表"
-  },
-  "410 marginaleffects 边际效应": {
-    "prefix": "marginaleffects-slopes",
-    "body": [
-      "# 用途：计算边际效应",
-      "# 依赖：marginaleffects",
-      "fit <- lm(mpg ~ cyl, data=mtcars)",
-      "marginaleffects::slopes(fit)"
-    ],
-    "description": "边际效应"
-  },
-  "500 tidymodels 拆分": {
-    "prefix": "rsample-initial_split",
-    "body": [
-      "# 用途：划分训练测试集",
-      "# 依赖：rsample",
-      "split <- rsample::initial_split(mtcars)",
-      "train <- rsample::training(split)",
-      "test <- rsample::testing(split)"
-    ],
-    "description": "拆分"
-  },
-  "501 recipes 特征工程": {
-    "prefix": "recipes-recipe",
-    "body": [
-      "# 用途：创建预处理配方",
-      "# 依赖：recipes",
-      "train <- mtcars",
-      "rec <- recipes::recipe(mpg ~ ., data=train) |>",
-      "  recipes::step_normalize(recipes::all_numeric_predictors())"
-    ],
-    "description": "recipes"
-  },
-  "502 parsnip 模型定义": {
-    "prefix": "parsnip-linear_reg",
-    "body": [
-      "# 用途：定义线性回归模型",
-      "# 依赖：parsnip",
-      "model <- parsnip::linear_reg() |> parsnip::set_engine('lm')"
-    ],
-    "description": "parsnip"
-  },
-  "503 workflow 工作流": {
-    "prefix": "workflows-workflow",
-    "body": [
-      "# 用途：组合配方与模型",
-      "# 依赖：workflows, recipes, parsnip",
-      "train <- mtcars",
-      "rec <- recipes::recipe(mpg ~ ., data=train)",
-      "model <- parsnip::linear_reg() |> parsnip::set_engine('lm')",
-      "wf <- workflows::workflow() |> workflows::add_recipe(rec) |> workflows::add_model(model)",
-      "fit <- workflows::fit(wf, data=train)"
-    ],
-    "description": "workflow"
-  },
-  "504 yardstick 评估": {
-    "prefix": "yardstick-rmse",
-    "body": [
-      "# 用途：评估回归模型",
-      "# 依赖：yardstick, workflows, recipes, parsnip",
-      "train <- mtcars",
-      "test <- mtcars",
-      "rec <- recipes::recipe(mpg ~ ., data=train)",
-      "model <- parsnip::linear_reg() |> parsnip::set_engine('lm')",
-      "wf <- workflows::workflow() |> workflows::add_recipe(rec) |> workflows::add_model(model)",
-      "fit <- workflows::fit(wf, data=train)",
-      "predictions <- predict(fit, test) |> dplyr::bind_cols(test)",
-      "yardstick::rmse(predictions, truth=mpg, estimate=.pred)"
-    ],
-    "description": "评估"
-  },
-  "600 表达式与 eval": {
-    "prefix": "base-eval",
-    "body": [
-      "# 用途：表达式求值",
-      "expr <- quote(x + y)",
-      "eval(expr, envir=list(x=1,y=2))"
-    ],
-    "description": "元编程"
-  },
-  "601 tidy eval": {
-    "prefix": "rlang-tidyeval",
-    "body": [
-      "# 用途：tidy eval 传参",
-      "# 依赖：dplyr, rlang",
-      "my_summary <- function(data, var) { data |> dplyr::summarise(mean=mean({{var}})) }",
-      "my_summary(mtcars, mpg)"
-    ],
-    "description": "tidy eval"
-  },
-  "602 环境与作用域": {
-    "prefix": "base-env",
-    "body": [
-      "# 用途：查看环境",
-      "globalenv()",
-      "new.env()"
-    ],
-    "description": "环境"
-  },
-  "603 闭包": {
-    "prefix": "base-closure",
-    "body": [
-      "# 用途：闭包计数器",
-      "make_counter <- function() { i <- 0; function() { i <<- i+1; i } }",
-      "counter <- make_counter(); counter()"
-    ],
-    "description": "闭包"
-  },
-  "604 S3 泛型": {
-    "prefix": "base-s3",
-    "body": [
-      "# 用途：S3 泛型与方法",
-      "my_generic <- function(x, ...) UseMethod('my_generic')",
-      "my_generic.default <- function(x, ...) x",
-      "my_generic(1)"
-    ],
-    "description": "S3"
-  },
-  "605 S4 类": {
-    "prefix": "methods-s4",
-    "body": [
-      "# 用途：S4 类定义",
-      "# 依赖：methods",
-      "setClass('Person', slots=list(name='character'))",
-      "setGeneric('greet', function(object) standardGeneric('greet'))"
-    ],
-    "description": "S4"
-  },
-  "606 R6 类": {
-    "prefix": "R6-R6Class",
-    "body": [
-      "# 用途：R6 类定义",
-      "# 依赖：R6",
-      "MyClass <- R6::R6Class('MyClass', public=list(field=NULL))",
-      "MyClass$new()"
-    ],
-    "description": "R6"
-  },
-  "607 调试": {
-    "prefix": "base-debug",
-    "body": [
-      "# 用途：调试函数",
-      "traceback()",
-      "# browser()",
-      "# debug(mean)"
-    ],
-    "description": "调试"
-  },
-  "608 性能测量": {
-    "prefix": "bench-mark",
-    "body": [
-      "# 用途：性能基准测试",
-      "# 依赖：bench",
-      "# bench::mark(method1=mean(1:1000), method2=sum(1:1000)/1000)"
-    ],
-    "description": "性能"
-  },
-  "609 预分配": {
-    "prefix": "base-optim",
-    "body": [
-      "# 用途：预分配向量提升性能",
-      "out <- vector('list', length=3)"
-    ],
-    "description": "优化"
-  },
-  "610 future 并行": {
-    "prefix": "future-plan",
-    "body": [
-      "# 用途：设置并行方案",
-      "# 依赖：future, furrr",
-      "future::plan(future::multisession)",
-      "furrr::future_map(1:3, ~ .x+1)"
-    ],
-    "description": "并行"
-  },
-  "611 future 异步": {
-    "prefix": "future-future",
-    "body": [
-      "# 用途：异步任务",
-      "# 依赖：future",
-      "f <- future::future({ 1+1 })",
-      "res <- future::value(f)"
-    ],
-    "description": "异步"
-  },
-  "612 data.table 读取": {
-    "prefix": "data.table-fread",
-    "body": [
-      "# 用途：快速读取 CSV",
-      "# 依赖：data.table, readr",
-      "tf <- tempfile(fileext='.csv')",
-      "readr::write_csv(mtcars, tf)",
-      "data.table::fread(tf)"
-    ],
-    "description": "读取"
-  },
-  "613 data.table 转换": {
-    "prefix": "data.table-setDT",
-    "body": [
-      "# 用途：data.frame 与 data.table 互转",
-      "# 依赖：data.table",
-      "dt <- data.table::setDT(mtcars)",
-      "data.table::setDF(dt)"
-    ],
-    "description": "转换"
-  },
-  "614 data.table 修改列": {
-    "prefix": "data.table-assign",
-    "body": [
-      "# 用途：用 := 修改/新增列",
-      "# 依赖：data.table",
-      "dt <- data.table::as.data.table(mtcars)",
-      "dt[, new := mpg/cyl]"
-    ],
-    "description": "修改列"
-  },
-  "615 data.table 分组": {
-    "prefix": "data.table-group",
-    "body": [
-      "# 用途：分组汇总",
-      "# 依赖：data.table",
-      "dt <- data.table::as.data.table(mtcars)",
-      "dt[, .(mean_x=mean(mpg)), by=cyl]"
-    ],
-    "description": "分组"
-  },
-  "616 data.table 键与连接": {
-    "prefix": "data.table-setkey",
-    "body": [
-      "# 用途：设置键并连接",
-      "# 依赖：data.table",
-      "dt <- data.table::as.data.table(mtcars)",
-      "data.table::setkey(dt, cyl)",
-      "merge(dt, dt, by='cyl')"
-    ],
-    "description": "连接"
-  },
-  "617 data.table 长宽转换": {
-    "prefix": "data.table-dcast",
-    "body": [
-      "# 用途：长宽转换",
-      "# 依赖：data.table",
-      "dt <- data.table::as.data.table(mtcars)",
-      "data.table::dcast(dt, cyl ~ am, value.var='mpg', fun.aggregate=mean)"
-    ],
-    "description": "长宽"
-  },
-  "618 data.table 条件赋值": {
-    "prefix": "data.table-fcase",
-    "body": [
-      "# 用途：条件赋值",
-      "# 依赖：data.table",
-      "dt <- data.table::as.data.table(mtcars)",
-      "dt[, new := data.table::fifelse(mpg>20, 'high', 'low')]"
-    ],
-    "description": "条件"
-  },
-  "619 data.table 位移": {
-    "prefix": "data.table-shift",
-    "body": [
-      "# 用途：滞后/超前",
-      "# 依赖：data.table",
-      "dt <- data.table::as.data.table(mtcars)",
-      "dt[, lag_x := data.table::shift(mpg, 1, type='lag')]"
-    ],
-    "description": "位移"
-  },
-  "620 collapse 快速统计": {
-    "prefix": "collapse-fmean",
-    "body": [
-      "# 用途：快速统计函数",
-      "# 依赖：collapse",
-      "collapse::fmean(mtcars$mpg)",
-      "collapse::fsum(mtcars$mpg)"
-    ],
-    "description": "统计"
-  },
-  "621 collapse 数据转换": {
-    "prefix": "collapse-qDF",
-    "body": [
-      "# 用途：快速数据转换",
-      "# 依赖：collapse",
-      "collapse::qDF(mtcars)",
-      "collapse::qTBL(mtcars)"
-    ],
-    "description": "转换"
-  },
-  "622 collapse 时间序列": {
-    "prefix": "collapse-flag",
-    "body": [
-      "# 用途：滞后/差分/增长率",
-      "# 依赖：collapse",
-      "collapse::flag(mtcars$mpg)",
-      "collapse::fdiff(mtcars$mpg)"
-    ],
-    "description": "时间序列"
-  },
-  "700 DBI 数据库": {
-    "prefix": "DBI-dbConnect",
-    "body": [
-      "# 用途：SQLite 连接与查询",
-      "# 依赖：DBI, RSQLite",
-      "con <- DBI::dbConnect(RSQLite::SQLite(), tempfile())",
-      "DBI::dbWriteTable(con, 'mtcars', mtcars)",
-      "DBI::dbGetQuery(con, 'SELECT * FROM mtcars LIMIT 3')",
-      "DBI::dbDisconnect(con)"
-    ],
-    "description": "数据库"
-  },
-  "701 dbplyr 惰性查询": {
-    "prefix": "dbplyr-tbl",
-    "body": [
-      "# 用途：用 dplyr 语法查询数据库",
-      "# 依赖：DBI, RSQLite, dplyr, dbplyr",
-      "con <- DBI::dbConnect(RSQLite::SQLite(), tempfile())",
-      "DBI::dbWriteTable(con, 'mtcars', mtcars)",
-      "dplyr::tbl(con, 'mtcars') |> dplyr::filter(mpg>20)",
-      "DBI::dbDisconnect(con)"
-    ],
-    "description": "dbplyr"
-  },
-  "702 duckdb 连接": {
-    "prefix": "duckdb-dbConnect",
-    "body": [
-      "# 用途：DuckDB 连接与查询",
-      "# 依赖：DBI, duckdb",
-      "con <- DBI::dbConnect(duckdb::duckdb(), tempfile(fileext='.duckdb'))",
-      "DBI::dbGetQuery(con, 'SELECT 1')",
-      "DBI::dbDisconnect(con, shutdown=TRUE)"
-    ],
-    "description": "duckdb"
-  },
-  "703 httr2 API": {
-    "prefix": "httr2-request",
-    "body": [
-      "# 用途：发起 HTTP 请求",
-      "# 依赖：httr2",
-      "# 注意：需联网",
-      "# httr2::request('https://api.github.com') |> httr2::req_perform()"
-    ],
-    "description": "API"
-  },
-  "704 rvest 爬虫": {
-    "prefix": "rvest-read_html",
-    "body": [
-      "# 用途：抓取网页元素",
-      "# 依赖：rvest",
-      "# 注意：需联网",
-      "# rvest::read_html('https://example.com') |> rvest::html_elements('h1') |> rvest::html_text()"
-    ],
-    "description": "爬虫"
-  },
-  "705 pins 数据版本": {
-    "prefix": "pins-pin_write",
-    "body": [
-      "# 用途：保存与读取数据版本",
-      "# 依赖：pins",
-      "board <- pins::board_folder(tempdir())",
-      "pins::pin_write(board, mtcars, 'name')",
-      "pins::pin_read(board, 'name')"
-    ],
-    "description": "版本"
-  },
-  "706 logger 日志": {
-    "prefix": "logger-log_info",
-    "body": [
-      "# 用途：记录日志",
-      "# 依赖：logger",
-      "logger::log_info('message')",
-      "logger::log_warn('warning')",
-      "logger::log_error('error')"
-    ],
-    "description": "日志"
-  },
-  "707 logger 配置": {
-    "prefix": "logger-config",
-    "body": [
-      "# 用途：配置日志阈值与输出",
-      "# 依赖：logger",
-      "logger::log_threshold(logger::INFO)",
-      "logger::log_appender(logger::appender_file(tempfile()))"
-    ],
-    "description": "日志配置"
-  },
-  "708 cli 提示": {
-    "prefix": "cli-alert",
-    "body": [
-      "# 用途：命令行提示信息",
-      "# 依赖：cli",
-      "cli::cli_alert_info('message')",
-      "cli::cli_alert_success('done')"
-    ],
-    "description": "提示"
-  },
-  "709 cli 进度条": {
-    "prefix": "cli-progress_bar",
-    "body": [
-      "# 用途：命令行进度条",
-      "# 依赖：cli",
-      "cli::cli_progress_bar('working', total=3)",
-      "for (i in 1:3) cli::cli_progress_update()",
-      "cli::cli_progress_done()"
-    ],
-    "description": "进度条"
-  },
-  "710 progress 进度条": {
-    "prefix": "progress-progress_bar",
-    "body": [
-      "# 用途：进度条",
-      "# 依赖：progress",
-      "pb <- progress::progress_bar$new(total=3)",
-      "for (i in 1:3) pb$tick()"
-    ],
-    "description": "进度条"
-  },
-  "711 targets 流水线": {
-    "prefix": "targets-tar_target",
-    "body": [
-      "# 用途：定义可复现流水线",
-      "# 依赖：targets",
-      "# 注意：需在 _targets.R 中使用",
-      "# targets::tar_target(name, command)",
-      "# targets::tar_make()"
-    ],
-    "description": "流水线"
-  },
-  "712 cronR 定时任务": {
-    "prefix": "cronR-cron_add",
-    "body": [
-      "# 用途：添加定时任务",
-      "# 依赖：cronR",
-      "# 注意：需系统 cron 支持",
-      "# cronR::cron_add(command='Rscript script.R', frequency='daily', at='08:00')"
-    ],
-    "description": "定时"
-  },
-  "713 config 读取配置": {
-    "prefix": "config-get",
-    "body": [
-      "# 用途：读取 YAML 配置",
-      "# 依赖：config",
-      "# 注意：需 config.yml 文件",
-      "# config::get('key')"
-    ],
-    "description": "配置"
-  },
-  "714 dotenv 环境变量": {
-    "prefix": "dotenv-load_dot_env",
-    "body": [
-      "# 用途：加载 .env 环境变量",
-      "# 依赖：dotenv",
-      "# 注意：需 .env 文件",
-      "# dotenv::load_dot_env('.env')",
-      "# Sys.getenv('API_KEY')"
-    ],
-    "description": "环境变量"
-  },
-  "715 keyring 密钥管理": {
-    "prefix": "keyring-key_set",
-    "body": [
-      "# 用途：系统密钥管理",
-      "# 依赖：keyring",
-      "# 注意：需交互输入",
-      "# keyring::key_set('service')",
-      "# keyring::key_get('service')"
-    ],
-    "description": "密钥"
-  },
-  "800 Quarto 报告": {
-    "prefix": "quarto-yaml",
-    "body": [
-      "# 用途：Quarto YAML 头模板",
-      "# 注意：模板，不能直接运行",
-      "# ---",
-      "# title: '标题'",
-      "# format: html",
-      "# ---"
-    ],
-    "description": "报告"
-  },
-  "801 knitr 代码块": {
-    "prefix": "knitr-chunk",
-    "body": [
-      "# 用途：knitr 代码块选项模板",
-      "# 注意：模板，不能直接运行",
-      "# ```{r, echo=FALSE}",
-      "# 1+1",
-      "# ```"
-    ],
-    "description": "knit"
-  },
-  "802 表格输出": {
-    "prefix": "knitr-kable",
-    "body": [
-      "# 用途：表格输出",
-      "# 依赖：knitr, gt",
-      "knitr::kable(head(mtcars))",
-      "gt::gt(head(mtcars))"
-    ],
-    "description": "表格"
-  },
-  "803 参数化报告": {
-    "prefix": "quarto-params",
-    "body": [
-      "# 用途：参数化报告模板",
-      "# 注意：模板，不能直接运行",
-      "# params:",
-      "#   data: 'file.csv'"
-    ],
-    "description": "参数"
-  },
-  "804 flextable 表格": {
-    "prefix": "flextable-flextable",
-    "body": [
-      "# 用途：创建格式化表格",
-      "# 依赖：flextable",
-      "ft <- flextable::flextable(head(mtcars))",
-      "ft <- flextable::autofit(ft)"
-    ],
-    "description": "表格"
-  },
-  "805 flextable 格式化": {
-    "prefix": "flextable-format",
-    "body": [
-      "# 用途：表格格式化",
-      "# 依赖：flextable",
-      "ft <- flextable::flextable(head(mtcars))",
-      "flextable::colformat_double(ft, digits=2)"
-    ],
-    "description": "格式化"
-  },
-  "806 officer Word": {
-    "prefix": "officer-read_docx",
-    "body": [
-      "# 用途：Word 文档操作",
-      "# 依赖：officer",
-      "doc <- officer::read_docx()",
-      "doc <- officer::body_add_par(doc, '段落')",
-      "print(doc, target=tempfile(fileext='.docx'))"
-    ],
-    "description": "Word"
-  },
-  "807 officer PPT": {
-    "prefix": "officer-read_pptx",
-    "body": [
-      "# 用途：PPT 操作",
-      "# 依赖：officer",
-      "ppt <- officer::read_pptx()",
-      "ppt <- officer::add_slide(ppt, layout='Title and Content')",
-      "print(ppt, target=tempfile(fileext='.pptx'))"
-    ],
-    "description": "PPT"
-  },
-  "808 kableExtra 样式": {
-    "prefix": "kableExtra-kable_styling",
-    "body": [
-      "# 用途：表格样式",
-      "# 依赖：knitr, kableExtra",
-      "knitr::kable(head(mtcars)) |> kableExtra::kable_styling()"
-    ],
-    "description": "样式"
-  },
-  "809 kableExtra 分组行": {
-    "prefix": "kableExtra-pack_rows",
-    "body": [
-      "# 用途：分组行",
-      "# 依赖：knitr, kableExtra",
-      "knitr::kable(head(mtcars)) |> kableExtra::pack_rows('组1', 1, 3)"
-    ],
-    "description": "分组"
-  },
-  "810 gtExtras 图表": {
-    "prefix": "gtExtras-gt_plt",
-    "body": [
-      "# 用途：表格内嵌图表",
-      "# 依赖：gt, gtExtras",
-      "gt::gt(head(mtcars)) |> gtExtras::gt_plt_bar(column=mpg)"
-    ],
-    "description": "图表"
-  },
-  "900 Shiny 应用": {
-    "prefix": "shiny-app",
-    "body": [
-      "# 用途：Shiny 应用骨架",
-      "# 依赖：shiny",
-      "# 注意：交互应用，不能直接运行",
-      "# library(shiny)",
-      "# ui <- fluidPage('Hello')",
-      "# server <- function(input, output, session) {}",
-      "# shinyApp(ui, server)"
-    ],
-    "description": "Shiny"
-  },
-  "901 plumber API": {
-    "prefix": "plumber-api",
-    "body": [
-      "# 用途：Plumber API 定义",
-      "# 依赖：plumber",
-      "# 注意：需外部服务",
-      "# #* @get /endpoint",
-      "# function() list(result=1)"
-    ],
-    "description": "API"
-  },
-  "902 vetiver 模型部署": {
-    "prefix": "vetiver-model",
-    "body": [
-      "# 用途：模型部署封装",
-      "# 依赖：vetiver",
-      "# 注意：需先训练模型",
-      "# v <- vetiver::vetiver_model(fit, 'model_name')",
-      "# vetiver::vetiver_api(v)"
-    ],
-    "description": "部署"
-  },
-  "903 dockerfiler Dockerfile": {
-    "prefix": "dockerfiler-Dockerfile",
-    "body": [
-      "# 用途：生成 Dockerfile",
-      "# 依赖：dockerfiler",
-      "# df <- dockerfiler::Dockerfile$new('rocker/r-ver:4.4')",
-      "# df$write('Dockerfile')"
-    ],
-    "description": "Dockerfile"
-  },
-  "904 paws S3": {
-    "prefix": "paws-s3",
-    "body": [
-      "# 用途：AWS S3 操作",
-      "# 依赖：paws",
-      "# 注意：需 AWS 凭证",
-      "# s3 <- paws::s3()",
-      "# s3$list_objects(Bucket='bucket')"
-    ],
-    "description": "S3"
-  },
-  "905 googledrive 上传下载": {
-    "prefix": "googledrive-drive",
-    "body": [
-      "# 用途：Google Drive 操作",
-      "# 依赖：googledrive",
-      "# 注意：需 Google 授权",
-      "# googledrive::drive_auth()",
-      "# googledrive::drive_upload('file')"
-    ],
-    "description": "上传下载"
-  },
-  "906 googlesheets4 读写": {
-    "prefix": "googlesheets4-sheet",
-    "body": [
-      "# 用途：Google Sheets 读写",
-      "# 依赖：googlesheets4",
-      "# 注意：需 Google 授权",
-      "# googlesheets4::gs4_auth()",
-      "# googlesheets4::read_sheet('sheet_id')"
-    ],
-    "description": "读写"
-  },
-  "907 gh GitHub API": {
-    "prefix": "gh-gh",
-    "body": [
-      "# 用途：GitHub API 调用",
-      "# 依赖：gh",
-      "# 注意：需 GitHub token",
-      "# gh::gh('GET /repos/{owner}/{repo}')"
-    ],
-    "description": "API"
-  },
-  "1000 usethis 创建包": {
-    "prefix": "usethis-create_package",
-    "body": [
-      "# 用途：创建 R 包骨架",
-      "# 依赖：usethis",
-      "# usethis::create_package('path/to/pkg')"
-    ],
-    "description": "创建包"
-  },
-  "1001 usethis 初始化 Git": {
-    "prefix": "usethis-use_git",
-    "body": [
-      "# 用途：初始化 Git 与 GitHub",
-      "# 依赖：usethis",
-      "# usethis::use_git()",
-      "# usethis::use_github()"
-    ],
-    "description": "Git"
-  },
-  "1002 usethis 创建 R 文件": {
-    "prefix": "usethis-use_r",
-    "body": [
-      "# 用途：创建 R 脚本文件",
-      "# 依赖：usethis",
-      "# usethis::use_r('function_name')"
-    ],
-    "description": "R 文件"
-  },
-  "1003 usethis 启用测试": {
-    "prefix": "usethis-use_testthat",
-    "body": [
-      "# 用途：启用 testthat",
-      "# 依赖：usethis",
-      "# usethis::use_testthat()"
-    ],
-    "description": "测试"
-  },
-  "1004 usethis 添加依赖": {
-    "prefix": "usethis-use_package",
-    "body": [
-      "# 用途：添加包依赖",
-      "# 依赖：usethis",
-      "# usethis::use_package('dplyr')"
-    ],
-    "description": "依赖"
-  },
-  "1005 usethis 导入函数": {
-    "prefix": "usethis-use_import_from",
-    "body": [
-      "# 用途：导入单个函数",
-      "# 依赖：usethis",
-      "# usethis::use_import_from('dplyr', 'filter')"
-    ],
-    "description": "导入"
-  },
-  "1006 usethis README": {
-    "prefix": "usethis-use_readme",
-    "body": [
-      "# 用途：创建 README 与 vignette",
-      "# 依赖：usethis",
-      "# usethis::use_readme_rmd()",
-      "# usethis::use_vignette('intro')"
-    ],
-    "description": "README"
-  },
-  "1007 usethis 许可证": {
-    "prefix": "usethis-use_mit_license",
-    "body": [
-      "# 用途：添加许可证",
-      "# 依赖：usethis",
-      "# usethis::use_mit_license('Your Name')"
-    ],
-    "description": "许可证"
-  },
-  "1008 usethis 版本号": {
-    "prefix": "usethis-use_version",
-    "body": [
-      "# 用途：更新版本号",
-      "# 依赖：usethis",
-      "# usethis::use_version('minor')"
-    ],
-    "description": "版本号"
-  },
-  "1009 usethis 数据文档": {
-    "prefix": "usethis-use_data",
-    "body": [
-      "# 用途：保存数据到包",
-      "# 依赖：usethis",
-      "# usethis::use_data(mtcars, overwrite=TRUE)"
-    ],
-    "description": "数据"
-  },
-  "1010 usethis pkgdown": {
-    "prefix": "usethis-use_pkgdown",
-    "body": [
-      "# 用途：创建包网站",
-      "# 依赖：usethis",
-      "# usethis::use_pkgdown()"
-    ],
-    "description": "pkgdown"
-  },
-  "1011 devtools 文档生成": {
-    "prefix": "devtools-document",
-    "body": [
-      "# 用途：生成 Rd 文档",
-      "# 依赖：devtools",
-      "# devtools::document()"
-    ],
-    "description": "文档"
-  },
-  "1012 devtools 加载全部": {
-    "prefix": "devtools-load_all",
-    "body": [
-      "# 用途：加载开发包所有函数",
-      "# 依赖：devtools",
-      "# devtools::load_all()"
-    ],
-    "description": "加载"
-  },
-  "1013 devtools 检查包": {
-    "prefix": "devtools-check",
-    "body": [
-      "# 用途：CRAN 检查",
-      "# 依赖：devtools",
-      "# devtools::check()"
-    ],
-    "description": "检查"
-  },
-  "1014 devtools 运行测试": {
-    "prefix": "devtools-test",
-    "body": [
-      "# 用途：运行测试",
-      "# 依赖：devtools",
-      "# devtools::test()"
-    ],
-    "description": "测试"
-  },
-  "1015 devtools 构建包": {
-    "prefix": "devtools-build",
-    "body": [
-      "# 用途：构建 tarball",
-      "# 依赖：devtools",
-      "# devtools::build()"
-    ],
-    "description": "构建"
-  },
-  "1016 devtools 安装包": {
-    "prefix": "devtools-install",
-    "body": [
-      "# 用途：安装包",
-      "# 依赖：devtools",
-      "# devtools::install()",
-      "# devtools::install_github('user/repo')"
-    ],
-    "description": "安装"
-  },
-  "1017 devtools 覆盖率": {
-    "prefix": "devtools-test_coverage",
-    "body": [
-      "# 用途：测试覆盖率",
-      "# 依赖：devtools",
-      "# devtools::test_coverage()"
-    ],
-    "description": "覆盖率"
-  },
-  "1018 roxygen 导出函数": {
-    "prefix": "roxygen-export",
-    "body": [
-      "# 用途：导出函数文档模板",
-      "# 注意：模板，不能直接运行",
-      "# #' @export",
-      "# fun <- function(x) x"
-    ],
-    "description": "导出"
-  },
-  "1019 roxygen 参数文档": {
-    "prefix": "roxygen-param",
-    "body": [
-      "# 用途：参数文档模板",
-      "# 注意：模板，不能直接运行",
-      "# #' @param x 参数说明"
-    ],
-    "description": "参数"
-  },
-  "1020 roxygen 返回值": {
-    "prefix": "roxygen-return",
-    "body": [
-      "# 用途：返回值文档模板",
-      "# 注意：模板，不能直接运行",
-      "# #' @return 返回值说明"
-    ],
-    "description": "返回值"
-  },
-  "1021 roxygen 示例": {
-    "prefix": "roxygen-examples",
-    "body": [
-      "# 用途：示例文档模板",
-      "# 注意：模板，不能直接运行",
-      "# #' @examples",
-      "# #' fun(1)"
-    ],
-    "description": "示例"
-  },
-  "1022 roxygen 导入": {
-    "prefix": "roxygen-importFrom",
-    "body": [
-      "# 用途：导入声明模板",
-      "# 注意：模板，不能直接运行",
-      "# #' @importFrom dplyr filter",
-      "# #' @import dplyr"
-    ],
-    "description": "导入"
-  },
-  "1023 roxygen 完整模板": {
-    "prefix": "roxygen-template",
-    "body": [
-      "# 用途：完整函数文档模板",
-      "# 注意：模板，不能直接运行",
-      "# #' 标题",
-      "# #' @param x 参数",
-      "# #' @return 返回值",
-      "# #' @export",
-      "# fun <- function(x) x"
-    ],
-    "description": "模板"
-  },
-  "1024 testthat 测试块": {
-    "prefix": "testthat-test_that",
-    "body": [
-      "# 用途：定义测试块",
-      "# 依赖：testthat",
-      "testthat::test_that('描述', { 1+1 })"
-    ],
-    "description": "测试块"
-  },
-  "1025 testthat 相等断言": {
-    "prefix": "testthat-expect_equal",
-    "body": [
-      "# 用途：相等断言",
-      "# 依赖：testthat",
-      "testthat::expect_equal(1+1, 2)"
-    ],
-    "description": "相等"
-  },
-  "1026 testthat 错误断言": {
-    "prefix": "testthat-expect_error",
-    "body": [
-      "# 用途：错误断言",
-      "# 依赖：testthat",
-      "testthat::expect_error(stop('error'))"
-    ],
-    "description": "错误"
-  },
-  "1027 testthat 类型断言": {
-    "prefix": "testthat-expect_type",
-    "body": [
-      "# 用途：类型断言",
-      "# 依赖：testthat",
-      "testthat::expect_true(TRUE)",
-      "testthat::expect_s3_class(mtcars, 'data.frame')"
-    ],
-    "description": "类型"
-  },
-  "1028 testthat 快照": {
-    "prefix": "testthat-expect_snapshot",
-    "body": [
-      "# 用途：快照测试",
-      "# 依赖：testthat",
-      "# testthat::expect_snapshot(1+1)"
-    ],
-    "description": "快照"
-  },
-  "1029 styler 格式化文件": {
-    "prefix": "styler-style_file",
-    "body": [
-      "# 用途：格式化 R 脚本",
-      "# 依赖：styler",
-      "# styler::style_file('script.R')"
-    ],
-    "description": "格式化"
-  },
-  "1030 styler 格式化文本": {
-    "prefix": "styler-style_text",
-    "body": [
-      "# 用途：格式化文本",
-      "# 依赖：styler",
-      "styler::style_text('x<-1')"
-    ],
-    "description": "格式化文本"
-  },
-  "1031 lintr 检查代码": {
-    "prefix": "lintr-lint",
-    "body": [
-      "# 用途：静态代码检查",
-      "# 依赖：lintr",
-      "# lintr::lint('script.R')"
-    ],
-    "description": "检查"
-  },
-  "1032 pak 安装包": {
-    "prefix": "pak-pkg_install",
-    "body": [
-      "# 用途：极速安装包",
-      "# 依赖：pak",
-      "# pak::pkg_install('dplyr')"
-    ],
-    "description": "安装"
-  },
-  "1033 pak 更新包": {
-    "prefix": "pak-pkg_update",
-    "body": [
-      "# 用途：更新包",
-      "# 依赖：pak",
-      "# pak::pkg_update()"
-    ],
-    "description": "更新"
-  },
-  "1034 arrow Parquet 读写": {
-    "prefix": "arrow-parquet",
-    "body": [
-      "# 用途：Parquet 读写",
-      "# 依赖：arrow",
-      "# arrow::read_parquet('file.parquet')",
-      "# arrow::write_parquet(mtcars, 'out.parquet')"
-    ],
-    "description": "Parquet"
-  },
-  "1035 arrow Feather 读写": {
-    "prefix": "arrow-feather",
-    "body": [
-      "# 用途：Feather 读写",
-      "# 依赖：arrow",
-      "# arrow::read_feather('file.feather')",
-      "# arrow::write_feather(mtcars, 'out.feather')"
-    ],
-    "description": "Feather"
-  }
+    "立项-预测目标定义": {
+        "prefix": "ts-project-scope",
+        "body": [
+            "# 用途：明确预测对象、频率、范围、交付方式，团队开工前必须书面确认",
+            "# 返回：一份项目范围说明（写入 README 或需求文档）",
+            "# 解读：预测对象决定数据源，频率决定模型族，范围决定评估方式，交付决定部署形态",
+            "# 看什么：是否有明确业务方、是否约定更新时间、是否约定可接受的误差上限",
+            "# 依赖：无",
+            "# 示例：预测 SKU-A 未来 3 个月月度销量，每周一更新，交付为 CSV + Shiny 看板，MAPE < 15%"
+        ],
+        "description": "预测目标定义"
+    },
+    "立项-评估指标选择": {
+        "prefix": "ts-metric-choose",
+        "body": [
+            "# 用途：按业务选择评估指标，团队必须用同一套指标衡量所有模型",
+            "# 返回：指标清单，写入评估脚本",
+            "# 解读：MAE 业务易解释；RMSE 惩罚大误差；MAPE 跨序列可比；MASE < 1 优于 naive",
+            "# 看什么：是否设了基线、是否报了区间覆盖、是否只看训练集误差",
+            "# 依赖：yardstick",
+            "actual <- c(10, 12, 14, 16)                              # 解决：构造真实值向量，用于演示评估；看数值是否与业务量级一致",
+            "pred   <- c(11, 13, 13, 17)                              # 解决：构造预测值向量，用于对比；看偏差方向和幅度",
+            "df <- data.frame(actual, pred)                           # 解决：把两个向量合为数据框，yardstick 需要；看列名和行数",
+            "yardstick::mae(df, truth = actual, estimate = pred)      # 解决：算平均绝对误差，业务最易解释；看 .estimate 越小越好",
+            "yardstick::rmse(df, truth = actual, estimate = pred)     # 解决：算均方根误差，惩罚大误差；看 .estimate 是否明显大于 MAE（说明有大偏差）"
+        ],
+        "description": "评估指标"
+    },
+    "立项-基线策略": {
+        "prefix": "ts-baseline-strategy",
+        "body": [
+            "# 用途：所有复杂模型必须打败 naive/snaive，否则不该上线",
+            "# 返回：基线模型的误差，作为项目准入门槛",
+            "# 解读：MASE < 1 表示优于 naive；MASE > 1 说明模型没学到东西",
+            "# 看什么：测试集 MASE、RMSE 是否显著低于基线",
+            "# 依赖：fable, tsibble",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：把内置数据转为 tsibble，声明时间索引；看 interval 是否为月度",
+            "fit <- ts |> fable::model(                               # 解决：一次拟合多个基线模型，便于比较；看输出是否每模型一行",
+            "  naive  = fable::NAIVE(value),                          # 解决：用上期值预测，最朴素基线；看 MASE 是否为 1（基准）",
+            "  snaive = fable::SNAIVE(value)                          # 解决：用去年同期预测，季节基线；看 MASE 是否 < 1（季节有效）",
+            ")",
+            "fit |> fabletools::accuracy()                            # 解决：输出各基线误差，作为准入门槛；看 MASE、RMSE、MAE 三列"
+        ],
+        "description": "基线策略"
+    },
+    "环境-项目初始化": {
+        "prefix": "ts-init-project",
+        "body": [
+            "# 用途：创建 .Rproj + renv，保证所有同事环境一致",
+            "# 返回：renv.lock 与 renv/ 目录，提交到 Git",
+            "# 解读：同事 clone 后 renv::restore() 即可复现全部包版本",
+            "# 看什么：renv.lock 是否提交、CI 是否能 restore 成功",
+            "# 依赖：renv, here",
+            "here::here()                                             # 解决：打印项目根目录，验证路径管理正常；看输出是否为项目绝对路径",
+            "# renv::init()                                           # 解决：初始化依赖锁定，生成 renv.lock；看 renv/ 目录是否创建",
+            "# renv::snapshot()                                       # 解决：把当前包版本写入 lock 文件；看 lock 中包版本与当前一致"
+        ],
+        "description": "项目初始化"
+    },
+    "环境-依赖声明": {
+        "prefix": "ts-deps",
+        "body": [
+            "# 用途：声明时间序列项目所需全部依赖，团队统一安装",
+            "# 返回：缺失包自动安装，最后返回布尔值确认完整",
+            "# 解读：TRUE 表示环境完整，可运行流水线",
+            "# 看什么：是否有安装失败、是否有版本冲突",
+            "# 依赖：无",
+            "pkgs <- c('tsibble','fable','feasts','fabletools','forecast', # 解决：声明项目依赖清单；看列表是否覆盖项目所有包",
+            "          'lubridate','dplyr','tidyr','ggplot2','readr',",
+            "          'slider','yardstick','tseries','prophet',",
+            "          'modeltime','tidymodels','pins','targets','logger')",
+            "to_install <- setdiff(pkgs, rownames(installed.packages()))  # 解决：找出缺失的包；看输出字符向量长度",
+            "if (length(to_install) > 0) install.packages(to_install)     # 解决：仅安装缺失的包，避免重复；看是否安装成功无报错",
+            "all(pkgs %in% rownames(installed.packages()))                # 解决：返回 TRUE 表示环境完整；看结果必须为 TRUE"
+        ],
+        "description": "依赖声明"
+    },
+    "环境-日志初始化": {
+        "prefix": "ts-logger",
+        "body": [
+            "# 用途：项目启动时初始化日志，所有关键步骤必须留痕",
+            "# 返回：日志写入 logs/ 并同步控制台",
+            "# 解读：INFO 记录流程，WARN 记录异常，ERROR 记录失败，生产必备",
+            "# 看什么：日志是否含时间戳、级别、模块、可检索",
+            "# 依赖：logger",
+            "logger::log_threshold(logger::INFO)                      # 解决：设置日志级别阈值，INFO 以上才输出；看 DEBUG 是否被过滤",
+            "logger::log_layout(logger::layout_glue_generator(        # 解决：自定义日志格式，含级别和时间；看控制台输出格式",
+            "  format = '{level} [{time}] {msg}'",
+            "))",
+            "logger::log_appender(logger::appender_tee('logs/ts.log')) # 解决：日志同时写文件和控制台；看 logs/ts.log 是否生成",
+            "logger::log_info('项目启动')                             # 解决：记录项目启动，便于审计；看控制台和文件是否都有该条"
+        ],
+        "description": "日志初始化"
+    },
+    "环境-配置与密钥": {
+        "prefix": "ts-config",
+        "body": [
+            "# 用途：从配置文件和环境变量读取参数，禁止硬编码密钥",
+            "# 返回：config::get 返回配置，Sys.getenv 返回密钥",
+            "# 解读：.env 与 config.yml 必须进 .gitignore",
+            "# 看什么：是否有明文密钥、是否区分开发/生产配置",
+            "# 依赖：config, dotenv",
+            "# config::get('db_host')                                 # 解决：从 config.yml 读数据库地址；看返回字符串是否符合环境",
+            "# dotenv::load_dot_env('.env')                           # 解决：加载 .env 到环境变量；看是否无报错",
+            "# Sys.getenv('API_KEY')                                  # 解决：读取密钥，避免写死在代码里；看返回非空且与预期一致"
+        ],
+        "description": "配置密钥"
+    },
+    "数据-源接入": {
+        "prefix": "ts-ingest",
+        "body": [
+            "# 用途：从 CSV/Excel/DB/API 读取原始数据，统一入口",
+            "# 返回：原始数据框，不做任何清洗",
+            "# 解读：原始层必须只读，任何修改都要写入 processed 层",
+            "# 看什么：行数、列数、时间列类型、缺失比例",
+            "# 依赖：readr, DBI",
+            "raw <- readr::read_csv('data/raw/sales.csv', show_col_types = FALSE)  # 解决：读原始 CSV，保持只读；看行数是否与源一致",
+            "dplyr::glimpse(raw)                                                   # 解决：快速看每列类型和样本值；看时间列是否为 Date，数值列是否被误读为字符"
+        ],
+        "description": "数据接入"
+    },
+    "数据-转tsibble": {
+        "prefix": "ts-as-tsibble",
+        "body": [
+            "# 用途：把数据框转为 tsibble，声明时间索引和序列键",
+            "# 返回：tsibble 对象，含 index、key、interval",
+            "# 解读：index 必须唯一时间点，key 是序列标识，interval 是时间间隔",
+            "# 看什么：是否有重复时间点、是否有隐含缺失、间隔是否规则",
+            "# 依赖：tsibble, dplyr",
+            "df <- data.frame(                                        # 解决：构造示例数据，模拟业务表；看 48 行 3 列是否符合预期",
+            "  date  = seq(as.Date('2020-01-01'), by = 'month', length.out = 48),",
+            "  id    = 'A',",
+            "  value = rnorm(48)",
+            ")",
+            "ts <- tsibble::as_tsibble(df, index = date, key = id)     # 解决：声明时间索引和序列键，转为 tsibble；看是否无警告",
+            "tsibble::interval(ts)                                    # 解决：查看时间间隔是否为 1 个月；看输出 interval 字段",
+            "tsibble::has_gaps(ts)                                    # 解决：检查是否有隐含缺失时间点；看 FALSE 表示连续"
+        ],
+        "description": "tsibble 转换"
+    },
+    "数据-时间索引校验": {
+        "prefix": "ts-index-check",
+        "body": [
+            "# 用途：检查时间索引是否唯一、连续、间隔规则",
+            "# 返回：重复时间点数、缺失区间、间隔",
+            "# 解读：有重复说明聚合错误；有 gap 说明漏数据；间隔不规则说明采样异常",
+            "# 看什么：重复数量、gap 数量、interval 是否与业务频率一致",
+            "# 依赖：tsibble, dplyr",
+            "ts <- tsibble::as_tsibble(                               # 解决：构造带缺失的示例数据；看构造后行数是否为 20",
+            "  data.frame(date = as.Date('2020-01-01') + c(0:10, 12:20),",
+            "             value = rnorm(20)),",
+            "  index = date",
+            ")",
+            "tsibble::has_gaps(ts)                                    # 解决：布尔判断是否有缺失时间点；看 TRUE 表示有 gap",
+            "tsibble::count_gaps(ts)                                  # 解决：统计缺失区间和数量；看 .n 列数字",
+            "tsibble::interval(ts)                                    # 解决：确认时间间隔是否规则；看输出是否为 1 day"
+        ],
+        "description": "时间索引校验"
+    },
+    "数据-多序列结构": {
+        "prefix": "ts-multi-key",
+        "body": [
+            "# 用途：处理门店/产品/地区等多序列结构",
+            "# 返回：带 key 的 tsibble，每序列独立建模",
+            "# 解读：key 决定分组，模型按 key 自动分组拟合",
+            "# 看什么：各序列长度是否一致、是否有个别序列过短",
+            "# 依赖：tsibble",
+            "df <- data.frame(                                        # 解决：构造 3 个门店的月度销售数据；看 72 行是否 = 3 门店 × 24 月",
+            "  date  = rep(seq(as.Date('2020-01-01'), by = 'month', length.out = 24), 3),",
+            "  store = rep(c('S1','S2','S3'), each = 24),",
+            "  sales = rnorm(72)",
+            ")",
+            "ts <- tsibble::as_tsibble(df, index = date, key = store)  # 解决：用 store 作为 key 实现多序列；看 key 是否为 store",
+            "ts                                                       # 解决：打印确认每条序列结构；看 n_keys 是否为 3"
+        ],
+        "description": "多序列结构"
+    },
+    "审计-缺失审计": {
+        "prefix": "ts-missing-audit",
+        "body": [
+            "# 用途：统计每个序列每个字段的缺失率，判断是否能进入建模",
+            "# 返回：缺失率表",
+            "# 解读：缺失 > 5% 必须说明原因；> 20% 需评估是否放弃该字段",
+            "# 看什么：缺失率、是否集中在某时段、是否与节假日相关",
+            "# 依赖：dplyr",
+            "df <- data.frame(date = Sys.Date() + 0:9, x = c(1:8, NA, NA), y = rnorm(10))  # 解决：构造带缺失示例；看 x 列末尾两个 NA",
+            "df |>",
+            "  dplyr::summarise(dplyr::across(dplyr::everything(),      # 解决：对每列统一计算缺失率；看输出两列 x/y 各自缺失率",
+            "    ~ round(mean(is.na(.x)) * 100, 2)))"
+        ],
+        "description": "缺失审计"
+    },
+    "审计-重复时间点": {
+        "prefix": "ts-dup-check",
+        "body": [
+            "# 用途：检测同一时间点是否有多条记录",
+            "# 返回：重复行",
+            "# 解读：有时间重复说明上游聚合或采集错误，必须先修复",
+            "# 看什么：重复数量、重复时间点分布",
+            "# 依赖：dplyr",
+            "df <- data.frame(date = as.Date('2020-01-01') + c(0,1,1,2,3), x = 1:5)  # 解决：构造含重复日期示例；看 date 出现两次 2020-01-02",
+            "df |>",
+            "  dplyr::group_by(date) |>                                 # 解决：按时间分组；看组数 = 唯一日期数",
+            "  dplyr::filter(dplyr::n() > 1)                            # 解决：只保留重复时间点；看输出行数应为 2"
+        ],
+        "description": "重复检查"
+    },
+    "审计-异常点检测": {
+        "prefix": "ts-anomaly-audit",
+        "body": [
+            "# 用途：自动识别异常点，判断是采集错误还是真实波动",
+            "# 返回：清洗后序列 + 替换位置",
+            "# 解读：tsclean 自动检测并插值替换；替换前后对比可视化判断是否合理",
+            "# 看什么：替换点数量、是否在节假日、是否影响趋势",
+            "# 依赖：forecast",
+            "y <- as.numeric(AirPassengers)                           # 解决：取序列转为数值向量；看长度 144",
+            "y_clean <- forecast::tsclean(y)                          # 解决：自动检测异常并插值替换；看返回长度与 y 相同",
+            "plot(y, type = 'l', col = 'gray')                        # 解决：画原始序列，灰色；看图整体趋势",
+            "lines(y_clean, col = 'red')                              # 解决：叠加清洗后序列，红色对比；看红线与灰线偏离处即异常点"
+        ],
+        "description": "异常检测"
+    },
+    "审计-数据质量报告": {
+        "prefix": "ts-quality-report",
+        "body": [
+            "# 用途：一次性产出数据质量概览，作为建模准入材料",
+            "# 返回：每列的缺失率、唯一值、类型、范围",
+            "# 解读：唯一值为 1 的列应删除；分布异常的列需说明",
+            "# 看什么：缺失率、类型、范围、是否单调递增",
+            "# 依赖：dplyr, janitor",
+            "df <- data.frame(date = Sys.Date() + 0:9, x = c(1:9, NA), y = rep(1, 10))  # 解决：构造示例数据；看 y 列常量、x 列有 NA",
+            "df |>",
+            "  dplyr::summarise(dplyr::across(dplyr::everything(),      # 解决：每列缺失数和唯一值数；看 y 的 n_unique=1 应删",
+            "    list(missing = ~ sum(is.na(.x)), n_unique = ~ dplyr::n_distinct(.x))))",
+            "janitor::tabyl(df, y)                                    # 解决：频数表，看常量列分布；看 y 只有一行 10"
+        ],
+        "description": "质量报告"
+    },
+    "探索-时序可视化": {
+        "prefix": "ts-plot",
+        "body": [
+            "# 用途：整体看图，判断趋势、季节、异常、方差稳定性",
+            "# 返回：ggplot 折线图",
+            "# 解读：上升/下降→需差分；周期波峰→季节项；突变→异常；喇叭口→需变换",
+            "# 看什么：趋势方向、季节幅度、异常点、方差是否随时间变化",
+            "# 依赖：ggplot2, tsibble, feasts",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：内置数据转 tsibble；看 interval 月度",
+            "ts |> feasts::autoplot(value) +                          # 解决：一条命令画时序总览；看趋势上升、季节明显、方差随水平放大",
+            "  ggplot2::labs(title = '时序总览', y = '乘客数')         # 解决：加标题和轴标签；看图可读性"
+        ],
+        "description": "时序可视化"
+    },
+    "探索-季节图": {
+        "prefix": "ts-season-plot",
+        "body": [
+            "# 用途：每年同月叠加，判断季节形状是否稳定",
+            "# 返回：ggplot 分年曲线",
+            "# 解读：形状一致→稳定季节；逐年抬高→趋势叠加；形状漂移→需季节调整",
+            "# 看什么：各年曲线是否平行、是否有年份异常",
+            "# 依赖：feasts, ggplot2",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "ts |> feasts::gg_season(value) +                         # 解决：一键画季节图，每年一条线；看曲线是否逐年抬高",
+            "  ggplot2::labs(title = '季节图')                         # 解决：加标题；看可读性"
+        ],
+        "description": "季节图"
+    },
+    "探索-子序列图": {
+        "prefix": "ts-subseries",
+        "body": [
+            "# 用途：按月拆分看多年趋势，识别某月异常",
+            "# 返回：ggplot 分面图",
+            "# 解读：各月同趋势→季节稳定；某月偏离→需单独处理",
+            "# 看什么：各月趋势方向、异常月份",
+            "# 依赖：feasts, ggplot2",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "ts |> feasts::gg_subseries(value)                        # 解决：每月一个分面，看多年趋势；看 12 个分面是否都上升"
+        ],
+        "description": "子序列图"
+    },
+    "探索-滞后散点": {
+        "prefix": "ts-lag-plot",
+        "body": [
+            "# 用途：观察当前值与历史值的相关结构",
+            "# 返回：ggplot 分面散点",
+            "# 解读：散点集中→强相关；lag=12 集中→季节强；无结构→可能白噪声",
+            "# 看什么：哪个 lag 最相关、是否线性、是否异方差",
+            "# 依赖：feasts, ggplot2",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "ts |> feasts::gg_lag(value, lags = 1:12)                 # 解决：画 1-12 期滞后散点，判断自相关；看 lag1/lag12 散点最集中"
+        ],
+        "description": "滞后散点"
+    },
+    "探索-STL分解": {
+        "prefix": "ts-stl",
+        "body": [
+            "# 用途：把序列拆成趋势、季节、残差，判断成分幅度",
+            "# 返回：STL 分解对象 + autoplot",
+            "# 解读：trend 看方向，season_year 看季节幅度，remainder 看噪声是否有结构",
+            "# 看什么：季节幅度是否随趋势变化、残差是否还有规律",
+            "# 依赖：feasts, ggplot2",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> feasts::STL(value ~ season(window = 'periodic'))  # 解决：STL 分解，季节平滑；看是否无警告",
+            "fit |> feasts::autoplot()                                # 解决：画分解后的三成分；看 trend 上升、season 幅度、remainder 无结构",
+            "fit |> feasts::components()                              # 解决：提取成分数据做进一步检查；看 tibble 含 trend/season/remainder 列"
+        ],
+        "description": "STL 分解"
+    },
+    "探索-平稳性检验": {
+        "prefix": "ts-stationary",
+        "body": [
+            "# 用途：判断序列是否平稳，决定是否需要差分",
+            "# 返回：ADF 与 KPSS 统计量与 p 值",
+            "# 解读：ADF p<0.05 且 KPSS p>0.05 → 平稳；否则需差分",
+            "# 看什么：两个检验是否一致、结论是否与图一致",
+            "# 依赖：tseries",
+            "y <- as.numeric(AirPassengers)                           # 解决：序列转数值向量；看长度 144",
+            "tseries::adf.test(y)                                     # 解决：ADF 检验，p<0.05 拒绝单位根；看 p-value 是否 < 0.05",
+            "tseries::kpss.test(y)                                    # 解决：KPSS 检验，p>0.05 认为平稳；看 p-value 是否 > 0.05"
+        ],
+        "description": "平稳性检验"
+    },
+    "探索-ACF与PACF": {
+        "prefix": "ts-acf-pacf",
+        "body": [
+            "# 用途：识别 AR/MA 阶数和季节结构",
+            "# 返回：ACF、PACF 图",
+            "# 解读：ACF 截尾→MA(q)；PACF 截尾→AR(p)；lag=12/24 峰值→季节项",
+            "# 看什么：截尾位置、拖尾形态、季节峰值",
+            "# 依赖：feasts, ggplot2",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "ts |> feasts::ACF(value, lag_max = 36) |> autoplot()     # 解决：画 ACF 判断 MA 阶；看 lag=12,24 是否突出峰值",
+            "ts |> feasts::PACF(value, lag_max = 36) |> autoplot()    # 解决：画 PACF 判断 AR 阶；看截尾位置"
+        ],
+        "description": "ACF/PACF"
+    },
+    "探索-日历效应": {
+        "prefix": "ts-calendar-check",
+        "body": [
+            "# 用途：看星期、月份效应是否显著，决定是否加日历特征",
+            "# 返回：按星期/月份聚合的均值表",
+            "# 解读：某星期均值显著不同→加哑变量；某月异常→加月份特征",
+            "# 看什么：均值差异大小、样本量是否均衡",
+            "# 依赖：dplyr, lubridate",
+            "df <- data.frame(date = Sys.Date() + 0:99, y = rnorm(100))  # 解决：构造 100 天示例数据；看 date 连续 100 天",
+            "df |>",
+            "  dplyr::mutate(wd = lubridate::wday(date, label = TRUE)) |>  # 解决：从日期提取星期几；看 wd 是 Mon-Sun 因子",
+            "  dplyr::group_by(wd) |>                                   # 解决：按星期分组；看 7 组",
+            "  dplyr::summarise(mean_y = mean(y))                       # 解决：算每组均值看差异；看均值是否显著不同"
+        ],
+        "description": "日历效应"
+    },
+    "预处理-补时间点": {
+        "prefix": "ts-fill-gaps",
+        "body": [
+            "# 用途：把隐含缺失的时间点显式补齐为 NA，便于插值和建模",
+            "# 返回：补齐后的 tsibble",
+            "# 解读：补齐后行数应等于覆盖时间范围 × 频率",
+            "# 看什么：补齐后行数、NA 数量是否合理",
+            "# 依赖：tsibble",
+            "ts <- tsibble::as_tsibble(                               # 解决：构造带缺失的示例；看原始 20 行、缺第 11 天",
+            "  data.frame(date = as.Date('2020-01-01') + c(0:10, 12:20),",
+            "             value = rnorm(20)),",
+            "  index = date",
+            ")",
+            "ts_filled <- ts |> tsibble::fill_gaps()                  # 解决：把缺失日期补为 NA 行；看补齐后 21 行",
+            "nrow(ts_filled) - nrow(ts)                               # 解决：看补齐了几行；看输出 1"
+        ],
+        "description": "补时间点"
+    },
+    "预处理-缺失插补": {
+        "prefix": "ts-impute",
+        "body": [
+            "# 用途：对缺失值插补，方法由缺失机制和业务决定",
+            "# 返回：插补后向量",
+            "# 解读：na.approx 线性；na.locf 前向；na.spline 平滑；na_seadec 季节",
+            "# 看什么：插补前后对比、插补是否引入假趋势",
+            "# 依赖：zoo, imputeTS",
+            "y <- c(1, 2, NA, NA, 5, 6)                               # 解决：构造含缺失向量；看第 3、4 位为 NA",
+            "zoo::na.approx(y)                                        # 解决：线性插值，适合平滑序列；看输出 3、4 位为 3、4",
+            "zoo::na.locf(y)                                          # 解决：前向填充，适合累计量；看输出 3、4 位为 2、2"
+        ],
+        "description": "缺失插补"
+    },
+    "预处理-BoxCox变换": {
+        "prefix": "ts-boxcox",
+        "body": [
+            "# 用途：稳定方差，把乘性季节转为加性",
+            "# 返回：lambda 与变换后序列",
+            "# 解读：lambda≈0→log；≈1→无需变换；负值→倒数变换",
+            "# 看什么：变换后序列方差是否稳定、季节幅度是否恒定",
+            "# 依赖：forecast",
+            "y <- as.numeric(AirPassengers)                           # 解决：序列转数值；看长度 144",
+            "lambda <- forecast::BoxCox.lambda(y)                     # 解决：自动估计最优 lambda；看输出接近 0（说明需 log）",
+            "y_bc <- forecast::BoxCox(y, lambda)                      # 解决：按 lambda 做变换；看变换后季节幅度是否恒定",
+            "lambda                                                   # 解决：打印 lambda 判断变换强度；看数值范围 [-1, 1]"
+        ],
+        "description": "Box-Cox"
+    },
+    "预处理-差分": {
+        "prefix": "ts-difference",
+        "body": [
+            "# 用途：去趋势与去季节，得到平稳序列",
+            "# 返回：差分后 tsibble",
+            "# 解读：lag=1 去趋势；lag=12 去季节；两者叠加去趋势季节",
+            "# 看什么：差分后 ADF p 值、ACF 是否快速衰减、是否过度差分（方差变大）",
+            "# 依赖：feasts",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "ts |> feasts::difference(lag = 1) |> autoplot()          # 解决：一阶差分看趋势是否消除；看图是否围绕 0 波动",
+            "ts |> feasts::difference(lag = 12) |> autoplot()         # 解决：季节差分看季节是否消除；看 lag12 周期是否消失"
+        ],
+        "description": "差分"
+    },
+    "预处理-自动推荐差分阶": {
+        "prefix": "ts-ndiffs",
+        "body": [
+            "# 用途：自动推荐差分阶数，与人工判断交叉验证",
+            "# 返回：非季节 d 与季节 D",
+            "# 解读：d 与图判断一致才可采信；不一致时以业务理解为准",
+            "# 看什么：推荐值、是否与 ADF/ACF 一致",
+            "# 依赖：forecast",
+            "y <- as.numeric(AirPassengers)                           # 解决：序列转数值；看长度 144",
+            "forecast::ndiffs(y)                                      # 解决：推荐非季节差分阶数 d；看输出通常为 1",
+            "forecast::nsdiffs(y)                                     # 解决：推荐季节差分阶数 D；看输出通常为 1"
+        ],
+        "description": "差分阶数"
+    },
+    "预处理-重采样聚合": {
+        "prefix": "ts-resample",
+        "body": [
+            "# 用途：高频聚合成低频，或低频扩展到高频",
+            "# 返回：聚合后 tsibble",
+            "# 解读：聚合看业务含义，求和/均值/最大各有场景",
+            "# 看什么：聚合后是否丢失关键波动、是否有业务口径",
+            "# 依赖：tsibble, dplyr, lubridate",
+            "df <- data.frame(date = Sys.Date() + 0:59, y = rnorm(60))  # 解决：构造 60 天示例；看 date 连续 60 天",
+            "ts <- tsibble::as_tsibble(df, index = date)                # 解决：转 tsibble；看 interval 日频",
+            "ts |>",
+            "  dplyr::mutate(week = lubridate::floor_date(date, 'week')) |>  # 解决：把日期归到周一；看 week 列每周 7 天相同",
+            "  dplyr::group_by(week) |>                                 # 解决：按周分组；看 9 周左右",
+            "  dplyr::summarise(y = sum(y))                             # 解决：按业务聚合求和；看每周合计"
+        ],
+        "description": "重采样"
+    },
+    "特征-滞后": {
+        "prefix": "ts-lag",
+        "body": [
+            "# 用途：构造 lag 特征，供树模型或动态回归使用",
+            "# 返回：含 lag 列的 data.frame",
+            "# 解读：lag1 用上期预测当期；lag12 用去年同期；必须避免用到未来",
+            "# 看什么：滞后阶数是否合理、是否引入大量 NA",
+            "# 依赖：dplyr",
+            "df <- data.frame(y = rnorm(24))                          # 解决：构造 24 期示例；看 24 行",
+            "df |>",
+            "  dplyr::mutate(lag1  = dplyr::lag(y, 1),                  # 解决：构造 1 期滞后特征；看首行为 NA",
+            "                lag12 = dplyr::lag(y, 12))                 # 解决：构造 12 期季节滞后；看前 12 行为 NA"
+        ],
+        "description": "滞后特征"
+    },
+    "特征-滚动": {
+        "prefix": "ts-rolling",
+        "body": [
+            "# 用途：构造滚动统计量，捕捉近期水平和波动",
+            "# 返回：含滚动列的数据框",
+            "# 解读：滚动均值平滑噪声；滚动标准差测波动；窗口大小决定敏感度",
+            "# 看什么：窗口是否合理、是否包含未来信息",
+            "# 依赖：slider, dplyr",
+            "df <- data.frame(y = rnorm(24))                          # 解决：构造 24 期示例；看 24 行",
+            "df |>",
+            "  dplyr::mutate(roll_mean3 = slider::slide_dbl(y, mean, .before = 2),  # 解决：3 期滚动均值；看前两行为 NA",
+            "                roll_sd3   = slider::slide_dbl(y, sd,   .before = 2))  # 解决：3 期滚动标准差；看前两行为 NA"
+        ],
+        "description": "滚动特征"
+    },
+    "特征-傅里叶": {
+        "prefix": "ts-fourier",
+        "body": [
+            "# 用途：用傅里叶项捕捉多季节，比哑变量更平滑",
+            "# 返回：tsibble 增加 K 对正余弦项",
+            "# 解读：K 越大越灵活，易过拟合，通常 K=1~3；季节强可用更大 K",
+            "# 看什么：加入后 AICc 是否下降、残差季节是否消失",
+            "# 依赖：feasts",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "ts |> feasts::fourier(value, K = 2)                      # 解决：生成 2 对傅里叶项做外部回归；看输出 4 列 S1-2/C1-2"
+        ],
+        "description": "傅里叶特征"
+    },
+    "特征-日历": {
+        "prefix": "ts-calendar-feature",
+        "body": [
+            "# 用途：构造年、月、星期、季度等日历特征",
+            "# 返回：含日历列的 data.frame",
+            "# 解读：树模型依赖这些特征识别周期；周期性用正弦表达更平滑",
+            "# 看什么：是否覆盖业务周期、是否与季节项重复",
+            "# 依赖：lubridate, dplyr",
+            "df <- data.frame(date = Sys.Date() + 0:99)               # 解决：构造 100 天示例；看 date 连续 100 天",
+            "df |>",
+            "  dplyr::mutate(year = lubridate::year(date),              # 解决：提取年特征；看全为当前年",
+            "                month = lubridate::month(date),            # 解决：提取月特征；看 1-12",
+            "                wday = lubridate::wday(date),              # 解决：提取星期特征；看 1-7",
+            "                quarter = lubridate::quarter(date))        # 解决：提取季度特征；看 1-4"
+        ],
+        "description": "日历特征"
+    },
+    "特征-外部变量": {
+        "prefix": "ts-external",
+        "body": [
+            "# 用途：合并促销、天气、价格等外部变量",
+            "# 返回：对齐后的 tsibble",
+            "# 解读：left_join 按时间对齐，缺失需插补；系数显著说明有解释力",
+            "# 看什么：合并后 NA 数、时间对齐、与目标的相关性",
+            "# 依赖：dplyr",
+            "ts <- data.frame(date = Sys.Date() + 0:9, y = rnorm(10)) # 解决：构造目标序列；看 10 行",
+            "x  <- data.frame(date = Sys.Date() + 0:9, promo = rbinom(10, 1, 0.3))  # 解决：构造促销标志；看 0/1",
+            "dplyr::left_join(ts, x, by = 'date')                     # 解决：按日期对齐外部变量；看合并后无 NA"
+        ],
+        "description": "外部变量"
+    },
+    "建模-基线": {
+        "prefix": "ts-model-baseline",
+        "body": [
+            "# 用途：拟合基线模型，作为复杂模型的准入门槛",
+            "# 返回：fable 模型对象",
+            "# 解读：naive 上期值；snaive 去年同期；mean 历史均值；drift 带漂移",
+            "# 看什么：基线 MASE、RMSE，作为后续模型必须打败的下限",
+            "# 依赖：fable, tsibble",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(                               # 解决：一次拟合多个基线；看输出 mable 4 行",
+            "  mean  = fable::MEAN(value),                            # 解决：历史均值基线；看 MASE 是否 > 1",
+            "  naive = fable::NAIVE(value),                           # 解决：上期值基线；看 MASE=1 基准",
+            "  snaive= fable::SNAIVE(value),                          # 解决：去年同期基线；看 MASE 是否 < 1",
+            "  drift = fable::RW(value ~ drift())                     # 解决：带漂移随机游走基线；看 MASE 是否接近 1",
+            ")",
+            "fit                                                     # 解决：打印模型集合；看 .model 列"
+        ],
+        "description": "基线模型"
+    },
+    "建模-ETS": {
+        "prefix": "ts-model-ets",
+        "body": [
+            "# 用途：指数平滑自动选误差/趋势/季节组合",
+            "# 返回：ETS 模型对象 + 报告",
+            "# 解读：ETS(A,A,A) 表示加性误差、加性趋势、加性季节；AICc 越小越好",
+            "# 看什么：AICc、残差白噪声、平滑参数是否合理",
+            "# 依赖：fable, tsibble",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(ETS(value))                    # 解决：自动拟合 ETS；看是否选到 M,A,M",
+            "fit |> fabletools::report()                              # 解决：打印参数和 AICc 报告；看 alpha/beta/gamma 在 [0,1]"
+        ],
+        "description": "ETS"
+    },
+    "建模-ARIMA": {
+        "prefix": "ts-model-arima",
+        "body": [
+            "# 用途：自动 ARIMA，含季节部分，适合大多数平稳化序列",
+            "# 返回：ARIMA 模型 + 报告",
+            "# 解读：ARIMA(p,d,q)(P,D,Q)m；AICc 越小越好；残差需白噪声",
+            "# 看什么：AICc、残差 Ljung-Box p、参数是否显著",
+            "# 依赖：fable, tsibble",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(ARIMA(value))                  # 解决：自动定阶 ARIMA；看是否选到 (0,1,1)(0,1,1)",
+            "fit |> fabletools::report()                              # 解决：打印模型报告；看 AICc 和 Ljung-Box p>0.05"
+        ],
+        "description": "ARIMA"
+    },
+    "建模-动态回归": {
+        "prefix": "ts-model-regression",
+        "body": [
+            "# 用途：把傅里叶项或外部变量加入 ARIMA",
+            "# 返回：含回归量的 ARIMA 模型",
+            "# 解读：系数显著说明外部变量有解释力；残差仍需白噪声",
+            "# 看什么：系数显著性、AICc、残差诊断",
+            "# 依赖：fable, tsibble, feasts",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(",
+            "  arima_fourier = fable::ARIMA(value ~ feasts::fourier(K = 2))  # 解决：加傅里叶项动态回归；看系数是否显著",
+            ")",
+            "fit |> fabletools::report()                              # 解决：查看系数和残差诊断；看傅里叶项 t 值"
+        ],
+        "description": "动态回归"
+    },
+    "建模-STL加ETS": {
+        "prefix": "ts-model-stl-ets",
+        "body": [
+            "# 用途：先 STL 分解再建模，适合季节强趋势稳的序列",
+            "# 返回：STL+ETS 组合模型",
+            "# 解读：季节项越稳，STL 越有效；残差需白噪声",
+            "# 看什么：AICc、季节项稳定性、残差诊断",
+            "# 依赖：fable, tsibble",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(",
+            "  stl_ets = fable::STL(value ~ season(window = 'periodic'))  # 解决：STL 分解后对调整序列建模；看 AICc",
+            ")",
+            "fit                                                     # 解决：打印组合模型；看 .model=stl_ets"
+        ],
+        "description": "STL+ETS"
+    },
+    "建模-Prophet": {
+        "prefix": "ts-model-prophet",
+        "body": [
+            "# 用途：Facebook Prophet，业务方可解释、容忍缺失、支持节假日",
+            "# 返回：Prophet 模型 + 预测 + 分量图",
+            "# 解读：趋势变点、年内季节、周内季节、节假日分别可视化",
+            "# 看什么：变点位置、季节幅度、残差分布",
+            "# 依赖：prophet",
+            "df <- data.frame(                                        # 解决：构造 ds/y 格式数据；看列名必须 ds/y",
+            "  ds = seq(as.Date('2020-01-01'), by = 'month', length.out = 36),",
+            "  y  = rnorm(36)",
+            ")",
+            "m <- prophet::prophet(df)                                # 解决：自动拟合趋势+季节模型；看是否无报错",
+            "future <- prophet::make_future_dataframe(m, periods = 12, freq = 'month')  # 解决：构造未来时间框；看 12 行",
+            "fc <- prophet::predict(m, future)                        # 解决：预测未来 12 期；看 yhat 列",
+            "prophet::prophet_plot_components(m, fc)                  # 解决：分解可视化趋势和季节；看图分量"
+        ],
+        "description": "Prophet"
+    },
+    "建模-机器学习": {
+        "prefix": "ts-model-ml",
+        "body": [
+            "# 用途：特征工程 + tidymodels 回归，适合复杂非线性关系",
+            "# 返回：workflow 拟合结果",
+            "# 解读：需要先构造 lag/rolling/日历特征；交叉验证评估",
+            "# 看什么：CV RMSE、特征重要性、是否过拟合",
+            "# 依赖：tidymodels",
+            "set.seed(1)                                              # 解决：设随机种子保证可复现；看后续结果每次一致",
+            "df <- data.frame(                                        # 解决：构造含滞后和月份的示例；看 60 行",
+            "  y     = rnorm(60),",
+            "  lag1  = dplyr::lag(rnorm(60), 1),",
+            "  month = rep(1:12, 5)",
+            ") |> tidyr::drop_na()                                    # 解决：删除 lag 产生的 NA；看行数减少 1",
+            "rec <- recipes::recipe(y ~ ., data = df)                 # 解决：定义预处理配方；看公式 y~.",
+            "mod <- parsnip::linear_reg() |> parsnip::set_engine('lm')  # 解决：定义线性回归模型；看 engine=lm",
+            "wf  <- workflows::workflow() |> workflows::add_recipe(rec) |> workflows::add_model(mod)  # 解决：组合成工作流；看 workflow 对象",
+            "workflows::fit(wf, data = df)                            # 解决：拟合工作流；看返回 fit 对象"
+        ],
+        "description": "ML 时序"
+    },
+    "建模-组合模型": {
+        "prefix": "ts-model-ensemble",
+        "body": [
+            "# 用途：把多个模型预测平均，降低单模型风险",
+            "# 返回：ensemble 模型",
+            "# 解读：简单平均通常比单模型稳；加权需用交叉验证权重",
+            "# 看什么：集成后 RMSE 是否下降、区间是否更窄",
+            "# 依赖：fable, tsibble",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(",
+            "  ets   = fable::ETS(value),                             # 解决：拟合 ETS；看 .model=ets",
+            "  arima = fable::ARIMA(value)                            # 解决：拟合 ARIMA；看 .model=arima",
+            ")",
+            "ens <- fit |> fabletools::ensemble(ets + arima)          # 解决：两模型简单平均；看 .model=ensemble",
+            "ens                                                     # 解决：打印集成模型；看 mable 结构"
+        ],
+        "description": "组合模型"
+    },
+    "建模-多序列": {
+        "prefix": "ts-model-multi",
+        "body": [
+            "# 用途：对多序列分组建模，一次拟合所有序列",
+            "# 返回：按 key 分组的模型集合",
+            "# 解读：key 决定分组，模型按 key 独立拟合；可用全局模型对比",
+            "# 看什么：各序列误差、短序列是否被过拟合",
+            "# 依赖：fable, tsibble",
+            "df <- data.frame(                                        # 解决：构造两序列示例；看 48 行 = 2×24",
+            "  date  = rep(seq(as.Date('2020-01-01'), by = 'month', length.out = 24), 2),",
+            "  id    = rep(c('A','B'), each = 24),",
+            "  value = rnorm(48)",
+            ")",
+            "ts  <- tsibble::as_tsibble(df, index = date, key = id)   # 解决：声明多序列结构；看 key=id",
+            "fit <- ts |> fable::model(ARIMA(value))                  # 解决：每条序列独立拟合 ARIMA；看每 key 一行",
+            "fit                                                     # 解决：打印所有模型；看 mable 结构"
+        ],
+        "description": "多序列建模"
+    },
+    "验证-训练测试切分": {
+        "prefix": "ts-split",
+        "body": [
+            "# 用途：按时间顺序切分训练与测试，禁止随机切分",
+            "# 返回：训练集与测试集",
+            "# 解读：切分点要保留完整季节周期，测试集长度至少覆盖一个业务周期",
+            "# 看什么：切分点是否合理、测试集是否够长",
+            "# 依赖：tsibble, dplyr",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "train <- ts |> dplyr::filter(tsibble::index(ts) <= as.Date('1958-12-01'))  # 解决：取 1958 底前为训练；看 120 行",
+            "test  <- ts |> dplyr::filter(tsibble::index(ts) >  as.Date('1958-12-01'))  # 解决：取之后为测试；看 24 行",
+            "c(nrow(train), nrow(test))                               # 解决：打印切分后行数；看 c(120,24)"
+        ],
+        "description": "训练测试切分"
+    },
+    "验证-滚动交叉验证": {
+        "prefix": "ts-cv",
+        "body": [
+            "# 用途：时间序列滚动交叉验证，模拟真实滚动预测",
+            "# 返回：各窗口误差",
+            "# 解读：stretch 扩展窗口；slide 滑动窗口；各窗口误差需稳定",
+            "# 看什么：误差均值、误差随时间是否恶化",
+            "# 依赖：fable, tsibble",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |>",
+            "  fabletools::stretch_tsibble(.init = 60, .step = 12) |> # 解决：构造滚动窗口；看 .id 窗口数",
+            "  fable::model(ARIMA(value))                             # 解决：每窗口拟合 ARIMA；看无报错",
+            "fc <- fit |> fabletools::forecast(h = 12)                # 解决：每窗口预测 12 期；看预测行数",
+            "fc |> fabletools::accuracy(ts)                           # 解决：对齐真实值算误差；看各窗口 MASE/RMSE"
+        ],
+        "description": "滚动交叉验证"
+    },
+    "验证-残差诊断": {
+        "prefix": "ts-residual",
+        "body": [
+            "# 用途：检查残差是否白噪声，判断模型是否充分",
+            "# 返回：残差图 + ACF 图 + Ljung-Box p 值",
+            "# 解读：残差应零均值、方差稳、无自相关、近似正态；p>0.05 合格",
+            "# 看什么：ACF 是否超界、是否有结构、是否有异方差",
+            "# 依赖：fable, feasts",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(ARIMA(value))                  # 解决：拟合 ARIMA；看 .model=ARIMA",
+            "fit |> fabletools::augment() |> feasts::gg_tsresiduals() # 解决：一键画残差诊断图；看 ACF 是否超界",
+            "fit |> fabletools::augment() |> feasts::ljung_box(.resid)  # 解决：残差白噪声检验；看 p>0.05"
+        ],
+        "description": "残差诊断"
+    },
+    "验证-模型比较": {
+        "prefix": "ts-model-compare",
+        "body": [
+            "# 用途：多模型在测试集上统一比较",
+            "# 返回：RMSE、MAE、MASE 表",
+            "# 解读：MASE<1 优于 naive；误差排名前 2 的模型进入集成候选",
+            "# 看什么：误差排名、是否显著优于基线、是否稳定",
+            "# 依赖：fable, fabletools",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(",
+            "  naive = fable::NAIVE(value),                           # 解决：基线；看 MASE=1",
+            "  ets   = fable::ETS(value),                             # 解决：ETS 模型；看 MASE",
+            "  arima = fable::ARIMA(value)                            # 解决：ARIMA 模型；看 MASE",
+            ")",
+            "fit |> fabletools::accuracy()                            # 解决：统一比较误差；看 RMSE 排名"
+        ],
+        "description": "模型比较"
+    },
+    "验证-白噪声检验": {
+        "prefix": "ts-ljung-box",
+        "body": [
+            "# 用途：Ljung-Box 检验残差自相关",
+            "# 返回：统计量、p 值、自由度",
+            "# 解读：p>0.05 → 无自相关 → 模型充分；p<0.05 → 需加阶或换模型",
+            "# 看什么：p 值、滞后阶数、是否多阶都不合格",
+            "# 依赖：feasts, fable",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(ARIMA(value))                  # 解决：拟合 ARIMA；看 .model=ARIMA",
+            "fit |> fabletools::augment() |> feasts::ljung_box(.resid)  # 解决：检验残差是否白噪声；看 p>0.05 合格"
+        ],
+        "description": "白噪声检验"
+    },
+    "预测-点预测与区间": {
+        "prefix": "ts-forecast",
+        "body": [
+            "# 用途：输出未来 h 期的点预测与置信区间",
+            "# 返回：forecast 对象，含 .mean 与 .lower/.upper",
+            "# 解读：区间越宽越不确定；覆盖业务合理范围才算好",
+            "# 看什么：区间宽度、覆盖率、是否跨越 0 或负值",
+            "# 依赖：fable, fabletools",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(ARIMA(value))                  # 解决：拟合 ARIMA；看 .model=ARIMA",
+            "fc <- fit |> fabletools::forecast(h = 12)                # 解决：预测未来 12 期；看 12 行",
+            "fc |> fabletools::hilo(level = c(80, 95))                # 解决：提取 80/95 置信区间；看 .lower/.upper 列"
+        ],
+        "description": "预测与区间"
+    },
+    "预测-可视化": {
+        "prefix": "ts-forecast-plot",
+        "body": [
+            "# 用途：历史、预测、区间同图，交付给业务方",
+            "# 返回：ggplot 图",
+            "# 解读：预测是否符合趋势、区间是否合理、是否与业务预期一致",
+            "# 看什么：区间随时间是否迅速变宽、是否覆盖历史波动",
+            "# 依赖：fable, ggplot2",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(ARIMA(value))                  # 解决：拟合 ARIMA；看 .model=ARIMA",
+            "fc <- fit |> fabletools::forecast(h = 12)                # 解决：预测 12 期；看 12 行",
+            "fc |> fabletools::autoplot(ts) +                         # 解决：历史+预测+区间一张图；看区间随时间变宽",
+            "  ggplot2::labs(title = '预测与 80/95% 区间')             # 解决：加标题；看图可读性"
+        ],
+        "description": "预测可视化"
+    },
+    "预测-模拟": {
+        "prefix": "ts-simulate",
+        "body": [
+            "# 用途：模拟多条未来路径，评估极端情景概率",
+            "# 返回：模拟路径 tsibble",
+            "# 解读：路径分布宽→不确定性大；用于库存安全阈值",
+            "# 看什么：路径包络、P95 与 P5、极端情景",
+            "# 依赖：fable",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(ARIMA(value))                  # 解决：拟合 ARIMA；看 .model=ARIMA",
+            "sim <- fit |> fable::generate(new_data = ts, times = 100) # 解决：生成 100 条模拟路径；看 .rep 列 1-100",
+            "sim                                                     # 解决：打印模拟结果；看路径分布"
+        ],
+        "description": "模拟预测"
+    },
+    "部署-结果存储": {
+        "prefix": "ts-pin",
+        "body": [
+            "# 用途：把预测结果存为可版本化的 pin，供下游消费",
+            "# 返回：pins board 新增一条记录",
+            "# 解读：pins 支持版本、元数据、跨系统共享；替代手工 CSV",
+            "# 看什么：pin 是否带时间戳、能否回滚、读取是否一致",
+            "# 依赖：pins, fable",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(ARIMA(value))                  # 解决：拟合 ARIMA；看 .model=ARIMA",
+            "fc  <- fit |> fabletools::forecast(h = 12)               # 解决：预测未来 12 期；看 12 行",
+            "board <- pins::board_folder('output/pins')               # 解决：建本地 pin board；看目录创建",
+            "pins::pin_write(board, fc, 'air_forecast')               # 解决：写入预测结果；看元数据文件",
+            "pins::pin_read(board, 'air_forecast')                    # 解决：读取验证；看与写入一致"
+        ],
+        "description": "结果存储"
+    },
+    "部署-模型封装": {
+        "prefix": "ts-vetiver",
+        "body": [
+            "# 用途：把模型封装为可部署对象，供 API 或服务调用",
+            "# 返回：vetiver 模型对象",
+            "# 解读：vetiver 记录模型、元数据、版本，用于 API 和监控",
+            "# 看什么：元数据完整、能否跨版本加载",
+            "# 依赖：vetiver",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(ARIMA(value))                  # 解决：拟合 ARIMA；看 .model=ARIMA",
+            "# v <- vetiver::vetiver_model(fit, 'air_arima')          # 解决：封装为可部署对象；看 model_name 字段",
+            "# vetiver::vetiver_api(v)                                # 解决：生成 API；看 API 路由"
+        ],
+        "description": "模型封装"
+    },
+    "部署-API": {
+        "prefix": "ts-plumber",
+        "body": [
+            "# 用途：把预测封装为 HTTP API，供业务系统调用",
+            "# 返回：可被外部调用的 REST 接口",
+            "# 解读：@get 接收参数返回 JSON；需做参数校验和错误处理",
+            "# 看什么：响应时间、错误率、并发能力、限流",
+            "# 依赖：plumber",
+            "# pr <- plumber::pr()                                    # 解决：创建 plumber 对象；看对象创建",
+            "# pr$handle('GET', '/forecast', function(h = 12) {       # 解决：定义 /forecast 接口；看路由注册",
+            "#   list(forecast = rnorm(as.numeric(h)))                 # 解决：返回模拟预测 JSON；看 JSON 格式",
+            "# })",
+            "# pr$run(port = 8000)                                    # 解决：启动 API 服务；看端口监听"
+        ],
+        "description": "API 部署"
+    },
+    "部署-看板": {
+        "prefix": "ts-shiny",
+        "body": [
+            "# 用途：给业务方交互查看预测结果",
+            "# 返回：Shiny 应用",
+            "# 解读：业务方可切换序列、预测长度，实时看到结果",
+            "# 看什么：响应速度、图表清晰度、能否导出",
+            "# 依赖：shiny, ggplot2",
+            "# library(shiny)                                         # 解决：加载 shiny；看无报错",
+            "# ui <- fluidPage(                                       # 解决：定义前端界面；看页面元素",
+            "#   sliderInput('h', '预测长度', 1, 24, 12),              # 解决：加预测长度滑块；看交互控件",
+            "#   plotOutput('fc')                                      # 解决：加预测图占位；看输出区域",
+            "# )",
+            "# server <- function(input, output) {}                   # 解决：定义后端逻辑；看响应式",
+            "# shinyApp(ui, server)                                   # 解决：启动应用；看浏览器打开"
+        ],
+        "description": "Shiny 看板"
+    },
+    "部署-流水线": {
+        "prefix": "ts-targets",
+        "body": [
+            "# 用途：把取数→建模→预测→存储串成可复现流水线",
+            "# 返回：_targets/ 缓存，tar_make 一键重跑",
+            "# 解读：每个 target 有依赖，变动的自动重算，未变动的跳过",
+            "# 看什么：哪些 target 重算、哪些跳过、总耗时",
+            "# 依赖：targets",
+            "# targets::tar_plan(                                     # 解决：定义 DAG 依赖；看依赖图",
+            "#   raw = readr::read_csv('data/raw/sales.csv'),          # 解决：取数；看 raw 列",
+            "#   ts  = tsibble::as_tsibble(raw, index = date),         # 解决：转 tsibble；看 interval",
+            "#   fit = fable::model(ts, fable::ARIMA(value)),          # 解决：建模；看 mable",
+            "#   fc  = fabletools::forecast(fit, h = 12)               # 解决：预测；看 12 行",
+            "# )",
+            "# targets::tar_make()                                    # 解决：一键执行，跳过未变动的；看 skipped 数"
+        ],
+        "description": "流水线"
+    },
+    "部署-定时任务": {
+        "prefix": "ts-cron",
+        "body": [
+            "# 用途：定时跑预测流水线，自动更新结果",
+            "# 返回：系统 cron 任务",
+            "# 解读：cron 触发 Rscript 执行流水线，出错需邮件/IM 告警",
+            "# 看什么：是否按时执行、失败是否告警、日志是否完整",
+            "# 依赖：cronR",
+            "# cronR::cron_add(                                       # 解决：注册定时任务；看任务列表",
+            "#   command = 'Rscript -e \"targets::tar_make()\"',       # 解决：每天 6 点跑流水线；看执行日志",
+            "#   frequency = 'daily',",
+            "#   at = '06:00'",
+            "# )",
+            "# cronR::cron_ls()                                       # 解决：列出所有定时任务；看新增项"
+        ],
+        "description": "定时任务"
+    },
+    "部署-容器化": {
+        "prefix": "ts-docker",
+        "body": [
+            "# 用途：打包为镜像，保证生产环境一致",
+            "# 返回：Dockerfile",
+            "# 解读：镜像含 R、包、代码；生产只拷数据不拷环境",
+            "# 看什么：镜像体积、构建时长、运行时是否一致",
+            "# 依赖：dockerfiler",
+            "# df <- dockerfiler::Dockerfile$new('rocker/r-ver:4.4')  # 解决：以官方 R 镜像为基底；看基础镜像标签",
+            "# df$RUN('R -e \"install.packages(c(\\\"fable\\\",\\\"tsibble\\\"))\"')  # 解决：安装依赖包；看安装日志",
+            "# df$COPY('.', '/app')                                   # 解决：把代码拷进镜像；看工作目录",
+            "# df$CMD('Rscript -e \"targets::tar_make()\"')            # 解决：容器启动执行流水线；看 CMD 指令",
+            "# df$write('Dockerfile')                                 # 解决：写出 Dockerfile；看文件内容"
+        ],
+        "description": "容器化"
+    },
+    "监控-误差监控": {
+        "prefix": "ts-monitor-error",
+        "body": [
+            "# 用途：上线后持续监控预测误差，及时发现失效",
+            "# 返回：滚动 RMSE、MAE、偏差",
+            "# 解读：误差突然变大 → 模型失效；连续超阈值 → 触发再训练",
+            "# 看什么：滚动误差曲线、阈值触发次数、偏差方向",
+            "# 依赖：yardstick, dplyr",
+            "actual <- rnorm(12)                                      # 解决：构造真实值；看 12 个数值",
+            "pred   <- actual + rnorm(12, sd = 0.5)                   # 解决：构造带噪预测；看误差量级",
+            "df <- data.frame(actual, pred)                           # 解决：合为数据框；看 12 行",
+            "yardstick::rmse(df, truth = actual, estimate = pred)     # 解决：算 RMSE 看整体误差；看 .estimate 约 0.5",
+            "yardstick::mae(df, truth = actual, estimate = pred)      # 解决：算 MAE 看平均偏差；看 .estimate 略小于 RMSE"
+        ],
+        "description": "误差监控"
+    },
+    "监控-漂移检测": {
+        "prefix": "ts-monitor-drift",
+        "body": [
+            "# 用途：检测输入分布和关系是否漂移",
+            "# 返回：滚动均值与滚动标准差",
+            "# 解读：均值或方差显著变化 → 分布漂移；关系变化 → 概念漂移",
+            "# 看什么：均值变化幅度、方差是否突变、是否触发告警",
+            "# 依赖：dplyr, slider",
+            "df <- data.frame(y = rnorm(100))                         # 解决：构造 100 期示例；看 100 行",
+            "df |>",
+            "  dplyr::mutate(roll_mean = slider::slide_dbl(y, mean, .before = 9),  # 解决：滚动均值看漂移；看曲线是否平稳",
+            "                roll_sd   = slider::slide_dbl(y, sd,   .before = 9))  # 解决：滚动标准差看波动漂移；看曲线是否平稳"
+        ],
+        "description": "漂移检测"
+    },
+    "监控-日志记录": {
+        "prefix": "ts-monitor-log",
+        "body": [
+            "# 用途：把监控结果写入日志，供审计与回溯",
+            "# 返回：日志文件追加记录",
+            "# 解读：超阈值用 WARN，失败用 ERROR，便于告警系统抓取",
+            "# 看什么：日志是否可按模型/日期检索、是否含关键指标",
+            "# 依赖：logger",
+            "logger::log_info('模型 A 预测完成，RMSE = 0.42')          # 解决：记录正常监控结果；看日志文件新增",
+            "logger::log_warn('模型 A 误差超过阈值 0.5')                # 解决：超阈值告警，供告警系统抓取；看 WARN 级别"
+        ],
+        "description": "监控日志"
+    },
+    "监控-再训练触发": {
+        "prefix": "ts-retrain",
+        "body": [
+            "# 用途：误差或漂移超阈值时自动触发再训练",
+            "# 返回：新模型覆盖旧模型",
+            "# 解读：触发条件需业务与统计双重判断，避免频繁抖动",
+            "# 看什么：触发频率、再训练后误差是否下降、是否回滚",
+            "# 依赖：targets, pins",
+            "# if (current_rmse > threshold) {                        # 解决：判断是否超阈值；看条件真假",
+            "#   targets::tar_invalidate('fit')                        # 解决：让 fit 失效触发重算；看 target 状态",
+            "#   targets::tar_make()                                   # 解决：重跑流水线；看重算 target 数"
+        ],
+        "description": "再训练"
+    },
+    "监控-版本对比": {
+        "prefix": "ts-version-compare",
+        "body": [
+            "# 用途：比较新旧模型效果，决定是否切换上线",
+            "# 返回：新旧模型误差对比表",
+            "# 解读：新版 RMSE 显著低且稳定才上线；否则保留旧版",
+            "# 看什么：误差差异、区间覆盖、稳定性",
+            "# 依赖：yardstick",
+            "old <- data.frame(actual = rnorm(12), pred = rnorm(12))  # 解决：构造旧版预测；看 12 行",
+            "new <- data.frame(actual = rnorm(12), pred = rnorm(12))  # 解决：构造新版预测；看 12 行",
+            "rbind(                                                   # 解决：合并两版结果对比；看 2 行",
+            "  cbind(version = 'old', yardstick::rmse(old, truth = actual, estimate = pred)),  # 解决：旧版 RMSE；看 .estimate",
+            "  cbind(version = 'new', yardstick::rmse(new, truth = actual, estimate = pred))   # 解决：新版 RMSE；看是否更低"
+        ],
+        "description": "版本对比"
+    },
+    "协作-README模板": {
+        "prefix": "ts-readme",
+        "body": [
+            "# 用途：团队项目 README，新同事按文档能一键复现",
+            "# 返回：Markdown 内容",
+            "# 解读：环境、依赖、运行、产出、联系人是必须章节",
+            "# 看什么：新人是否能在 30 分钟内跑通",
+            "# 依赖：无",
+            "# # 时间序列预测项目",
+            "# ## 环境：R >= 4.3，renv::restore()",
+            "# ## 数据：data/raw、data/processed",
+            "# ## 运行：targets::tar_make()",
+            "# ## 产出：output/pins、logs",
+            "# ## 负责人：@analyst1 @analyst2"
+        ],
+        "description": "README"
+    },
+    "协作-评审清单": {
+        "prefix": "ts-review",
+        "body": [
+            "# 用途：时间序列项目代码评审清单，逐项确认",
+            "# 返回：检查项列表",
+            "# 解读：全部勾选才能合并 PR",
+            "# 看什么：是否随机切分、是否泄露未来、是否有基线、是否给区间",
+            "# 依赖：无",
+            "# [ ] 时间索引唯一且连续",
+            "# [ ] 按时间切分，非随机切分",
+            "# [ ] 设了 naive/snaive 基线",
+            "# [ ] 残差通过 Ljung-Box",
+            "# [ ] 输出点预测 + 区间预测",
+            "# [ ] 有误差与漂移监控",
+            "# [ ] 依赖锁定（renv）",
+            "# [ ] 密钥走环境变量"
+        ],
+        "description": "评审清单"
+    },
+    "协作-CI验证": {
+        "prefix": "ts-ci",
+        "body": [
+            "# 用途：GitHub Actions 自动跑测试与 targets 验证",
+            "# 返回：CI 状态",
+            "# 解读：每次 PR 自动校验环境、数据、模型，防止合并破坏",
+            "# 看什么：CI 是否绿、失败步骤、耗时",
+            "# 依赖：usethis",
+            "# usethis::use_github_action('check-standard')           # 解决：加 CRAN 标准检查 CI；看 Actions 配置",
+            "# usethis::use_github_action('test-coverage')            # 解决：加测试覆盖率 CI；看覆盖率报告"
+        ],
+        "description": "CI 验证"
+    },
+    "tidyverts-项目初始化": {
+        "prefix": "tv-init",
+        "framework": "tidyverts",
+        "body": [
+            "# 用途：tidyverts 框架项目起步，锁定依赖保证团队可复现",
+            "# 何时用：任何新的时间序列项目起点",
+            "# 解决什么：环境不一致导致的'我这能跑'问题",
+            "# 看结果：renv.lock 是否生成并提交 Git",
+            "# 指标：新人 clone 后 renv::restore() 成功率",
+            "# 依赖：renv, here",
+            "here::here()                                             # 解决：打印项目根目录，验证路径管理；看是否为项目绝对路径",
+            "# renv::init()                                           # 解决：初始化依赖锁定；看 renv/ 目录创建",
+            "# renv::snapshot()                                       # 解决：写入 lock 文件；看 lock 内容"
+        ],
+        "description": "tidyverts 项目初始化"
+    },
+    "tidyverts-数据结构": {
+        "prefix": "tv-tsibble",
+        "framework": "tidyverts",
+        "body": [
+            "# 用途：把数据框转为 tsibble，声明 index 和 key",
+            "# 何时用：数据接入后第一步，一切 tidyverts 分析的地基",
+            "# 解决什么：时间索引不明确、多序列混杂、时间对齐问题",
+            "# 看结果：interval 是否等于业务频率；has_gaps 是否 TRUE",
+            "# 指标：interval 值、gap 数量、key 数量",
+            "# 依赖：tsibble, dplyr",
+            "df <- data.frame(                                        # 解决：构造示例数据；看 48 行",
+            "  date  = seq(as.Date('2020-01-01'), by = 'month', length.out = 48),",
+            "  id    = 'A',",
+            "  value = rnorm(48)",
+            ")",
+            "ts <- tsibble::as_tsibble(df, index = date, key = id)     # 解决：声明 index 和 key 转 tsibble；看无警告",
+            "tsibble::interval(ts)                                    # 解决：看时间间隔是否为月度；看 interval=1 month",
+            "tsibble::has_gaps(ts)                                    # 解决：检查是否有缺失时间点；看 FALSE"
+        ],
+        "description": "tsibble 数据结构"
+    },
+    "tidyverts-探索可视化": {
+        "prefix": "tv-plot",
+        "framework": "tidyverts",
+        "body": [
+            "# 用途：一次性画时序、季节、子序列、滞后散点图",
+            "# 何时用：拿到数据后必做 EDA，团队评审必产出",
+            "# 解决什么：不知道数据有没有趋势、季节、异常",
+            "# 看结果：折线看趋势，季节图看形状是否稳定，滞后图看自相关",
+            "# 指标：趋势方向、季节幅度、异常点数量",
+            "# 依赖：feasts, tsibble, ggplot2",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "ts |> feasts::autoplot(value)                            # 解决：画时序折线，判断趋势；看上升趋势",
+            "ts |> feasts::gg_season(value)                           # 解决：画季节图，判断季节稳定性；看曲线逐年抬高",
+            "ts |> feasts::gg_subseries(value)                        # 解决：画子序列，看月度趋势；看 12 分面都上升",
+            "ts |> feasts::gg_lag(value, lags = 1:12)                 # 解决：画滞后散点，判断自相关；看 lag1/lag12 最集中"
+        ],
+        "description": "EDA 可视化"
+    },
+    "tidyverts-STL分解": {
+        "prefix": "tv-stl",
+        "framework": "tidyverts",
+        "body": [
+            "# 用途：STL 分解观察趋势、季节、残差",
+            "# 何时用：怀疑有强季节或季节不稳定时",
+            "# 解决什么：不知道趋势和季节如何交互",
+            "# 看结果：season_year 幅度是否恒定，remainder 是否有结构",
+            "# 指标：季节方差占比、残差 ACF 是否超界",
+            "# 依赖：feasts, ggplot2",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> feasts::STL(value ~ season(window = 'periodic'))  # 解决：STL 分解；看无警告",
+            "fit |> feasts::autoplot()                                # 解决：画趋势季节残差；看 season 幅度是否恒定",
+            "fit |> feasts::components()                              # 解决：提取成分数据；看 tibble 含 trend/season/remainder"
+        ],
+        "description": "STL 分解"
+    },
+    "tidyverts-平稳性与定阶": {
+        "prefix": "tv-stationary",
+        "framework": "tidyverts",
+        "body": [
+            "# 用途：检验平稳性，观察 ACF/PACF 辅助定阶",
+            "# 何时用：ARIMA 建模前必做",
+            "# 解决什么：不知道要不要差分、AR/MA 阶数多少",
+            "# 看结果：ADF p<0.05 且 KPSS p>0.05 平稳；ACF 截尾→MA，PACF 截尾→AR",
+            "# 指标：ADF p、KPSS p、ACF/PACF 截尾位置",
+            "# 依赖：feasts, tseries, tsibble",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "tseries::adf.test(as.numeric(AirPassengers))             # 解决：ADF 单位根检验；看 p-value",
+            "tseries::kpss.test(as.numeric(AirPassengers))            # 解决：KPSS 平稳性检验；看 p-value",
+            "ts |> feasts::ACF(value, lag_max = 36) |> autoplot()     # 解决：看 MA 阶数；看 lag12 峰值",
+            "ts |> feasts::PACF(value, lag_max = 36) |> autoplot()    # 解决：看 AR 阶数；看截尾位置"
+        ],
+        "description": "平稳性与定阶"
+    },
+    "tidyverts-基线模型": {
+        "prefix": "tv-baseline",
+        "framework": "tidyverts",
+        "body": [
+            "# 用途：拟合基线模型，所有复杂模型的准入标准",
+            "# 何时用：正式建模第一步",
+            "# 解决什么：防止复杂模型连 naive 都打不过",
+            "# 看结果：MASE < 1 才算优于 naive",
+            "# 指标：MASE、RMSE、MAE",
+            "# 依赖：fable, tsibble",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(",
+            "  mean   = fable::MEAN(value),                           # 解决：均值基线；看 MASE",
+            "  naive  = fable::NAIVE(value),                          # 解决：上期值基线；看 MASE=1",
+            "  snaive = fable::SNAIVE(value),                         # 解决：季节基线；看 MASE",
+            "  drift  = fable::RW(value ~ drift())                    # 解决：带漂移基线；看 MASE",
+            ")",
+            "fit |> fabletools::accuracy()                            # 解决：输出基线误差表；看 MASE 列"
+        ],
+        "description": "基线模型"
+    },
+    "tidyverts-ETS": {
+        "prefix": "tv-ets",
+        "framework": "tidyverts",
+        "body": [
+            "# 用途：指数平滑自动选误差/趋势/季节组合",
+            "# 何时用：季节稳定、趋势平滑的序列",
+            "# 解决什么：不想手写 ARIMA 公式，快速拿到靠谱模型",
+            "# 看结果：report 显示 ETS(A,A,A) 即加性误差趋势季节",
+            "# 指标：AICc、残差 Ljung-Box p、平滑参数 α β γ",
+            "# 依赖：fable, tsibble",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(ETS(value))                    # 解决：自动拟合 ETS；看选到的组合",
+            "fit |> fabletools::report()                              # 解决：打印模型和参数；看 alpha/beta/gamma"
+        ],
+        "description": "ETS"
+    },
+    "tidyverts-ARIMA": {
+        "prefix": "tv-arima",
+        "framework": "tidyverts",
+        "body": [
+            "# 用途：自动 ARIMA，含季节部分",
+            "# 何时用：通用默认模型，团队项目首选之一",
+            "# 解决什么：不想手工定阶，需要可靠统计模型",
+            "# 看结果：AICc 越小越好；残差需白噪声",
+            "# 指标：AICc、Ljung-Box p、残差正态性",
+            "# 依赖：fable, tsibble",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(ARIMA(value))                  # 解决：自动定阶 ARIMA；看 pdq/PDQ",
+            "fit |> fabletools::report()                              # 解决：打印模型和参数；看 AICc 和 Ljung-Box p"
+        ],
+        "description": "ARIMA"
+    },
+    "tidyverts-动态回归": {
+        "prefix": "tv-regression",
+        "framework": "tidyverts",
+        "body": [
+            "# 用途：把傅里叶项或外部变量加入 ARIMA",
+            "# 何时用：有促销、天气、节假日等外生变量时",
+            "# 解决什么：单变量模型无法利用外部信息",
+            "# 看结果：系数显著性、残差是否仍白噪声",
+            "# 指标：系数 t 值、AICc、残差 Ljung-Box p",
+            "# 依赖：fable, feasts, tsibble",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(",
+            "  arima_fourier = fable::ARIMA(value ~ feasts::fourier(K = 2))  # 解决：加傅里叶项动态回归；看系数 t 值",
+            ")",
+            "fit |> fabletools::report()                              # 解决：看系数显著性和残差；看 p<0.05"
+        ],
+        "description": "动态回归"
+    },
+    "tidyverts-组合模型": {
+        "prefix": "tv-ensemble",
+        "framework": "tidyverts",
+        "body": [
+            "# 用途：多模型平均，降低单模型风险",
+            "# 何时用：多个模型误差接近、难以取舍时",
+            "# 解决什么：单模型对特定时段过拟合",
+            "# 看结果：集成后 MASE 是否低于任一单模型",
+            "# 指标：集成 RMSE、MASE、区间覆盖率",
+            "# 依赖：fable, tsibble",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(",
+            "  ets   = fable::ETS(value),                             # 解决：拟合 ETS；看 .model=ets",
+            "  arima = fable::ARIMA(value)                            # 解决：拟合 ARIMA；看 .model=arima",
+            ")",
+            "ens <- fit |> fabletools::ensemble(ets + arima)          # 解决：两模型平均集成；看 .model=ensemble",
+            "ens                                                     # 解决：打印集成模型；看 mable"
+        ],
+        "description": "组合模型"
+    },
+    "tidyverts-多序列建模": {
+        "prefix": "tv-multi",
+        "framework": "tidyverts",
+        "body": [
+            "# 用途：一次拟合所有门店/产品序列",
+            "# 何时用：多门店、多 SKU、多地区",
+            "# 解决什么：手工逐个建模，无法批量",
+            "# 看结果：每 key 的模型和误差",
+            "# 指标：各序列 MASE 分布、短序列是否过拟合",
+            "# 依赖：fable, tsibble",
+            "df <- data.frame(                                        # 解决：构造 3 门店示例；看 72 行",
+            "  date  = rep(seq(as.Date('2020-01-01'), by = 'month', length.out = 24), 3),",
+            "  store = rep(c('S1','S2','S3'), each = 24),",
+            "  sales = rnorm(72)",
+            ")",
+            "ts  <- tsibble::as_tsibble(df, index = date, key = store) # 解决：声明多序列；看 key=store",
+            "fit <- ts |> fable::model(ARIMA(sales))                  # 解决：每条序列独立拟合；看每 key 一行",
+            "fit |> fabletools::accuracy()                            # 解决：看各序列误差；看 MASE 分布"
+        ],
+        "description": "多序列建模"
+    },
+    "tidyverts-滚动交叉验证": {
+        "prefix": "tv-cv",
+        "framework": "tidyverts",
+        "body": [
+            "# 用途：时间序列滚动交叉验证",
+            "# 何时用：模型选择和上线前必做",
+            "# 解决什么：随机切分导致的乐观误差",
+            "# 看结果：各窗口误差是否稳定，是否随时间恶化",
+            "# 指标：各窗口 MASE、RMSE 均值与标准差",
+            "# 依赖：fable, tsibble",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |>",
+            "  fabletools::stretch_tsibble(.init = 60, .step = 12) |> # 解决：构造滚动窗口；看窗口数",
+            "  fable::model(ARIMA(value))                             # 解决：每窗口拟合 ARIMA；看无报错",
+            "fc <- fit |> fabletools::forecast(h = 12)                # 解决：每窗口预测 12 期；看行数",
+            "fc |> fabletools::accuracy(ts)                           # 解决：算各窗口误差；看 MASE 分布"
+        ],
+        "description": "滚动交叉验证"
+    },
+    "tidyverts-残差诊断": {
+        "prefix": "tv-residual",
+        "framework": "tidyverts",
+        "body": [
+            "# 用途：检查残差是否白噪声",
+            "# 何时用：建模后必做，团队评审必查",
+            "# 解决什么：模型没学干净，残差还有信息",
+            "# 看结果：ACF 在置信区间内，Ljung-Box p>0.05",
+            "# 指标：残差 ACF、Ljung-Box p、残差标准差",
+            "# 依赖：fable, feasts",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(ARIMA(value))                  # 解决：拟合 ARIMA；看 .model=ARIMA",
+            "fit |> fabletools::augment() |> feasts::gg_tsresiduals() # 解决：一键残差诊断图；看 ACF 超界情况",
+            "fit |> fabletools::augment() |> feasts::ljung_box(.resid)  # 解决：残差白噪声检验；看 p>0.05"
+        ],
+        "description": "残差诊断"
+    },
+    "tidyverts-预测与区间": {
+        "prefix": "tv-forecast",
+        "framework": "tidyverts",
+        "body": [
+            "# 用途：输出点预测和置信区间",
+            "# 何时用：交付给业务方",
+            "# 解决什么：只给点预测无风险信息",
+            "# 看结果：区间是否覆盖业务合理范围，宽度是否稳定",
+            "# 指标：80%/95% 区间宽度、覆盖率",
+            "# 依赖：fable, fabletools",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(ARIMA(value))                  # 解决：拟合 ARIMA；看 .model=ARIMA",
+            "fc <- fit |> fabletools::forecast(h = 12)                # 解决：预测 12 期；看 12 行",
+            "fc |> fabletools::hilo(level = c(80, 95))                # 解决：提取 80/95 区间；看 .lower/.upper",
+            "fc |> fabletools::autoplot(ts)                           # 解决：历史+预测+区间同图；看区间变宽"
+        ],
+        "description": "预测与区间"
+    },
+    "tidyverts-模拟预测": {
+        "prefix": "tv-simulate",
+        "framework": "tidyverts",
+        "body": [
+            "# 用途：模拟多条未来路径",
+            "# 何时用：库存安全、极端情景评估",
+            "# 解决什么：只给一个均值，业务无法评估尾部风险",
+            "# 看结果：路径包络、P95/P5 范围",
+            "# 指标：路径分布宽窄、极端情景概率",
+            "# 依赖：fable",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(ARIMA(value))                  # 解决：拟合 ARIMA；看 .model=ARIMA",
+            "sim <- fit |> fable::generate(new_data = ts, times = 100) # 解决：生成 100 条模拟路径；看 .rep 列",
+            "sim                                                     # 解决：打印模拟结果；看路径分布"
+        ],
+        "description": "模拟预测"
+    },
+    "tidyverts-结果存储": {
+        "prefix": "tv-pin",
+        "framework": "tidyverts",
+        "body": [
+            "# 用途：把预测结果存为可版本化的 pin",
+            "# 何时用：预测结果需要交付下游系统",
+            "# 解决什么：手工 CSV 无版本、无元数据",
+            "# 看结果：pin 是否带时间戳，能否回滚",
+            "# 指标：pin 版本数、读取成功率",
+            "# 依赖：pins, fable",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：数据转 tsibble；看 interval 月度",
+            "fit <- ts |> fable::model(ARIMA(value))                  # 解决：拟合 ARIMA；看 .model=ARIMA",
+            "fc  <- fit |> fabletools::forecast(h = 12)               # 解决：预测 12 期；看 12 行",
+            "board <- pins::board_folder('output/pins')               # 解决：建本地 pin board；看目录创建",
+            "pins::pin_write(board, fc, 'air_forecast')               # 解决：写入预测结果；看元数据",
+            "pins::pin_read(board, 'air_forecast')                    # 解决：读取验证；看一致性"
+        ],
+        "description": "结果存储"
+    },
+    "forecast-经典ARIMA": {
+        "prefix": "fc-arima",
+        "framework": "forecast",
+        "body": [
+            "# 用途：经典 auto.arima 自动建模",
+            "# 何时用：学术论文、老项目、快速原型",
+            "# 解决什么：需要被学术界认可的模型",
+            "# 看结果：ARIMA(p,d,q)(P,D,Q)m 与 AICc",
+            "# 指标：AICc、残差 Ljung-Box、checkresiduals 图",
+            "# 依赖：forecast",
+            "y <- as.numeric(AirPassengers)                           # 解决：序列转数值向量；看长度 144",
+            "fit <- forecast::auto.arima(y)                           # 解决：自动定阶 ARIMA；看 pdq/PDQ",
+            "summary(fit)                                             # 解决：打印参数和 AICc；看 AICc 与系数显著性",
+            "forecast::checkresiduals(fit)                            # 解决：一键残差诊断图；看 ACF 和 Ljung-Box p"
+        ],
+        "description": "forecast ARIMA"
+    },
+    "forecast-ETS": {
+        "prefix": "fc-ets",
+        "framework": "forecast",
+        "body": [
+            "# 用途：forecast 的 ETS 建模",
+            "# 何时用：经典 ETS 场景，需与 fable 对比",
+            "# 解决什么：不想用 tsibble，快速拟合",
+            "# 看结果：ETS 类型和 AICc",
+            "# 指标：AICc、残差、平滑参数",
+            "# 依赖：forecast",
+            "y <- as.numeric(AirPassengers)                           # 解决：序列转数值；看长度 144",
+            "fit <- forecast::ets(y)                                  # 解决：自动选择 ETS 组合；看选到的组合",
+            "summary(fit)                                             # 解决：打印模型报告；看 alpha/beta/gamma"
+        ],
+        "description": "forecast ETS"
+    },
+    "forecast-预测与检验": {
+        "prefix": "fc-forecast",
+        "framework": "forecast",
+        "body": [
+            "# 用途：forecast 对象预测与区间",
+            "# 何时用：经典流程产出预测",
+            "# 解决什么：需要与业务共享的预测结果",
+            "# 看结果：点预测和 80/95 区间",
+            "# 指标：区间宽度、覆盖率",
+            "# 依赖：forecast",
+            "y <- as.numeric(AirPassengers)                           # 解决：序列转数值；看长度 144",
+            "fit <- forecast::auto.arima(y)                           # 解决：拟合 ARIMA；看 pdq/PDQ",
+            "fc <- forecast::forecast(fit, h = 12)                    # 解决：预测 12 期；看 12 行",
+            "plot(fc)                                                 # 解决：画点预测和区间；看区间变宽"
+        ],
+        "description": "forecast 预测"
+    },
+    "forecast-BoxCox": {
+        "prefix": "fc-boxcox",
+        "framework": "forecast",
+        "body": [
+            "# 用途：自动 Box-Cox 变换稳定方差",
+            "# 何时用：乘性季节或方差随时间增大",
+            "# 解决什么：方差非恒定导致模型失准",
+            "# 看结果：lambda 值判断变换强度",
+            "# 指标：lambda 是否接近 0（log）或 1（无需）",
+            "# 依赖：forecast",
+            "y <- as.numeric(AirPassengers)                           # 解决：序列转数值；看长度 144",
+            "lambda <- forecast::BoxCox.lambda(y)                     # 解决：自动估 lambda；看输出接近 0",
+            "y_bc <- forecast::BoxCox(y, lambda)                      # 解决：按 lambda 做变换；看方差是否稳定",
+            "lambda                                                   # 解决：打印 lambda 判断强度；看数值范围"
+        ],
+        "description": "Box-Cox"
+    },
+    "forecast-时序交叉验证": {
+        "prefix": "fc-tsCV",
+        "framework": "forecast",
+        "body": [
+            "# 用途：经典 tsCV 时间序列交叉验证",
+            "# 何时用：需要经典 CV 而非 rsample",
+            "# 解决什么：forecast 框架下验证模型",
+            "# 看结果：各步 MAE 序列",
+            "# 指标：MAE 均值、标准差",
+            "# 依赖：forecast",
+            "y <- as.numeric(AirPassengers)                           # 解决：序列转数值；看长度 144",
+            "e <- forecast::tsCV(y, forecast::rwf, h = 1)             # 解决：逐步滚动 CV 误差；看 143 期误差",
+            "mean(e, na.rm = TRUE)                                    # 解决：算平均误差看整体表现；看数值大小"
+        ],
+        "description": "tsCV"
+    },
+    "modeltime-项目起步": {
+        "prefix": "mt-init",
+        "framework": "modeltime",
+        "body": [
+            "# 用途：modeltime 框架起步，需要 tidymodels 全家桶",
+            "# 何时用：ML 时间序列建模",
+            "# 解决什么：想用 ML 模型做时间序列，但流程混乱",
+            "# 看结果：包是否全部安装",
+            "# 指标：装包成功数",
+            "# 依赖：modeltime, tidymodels",
+            "pkgs <- c('modeltime','tidymodels','timetk','recipes','parsnip','workflows')  # 解决：声明依赖；看列表",
+            "to_install <- setdiff(pkgs, rownames(installed.packages()))  # 解决：找出缺失；看字符向量",
+            "if (length(to_install) > 0) install.packages(to_install)     # 解决：补装缺失；看安装日志",
+            "all(pkgs %in% rownames(installed.packages()))                # 解决：确认环境完整；看 TRUE"
+        ],
+        "description": "modeltime 起步"
+    },
+    "modeltime-特征工程": {
+        "prefix": "mt-timetk",
+        "framework": "modeltime",
+        "body": [
+            "# 用途：用 timetk 自动构造时间序列特征",
+            "# 何时用：树模型建模前的特征工程",
+            "# 解决什么：手工构造 lag/rolling 太繁琐",
+            "# 看结果：生成的特征列、是否引入未来信息",
+            "# 指标：特征数、NA 数、相关性",
+            "# 依赖：timetk, dplyr",
+            "df <- data.frame(                                        # 解决：构造示例数据；看 48 行",
+            "  date = seq(as.Date('2020-01-01'), by = 'month', length.out = 48),",
+            "  y    = rnorm(48)",
+            ")",
+            "df |>",
+            "  timetk::tk_augment_timeseries_signature() |>           # 解决：自动加年/月/星期等日历特征；看新增列",
+            "  timetk::tk_augment_lags(y, .lags = c(1, 12))           # 解决：自动加 1/12 期滞后；看 lag 列"
+        ],
+        "description": "timetk 特征工程"
+    },
+    "modeltime-模型定义": {
+        "prefix": "mt-parsnip",
+        "framework": "modeltime",
+        "body": [
+            "# 用途：用 parsnip 定义 ML 模型",
+            "# 何时用：需要线性回归、随机森林、XGBoost 等",
+            "# 解决什么：统一接口跨引擎切换",
+            "# 看结果：模型对象与引擎",
+            "# 指标：模型类型、引擎名",
+            "# 依赖：parsnip",
+            "mod_lm  <- parsnip::linear_reg() |> parsnip::set_engine('lm')        # 解决：定义线性回归；看 engine=lm",
+            "mod_rf  <- parsnip::rand_forest() |> parsnip::set_engine('ranger')   # 解决：定义随机森林；看 engine=ranger",
+            "mod_xgb <- parsnip::boost_tree() |> parsnip::set_engine('xgboost')   # 解决：定义 XGBoost；看 engine=xgboost",
+            "mod_lm                                                               # 解决：打印确认；看模型规格"
+        ],
+        "description": "parsnip 模型"
+    },
+    "modeltime-工作流": {
+        "prefix": "mt-workflow",
+        "framework": "modeltime",
+        "body": [
+            "# 用途：组合配方、模型与公式",
+            "# 何时用：训练前统一定义",
+            "# 解决什么：防止特征与模型脱节",
+            "# 看结果：workflow 对象是否含 recipe 与 model",
+            "# 指标：拟合时间、是否报错",
+            "# 依赖：workflows, recipes, parsnip",
+            "df <- data.frame(                                        # 解决：构造示例数据；看 60 行",
+            "  y     = rnorm(60),",
+            "  lag1  = dplyr::lag(rnorm(60), 1),",
+            "  month = rep(1:12, 5)",
+            ") |> tidyr::drop_na()                                    # 解决：删除 lag 产生的 NA；看 59 行",
+            "rec <- recipes::recipe(y ~ ., data = df)                 # 解决：定义预处理配方；看公式",
+            "mod <- parsnip::linear_reg() |> parsnip::set_engine('lm')  # 解决：定义模型；看 engine",
+            "wf  <- workflows::workflow() |> workflows::add_recipe(rec) |> workflows::add_model(mod)  # 解决：组合工作流；看 workflow 结构",
+            "workflows::fit(wf, data = df)                            # 解决：拟合并返回结果；看 fit 对象"
+        ],
+        "description": "workflow"
+    },
+    "modeltime-模型训练": {
+        "prefix": "mt-fit",
+        "framework": "modeltime",
+        "body": [
+            "# 用途：用 modeltime 训练时间序列模型",
+            "# 何时用：有多个 ML 模型需要训练和比较",
+            "# 解决什么：批量训练、统一管理",
+            "# 看结果：每个模型训练状态、CV 误差",
+            "# 指标：CV RMSE、拟合时间",
+            "# 依赖：modeltime, parsnip, workflows",
+            "df <- data.frame(                                        # 解决：构造示例数据；看 60 行",
+            "  date = seq(as.Date('2020-01-01'), by = 'month', length.out = 60),",
+            "  y    = rnorm(60)",
+            ")",
+            "splits <- rsample::initial_time_split(df, prop = 0.8)    # 解决：按时间 8:2 切分；看 train/test 行数",
+            "mod <- parsnip::linear_reg() |> parsnip::set_engine('lm') # 解决：定义模型；看 engine",
+            "# mf <- modeltime::modeltime_fit(mod, y ~ date, splits)   # 解决：modeltime 拟合；看 mf 表"
+        ],
+        "description": "模型训练"
+    },
+    "modeltime-模型校准": {
+        "prefix": "mt-calibrate",
+        "framework": "modeltime",
+        "body": [
+            "# 用途：用测试集校准模型，输出真实误差",
+            "# 何时用：模型训练后，上线前",
+            "# 解决什么：训练误差不能代表真实表现",
+            "# 看结果：校准表显示各模型 RMSE 和 MAE",
+            "# 指标：RMSE、MAE、MAPE、R2",
+            "# 依赖：modeltime",
+            "# cal <- modeltime::modeltime_calibrate(mf, new_data = rsample::testing(splits))  # 解决：测试集校准；看 cal 表",
+            "# modeltime::modeltime_accuracy(cal)                     # 解决：输出误差表；看 RMSE"
+        ],
+        "description": "模型校准"
+    },
+    "modeltime-模型预测": {
+        "prefix": "mt-forecast",
+        "framework": "modeltime",
+        "body": [
+            "# 用途：用训练好的模型预测未来",
+            "# 何时用：部署或报告前",
+            "# 解决什么：多模型统一预测输出",
+            "# 看结果：预测数据框含 .model_id 和 .value",
+            "# 指标：预测区间宽度、合理性",
+            "# 依赖：modeltime",
+            "# fc <- modeltime::modeltime_forecast(cal, h = 12, actual_data = df)  # 解决：预测未来 12 期；看 .value"
+        ],
+        "description": "模型预测"
+    },
+    "modeltime-超参调优": {
+        "prefix": "mt-tune",
+        "framework": "modeltime",
+        "body": [
+            "# 用途：用 tune 做超参网格搜索",
+            "# 何时用：树模型、XGBoost 需要调参",
+            "# 解决什么：手工试参效率低",
+            "# 看结果：最佳参数和最优误差",
+            "# 指标：RMSE、最优参数组合",
+            "# 依赖：tune, dials, parsnip",
+            "# grid <- dials::grid_regular(dials::mtry(), levels = 3)  # 解决：定义参数网格；看 3 行",
+            "# tune_res <- tune::tune_grid(wf, resamples = rsample::vfold_cv(df), grid = grid)  # 解决：网格搜索；看最优参数"
+        ],
+        "description": "超参调优"
+    },
+    "prophet-基础建模": {
+        "prefix": "ph-fit",
+        "framework": "prophet",
+        "body": [
+            "# 用途：Prophet 建模，趋势+季节+节假日",
+            "# 何时用：业务方主导、有节假日效应",
+            "# 解决什么：需业务可解释的预测",
+            "# 看结果：趋势变点位置、季节幅度",
+            "# 指标：MAE、MAPE、残差诊断",
+            "# 依赖：prophet",
+            "df <- data.frame(                                        # 解决：构造 ds/y 格式数据；看 36 行",
+            "  ds = seq(as.Date('2020-01-01'), by = 'month', length.out = 36),",
+            "  y  = rnorm(36)",
+            ")",
+            "m <- prophet::prophet(df)                                # 解决：自动拟合趋势+季节；看无报错",
+            "future <- prophet::make_future_dataframe(m, periods = 12, freq = 'month')  # 解决：构造未来时间框；看 12 行",
+            "fc <- prophet::predict(m, future)                        # 解决：预测未来 12 期；看 yhat 列",
+            "prophet::prophet_plot_components(m, fc)                  # 解决：分量可视化；看趋势和季节曲线"
+        ],
+        "description": "Prophet 建模"
+    },
+    "prophet-节假日与多季节": {
+        "prefix": "ph-holiday",
+        "framework": "prophet",
+        "body": [
+            "# 用途：加入节假日和自定义季节",
+            "# 何时用：业务有明显节假日效应",
+            "# 解决什么：模型忽视节假日造成偏差",
+            "# 看结果：节假日系数是否显著",
+            "# 指标：节假日效应幅度、MAPE",
+            "# 依赖：prophet",
+            "df <- data.frame(                                        # 解决：构造日频示例；看 365 行",
+            "  ds = seq(as.Date('2020-01-01'), by = 'day', length.out = 365),",
+            "  y  = rnorm(365)",
+            ")",
+            "m <- prophet::prophet(df,",
+            "  yearly.seasonality = TRUE,                             # 解决：开启年季节；看是否纳入",
+            "  weekly.seasonality = TRUE,                             # 解决：开启周季节；看是否纳入",
+            "  daily.seasonality  = FALSE                             # 解决：关日季节，避免过拟合；看是否关闭",
+            ")",
+            "future <- prophet::make_future_dataframe(m, periods = 30) # 解决：构造未来 30 天；看 30 行",
+            "fc <- prophet::predict(m, future)                        # 解决：预测；看 yhat"
+        ],
+        "description": "Prophet 节假日"
+    },
+    "prophet-交叉验证": {
+        "prefix": "ph-cv",
+        "framework": "prophet",
+        "body": [
+            "# 用途：Prophet 自带的交叉验证",
+            "# 何时用：模型比较和调参",
+            "# 解决什么：Prophet 专用 CV，非标准流程",
+            "# 看结果：不同 horizon 的误差分布",
+            "# 指标：MAE、MAPE 随 horizon 变化",
+            "# 依赖：prophet",
+            "df <- data.frame(                                        # 解决：构造日频示例；看 365 行",
+            "  ds = seq(as.Date('2020-01-01'), by = 'day', length.out = 365),",
+            "  y  = rnorm(365)",
+            ")",
+            "m <- prophet::prophet(df)                                # 解决：拟合 Prophet；看无报错",
+            "cv <- prophet::cross_validation(m, initial = 200, period = 30, horizon = 30)  # 解决：滚动 CV；看多行",
+            "prophet::performance_metrics(cv)                         # 解决：输出各 horizon 误差；看 mae/mape 列"
+        ],
+        "description": "Prophet 交叉验证"
+    },
+    "xts-数据构造": {
+        "prefix": "xts-build",
+        "framework": "xts",
+        "body": [
+            "# 用途：金融时间序列数据结构",
+            "# 何时用：金融、高频、日内数据",
+            "# 解决什么：普通 data.frame 无法高效处理高频",
+            "# 看结果：xts 对象带索引，可快速切片",
+            "# 指标：索引范围、频率、缺失点",
+            "# 依赖：xts, zoo",
+            "x <- xts::xts(rnorm(100), order.by = Sys.Date() + 0:99)  # 解决：构造带日期索引的 xts；看 100 行",
+            "head(x)                                                  # 解决：看前几行确认结构；看索引列",
+            "xts::periodicity(x)                                      # 解决：查看频率是否为日频；看 period 字段"
+        ],
+        "description": "xts 构造"
+    },
+    "xts-重采样与聚合": {
+        "prefix": "xts-resample",
+        "framework": "xts",
+        "body": [
+            "# 用途：高频聚合为低频",
+            "# 何时用：分钟聚合成小时/日，日聚合成周/月",
+            "# 解决什么：不同频率数据需要对齐",
+            "# 看结果：聚合后频率与行数",
+            "# 指标：聚合后行数、OHLC 值",
+            "# 依赖：xts",
+            "x <- xts::xts(rnorm(1000), order.by = Sys.time() + 1:1000)  # 解决：构造秒级示例；看 1000 行",
+            "xts::to.period(x, period = 'hours')                      # 解决：聚合为小时频；看行数减少",
+            "xts::to.period(x, period = 'days')                       # 解决：聚合为日频；看行数进一步减少"
+        ],
+        "description": "xts 重采样"
+    },
+    "xts-滚动统计": {
+        "prefix": "xts-roll",
+        "framework": "xts",
+        "body": [
+            "# 用途：滚动均值、标准差、相关性",
+            "# 何时用：技术指标、波动率估计",
+            "# 解决什么：需要高性能滚动计算",
+            "# 看结果：滚动曲线是否平滑",
+            "# 指标：滚动均值、滚动波动率",
+            "# 依赖：xts, zoo",
+            "x <- xts::xts(rnorm(100), order.by = Sys.Date() + 0:99)  # 解决：构造示例 xts；看 100 行",
+            "zoo::rollmean(x, k = 10)                                 # 解决：10 期滚动均值；看前 9 行 NA",
+            "zoo::rollapply(x, width = 10, FUN = sd)                  # 解决：10 期滚动标准差；看波动曲线"
+        ],
+        "description": "xts 滚动统计"
+    },
+    "xts-GARCH波动率": {
+        "prefix": "xts-garch",
+        "framework": "xts",
+        "body": [
+            "# 用途：金融波动率建模",
+            "# 何时用：股票、汇率、期货",
+            "# 解决什么：方差非恒定，均值模型不够",
+            "# 看结果：条件波动率序列、参数显著性",
+            "# 指标：AIC、参数 t 值、残差诊断",
+            "# 依赖：rugarch",
+            "y <- rnorm(500)                                          # 解决：构造示例收益序列；看 500 个数值",
+            "spec <- rugarch::ugarchspec(                             # 解决：定义 GARCH(1,1) 规格；看 spec 对象",
+            "  variance.model = list(model = 'sGARCH', garchOrder = c(1,1)),",
+            "  mean.model     = list(armaOrder = c(0,0))",
+            ")",
+            "# fit <- rugarch::ugarchfit(spec, y)                     # 解决：拟合 GARCH 模型；看 alpha/beta 参数"
+        ],
+        "description": "GARCH"
+    },
+    "dl-torch-LSTM": {
+        "prefix": "dl-lstm",
+        "framework": "torch",
+        "body": [
+            "# 用途：LSTM 深度学习时间序列",
+            "# 何时用：数据量大、模式复杂、多序列全局建模",
+            "# 解决什么：传统模型无法捕捉复杂非线性",
+            "# 看结果：训练损失曲线、验证集误差",
+            "# 指标：RMSE、收敛速度、过拟合程度",
+            "# 依赖：torch",
+            "# library(torch)                                         # 解决：加载 torch；看无报错",
+            "# model <- nn_module(                                    # 解决：定义 nn_module 类；看类结构",
+            "#   initialize = function(input_size, hidden_size) {",
+            "#     self$lstm <- nn_lstm(input_size, hidden_size, batch_first = TRUE)  # 解决：定义 LSTM 层；看层参数",
+            "#     self$fc   <- nn_linear(hidden_size, 1)               # 解决：定义输出层；看输出维度",
+            "#   },",
+            "#   forward = function(x) {",
+            "#     out <- self$lstm(x)[[1]]",
+            "#     self$fc(out[, dim(out)[2], ])                        # 解决：取最后时间步输出；看张量形状",
+            "#   }",
+            "# )"
+        ],
+        "description": "torch LSTM"
+    },
+    "dl-keras-序列模型": {
+        "prefix": "dl-keras",
+        "framework": "keras",
+        "body": [
+            "# 用途：Keras 序列模型",
+            "# 何时用：快速原型、需要 GPU",
+            "# 解决什么：高层 API，快速实验",
+            "# 看结果：训练曲线、验证误差",
+            "# 指标：RMSE、MAE、收敛 epoch",
+            "# 依赖：keras",
+            "# library(keras)                                         # 解决：加载 keras；看无报错",
+            "# model <- keras_model_sequential() |>                   # 解决：建顺序模型；看模型结构",
+            "#   layer_lstm(units = 50, input_shape = c(12, 1)) |>     # 解决：加 LSTM 层；看 50 单元",
+            "#   layer_dense(units = 1)                                # 解决：加输出层；看 1 单元",
+            "# model |> compile(optimizer = 'adam', loss = 'mse')      # 解决：编译模型；看优化器"
+        ],
+        "description": "Keras 序列"
+    },
+    "团队-跨框架模型比较": {
+        "prefix": "team-compare",
+        "framework": "通用",
+        "body": [
+            "# 用途：同一数据上比较 tidyverts、forecast、prophet 的预测",
+            "# 何时用：模型选择评审会",
+            "# 解决什么：单一框架可能不是最优",
+            "# 看结果：三框架误差对比表",
+            "# 指标：MASE、RMSE、MAPE 综合排名",
+            "# 依赖：fable, forecast, prophet, yardstick",
+            "y <- as.numeric(AirPassengers)                           # 解决：序列转数值向量；看长度 144",
+            "ts <- tsibble::as_tsibble(AirPassengers)                 # 解决：转 tsibble 供 tidyverts 用；看 interval 月度",
+            "fit_tv <- ts |> fable::model(ARIMA(value))               # 解决：tidyverts 拟合 ARIMA；看 .model=ARIMA",
+            "acc_tv <- fit_tv |> fabletools::accuracy()               # 解决：tidyverts 误差；看 MASE",
+            "fit_fc <- forecast::auto.arima(y)                        # 解决：forecast 拟合 ARIMA；看 pdq/PDQ",
+            "acc_fc <- forecast::accuracy(fit_fc)                     # 解决：forecast 误差；看 MASE",
+            "acc_tv                                                   # 解决：输出 tidyverts 误差；看 MASE",
+            "acc_fc                                                   # 解决：输出 forecast 误差；看 MASE"
+        ],
+        "description": "跨框架比较"
+    },
+    "团队-模型上线决策": {
+        "prefix": "team-decision",
+        "framework": "通用",
+        "body": [
+            "# 用途：模型上线评审清单，团队必须逐项通过",
+            "# 何时用：上线前最后一次评审",
+            "# 解决什么：防止带病上线",
+            "# 看结果：全部勾选才允许上线",
+            "# 指标：清单通过率",
+            "# 依赖：无",
+            "# [ ] 时间索引唯一且连续",
+            "# [ ] 按时间切分，非随机切分",
+            "# [ ] 设了 naive/snaive 基线且被超越",
+            "# [ ] 残差通过 Ljung-Box（p>0.05）",
+            "# [ ] 输出点预测 + 区间预测",
+            "# [ ] 交叉验证误差稳定",
+            "# [ ] 有误差与漂移监控",
+            "# [ ] 依赖锁定（renv）",
+            "# [ ] 密钥走环境变量",
+            "# [ ] README 完整"
+        ],
+        "description": "上线决策"
+    },
+    "团队-监控与告警": {
+        "prefix": "team-monitor",
+        "framework": "通用",
+        "body": [
+            "# 用途：上线后持续监控误差与漂移",
+            "# 何时用：模型上线第一天开始",
+            "# 解决什么：模型随环境变化失效",
+            "# 看结果：滚动误差曲线、漂移指标",
+            "# 指标：滚动 RMSE、MAPE、漂移告警次数",
+            "# 依赖：yardstick, logger, dplyr",
+            "actual <- rnorm(12)                                      # 解决：构造真实值；看 12 个数值",
+            "pred   <- actual + rnorm(12, sd = 0.5)                   # 解决：构造预测值；看误差量级",
+            "df <- data.frame(actual, pred)                           # 解决：合为数据框；看 12 行",
+            "rmse_val <- yardstick::rmse(df, truth = actual, estimate = pred)  # 解决：算 RMSE；看 .estimate 约 0.5",
+            "logger::log_info(paste('RMSE =', round(rmse_val$.estimate, 3)))    # 解决：写 INFO 日志；看日志新增",
+            "if (rmse_val$.estimate > 0.5) logger::log_warn('误差超阈值')        # 解决：超阈值 WARN 告警；看 WARN 输出"
+        ],
+        "description": "监控告警"
+    },
+    "团队-流水线编排": {
+        "prefix": "team-targets",
+        "framework": "通用",
+        "body": [
+            "# 用途：把取数、建模、预测、存储串成流水线",
+            "# 何时用：需要定时或按需重跑",
+            "# 解决什么：手工执行易漏步骤",
+            "# 看结果：哪些 target 重算、哪些跳过",
+            "# 指标：流水线总耗时、重算比例",
+            "# 依赖：targets",
+            "# targets::tar_plan(                                     # 解决：定义 DAG；看依赖图",
+            "#   raw = readr::read_csv('data/raw/sales.csv'),          # 解决：取数；看 raw 列",
+            "#   ts  = tsibble::as_tsibble(raw, index = date),         # 解决：转 tsibble；看 interval",
+            "#   fit = fable::model(ts, fable::ARIMA(value)),          # 解决：建模；看 mable",
+            "#   fc  = fabletools::forecast(fit, h = 12),              # 解决：预测；看 12 行",
+            "#   pin = pins::pin_write(board, fc, 'forecast')          # 解决：存储；看 pin 元数据",
+            "# )",
+            "# targets::tar_make()                                    # 解决：一键重跑；看 skipped 数"
+        ],
+        "description": "流水线"
+    },
+    "团队-API部署": {
+        "prefix": "team-plumber",
+        "framework": "通用",
+        "body": [
+            "# 用途：把预测封装为 HTTP API",
+            "# 何时用：预测结果需要被业务系统调用",
+            "# 解决什么：业务方不愿装 R",
+            "# 看结果：接口响应、错误率",
+            "# 指标：响应时间、QPS、错误率",
+            "# 依赖：plumber",
+            "# pr <- plumber::pr()                                    # 解决：创建 plumber；看对象",
+            "# pr$handle('GET', '/forecast', function(h = 12) {       # 解决：定义 /forecast 接口；看路由",
+            "#   list(forecast = rnorm(as.numeric(h)))                 # 解决：返回预测 JSON；看 JSON 格式",
+            "# })",
+            "# pr$run(port = 8000)                                    # 解决：启动服务；看端口监听"
+        ],
+        "description": "API 部署"
+    },
+    "团队-Shiny看板": {
+        "prefix": "team-shiny",
+        "framework": "通用",
+        "body": [
+            "# 用途：业务方交互查看预测",
+            "# 何时用：需要业务方自服务",
+            "# 解决什么：业务方不想看代码",
+            "# 看结果：交互是否流畅、图表是否清晰",
+            "# 指标：响应时间、使用频率",
+            "# 依赖：shiny",
+            "# library(shiny)                                         # 解决：加载 shiny；看无报错",
+            "# ui <- fluidPage(                                       # 解决：定义前端；看页面元素",
+            "#   sliderInput('h', '预测长度', 1, 24, 12),              # 解决：加预测长度滑块；看控件",
+            "#   plotOutput('fc')                                      # 解决：加预测图占位；看输出区域",
+            "# )",
+            "# server <- function(input, output) {}                   # 解决：定义后端；看响应式",
+            "# shinyApp(ui, server)                                   # 解决：启动应用；看浏览器打开"
+        ],
+        "description": "Shiny 看板"
+    },
+    "团队-容器化": {
+        "prefix": "team-docker",
+        "framework": "通用",
+        "body": [
+            "# 用途：打包为镜像，保证生产环境一致",
+            "# 何时用：上线生产、跨团队交付",
+            "# 解决什么：环境差异导致'我这能跑'",
+            "# 看结果：镜像构建成功、运行时一致",
+            "# 指标：镜像体积、构建时长、启动时间",
+            "# 依赖：dockerfiler",
+            "# df <- dockerfiler::Dockerfile$new('rocker/r-ver:4.4')  # 解决：以官方 R 镜像为基底；看基础镜像标签",
+            "# df$RUN('R -e \"install.packages(c(\\\"fable\\\",\\\"tsibble\\\"))\"')  # 解决：装依赖；看安装日志",
+            "# df$COPY('.', '/app')                                   # 解决：拷贝代码；看工作目录",
+            "# df$CMD('Rscript -e \"targets::tar_make()\"')            # 解决：容器启动跑流水线；看 CMD 指令",
+            "# df$write('Dockerfile')                                 # 解决：写出 Dockerfile；看文件内容"
+        ],
+        "description": "容器化"
+    }
 }
