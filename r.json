@@ -1,2631 +1,1387 @@
 {
-  "项目创建": {
+  "001 项目创建": {
     "prefix": "project",
-    "body": [
-      "# 创建 .Rproj 项目",
-      "# 使用 here::here() 管理相对路径",
-      "here::here()"
-    ],
-    "description": "【必须掌握】项目环境与路径管理。理解：.Rproj、here()、相对路径是可复现的前提。"
+    "body": ["here::here()"],
+    "description": "项目环境与路径管理"
   },
-  "包管理": {
+  "002 包管理": {
     "prefix": "pkg",
-    "body": [
-      "install.packages(\"${1:pkg}\")",
-      "library(${1:pkg})",
-      "packageVersion(\"${1:pkg}\")"
-    ],
-    "description": "【必须掌握】包管理。理解：install.packages、library、::、packageVersion。"
+    "body": ["library(dplyr)", "packageVersion(\"dplyr\")"],
+    "description": "包管理"
   },
-  "帮助系统": {
+  "003 帮助系统": {
     "prefix": "help",
-    "body": [
-      "?${1:function}",
-      "??${1:topic}",
-      "help(\"${1:function}\")",
-      "example(\"${1:function}\")",
-      "vignette(\"${2:package}\")"
-    ],
-    "description": "【必须掌握】帮助系统。理解：?、??、help、example、vignette。"
+    "body": ["?mean", "example(\"mean\")"],
+    "description": "帮助系统"
   },
-  "会话与选项": {
+  "004 会话与选项": {
     "prefix": "session",
-    "body": [
-      "sessionInfo()",
-      "options()",
-      ".libPaths()"
-    ],
-    "description": "【必须掌握】会话信息。理解：sessionInfo、options、.libPaths。"
+    "body": ["sessionInfo()", ".libPaths()"],
+    "description": "会话信息"
   },
-  "renv 环境锁定": {
+  "005 renv 环境锁定": {
     "prefix": "renv",
-    "body": [
-      "renv::init()",
-      "renv::snapshot()",
-      "renv::restore()"
-    ],
-    "description": "【实战必须】依赖锁定。理解：renv 保证别人能复现你的包版本。"
+    "body": ["# renv::init()", "# renv::snapshot()"],
+    "description": "依赖锁定"
   },
-  "赋值与运算符": {
+  "006 赋值与运算符": {
     "prefix": "assign",
-    "body": [
-      "x <- ${1:1}",
-      "y = ${2:2}",
-      "${3:z} <- ${4:3}",
-      "${1:x} + ${2:y}",
-      "${1:x} %in% ${5:c(1, 2, 3)}"
-    ],
-    "description": "【必须掌握】基础语法。理解：<-、=、->、算术/比较/逻辑/成员运算符。"
+    "body": ["x <- 1", "y = 2", "x + y", "x %in% c(1,2,3)"],
+    "description": "基础语法"
   },
-  "特殊值": {
+  "007 特殊值": {
     "prefix": "na",
-    "body": [
-      "NA",
-      "NULL",
-      "NaN",
-      "Inf",
-      "-Inf",
-      "is.na(${1:x})",
-      "is.null(${1:x})",
-      "is.nan(${1:x})"
-    ],
-    "description": "【必须掌握】特殊值。理解：NA、NULL、NaN、Inf 的区别与判断。"
+    "body": ["NA", "NULL", "NaN", "Inf", "is.na(c(1,NA))"],
+    "description": "特殊值"
   },
-  "类型判断与转换": {
+  "008 类型判断与转换": {
     "prefix": "type",
-    "body": [
-      "class(${1:x})",
-      "typeof(${1:x})",
-      "is.numeric(${1:x})",
-      "is.character(${1:x})",
-      "as.numeric(${1:x})",
-      "as.character(${1:x})",
-      "as.factor(${1:x})"
-    ],
-    "description": "【必须掌握】类型系统。理解：class、typeof、is.*、as.*。"
+    "body": ["class(1)", "typeof(1)", "as.character(1)"],
+    "description": "类型系统"
   },
-  "因子": {
+  "009 因子": {
     "prefix": "factor",
-    "body": [
-      "factor(${1:x}, levels = c(\"${2:a}\", \"${3:b}\"), ordered = ${4:FALSE})",
-      "levels(${1:f})",
-      "table(${1:f})"
-    ],
-    "description": "【必须掌握】因子。理解：factor、levels、ordered、分类变量建模。"
+    "body": ["f <- factor(c(\"a\",\"b\",\"a\"))", "levels(f)", "table(f)"],
+    "description": "因子"
   },
-  "属性": {
+  "010 属性": {
     "prefix": "attr",
-    "body": [
-      "attributes(${1:x})",
-      "attr(${1:x}, \"${2:name}\")",
-      "names(${1:x})",
-      "dim(${1:x})",
-      "class(${1:x})"
-    ],
-    "description": "【必须掌握】属性系统。理解：attributes、attr、names、dim、class。"
+    "body": ["attributes(mtcars)", "names(mtcars)", "dim(mtcars)"],
+    "description": "属性系统"
   },
-  "向量": {
+  "011 向量": {
     "prefix": "vector",
-    "body": [
-      "c(${1:1, 2, 3})",
-      "seq(${1:1}, ${2:10}, by = ${3:1})",
-      "rep(${1:x}, times = ${2:3})",
-      "length(${1:v})",
-      "${1:v}[${3:1}]"
-    ],
-    "description": "【必须掌握】向量。理解：c、seq、rep、length、索引、向量化。"
+    "body": ["c(1,2,3)", "seq(1,10)", "rep(1,3)", "length(1:10)", "(1:10)[1]"],
+    "description": "向量"
   },
-  "矩阵": {
+  "012 矩阵": {
     "prefix": "matrix",
-    "body": [
-      "matrix(${1:data}, nrow = ${2:3}, ncol = ${3:3}, byrow = ${4:FALSE})",
-      "dim(${1:m})",
-      "rownames(${1:m})",
-      "colnames(${1:m})"
-    ],
-    "description": "【必须掌握】矩阵。理解：matrix、nrow、ncol、byrow、dimnames。"
+    "body": ["m <- matrix(1:9, nrow=3)", "dim(m)", "rownames(m)"],
+    "description": "矩阵"
   },
-  "数组": {
+  "013 数组": {
     "prefix": "array",
-    "body": [
-      "array(${1:data}, dim = c(${2:2}, ${3:3}, ${4:2}))",
-      "dim(${1:a})"
-    ],
-    "description": "【必须掌握】数组。理解：array、dim、多维索引。"
+    "body": ["a <- array(1:12, dim=c(2,3,2))", "dim(a)"],
+    "description": "数组"
   },
-  "列表": {
+  "014 列表": {
     "prefix": "list",
-    "body": [
-      "list(${1:name} = ${2:value}, ${3:name2} = ${4:value2})",
-      "${1:lst}[[\"${2:name}\"]]",
-      "${1:lst}$${2:name}",
-      "${1:lst}[\"${2:name}\"]"
-    ],
-    "description": "【必须掌握】列表。理解：list、[[、$、嵌套列表。"
+    "body": ["lst <- list(name=\"a\", value=1)", "lst[[\"name\"]]", "lst$name"],
+    "description": "列表"
   },
-  "数据框": {
+  "015 数据框": {
     "prefix": "df",
-    "body": [
-      "data.frame(${1:col1} = ${2:...}, ${3:col2} = ${4:...})",
-      "tibble::tibble(${1:col1} = ${2:...})",
-      "str(${1:df})",
-      "head(${1:df})",
-      "summary(${1:df})"
-    ],
-    "description": "【必须掌握】数据框。理解：data.frame、tibble、str、head、summary。"
+    "body": ["df <- data.frame(x=1:3, y=letters[1:3])", "str(df)", "head(df)", "summary(df)"],
+    "description": "数据框"
   },
-  "数据框索引": {
+  "016 数据框索引": {
     "prefix": "index",
-    "body": [
-      "${1:df}[${2:rows}, ${3:cols}]",
-      "${1:df}[[\"${2:col}\"]]",
-      "${1:df}$${2:col}",
-      "${1:df}[${2:df$${3:col} > ${4:0}}, ]"
-    ],
-    "description": "【必须掌握】索引。理解：[]、[[]]、$、逻辑索引、名称索引。"
+    "body": ["mtcars[1:3,1:2]", "mtcars[[\"mpg\"]]", "mtcars$mpg", "mtcars[mtcars$mpg>20,]"],
+    "description": "索引"
   },
-  "read读写": {
+  "017 read读写": {
     "prefix": "readcsv",
-    "body": [
-      "readr::read_csv(\"${1:file.csv}\")",
-      "readr::read_tsv(\"${2:file.tsv}\")",
-      "readr::write_csv(${1:df}, \"${3:out.csv}\")"
-    ],
-    "description": "【必须掌握】文本数据 IO。理解：read_csv、read_tsv、write_csv。"
+    "body": ["tf <- tempfile(fileext=\".csv\")", "readr::write_csv(mtcars, tf)", "readr::read_csv(tf)"],
+    "description": "文本数据 IO"
   },
-  "readxl 读写": {
+  "018 readxl 读写": {
     "prefix": "readexcel",
-    "body": [
-      "readxl::read_excel(\"${1:file.xlsx}\", sheet = ${2:1})",
-      "writexl::write_xlsx(${1:df}, \"${3:out.xlsx}\")"
-    ],
-    "description": "【必须掌握】Excel IO。理解：read_excel、sheet、write_xlsx。"
+    "body": ["tf <- tempfile(fileext=\".xlsx\")", "writexl::write_xlsx(mtcars, tf)", "readxl::read_excel(tf)"],
+    "description": "Excel IO"
   },
-  "haven 统计软件": {
+  "019 haven 统计软件": {
     "prefix": "haven",
-    "body": [
-      "haven::read_sav(\"${1:file.sav}\")",
-      "haven::read_dta(\"${2:file.dta}\")",
-      "haven::read_sas(\"${3:file.sas7bdat}\")"
-    ],
-    "description": "【必须掌握】统计软件数据。理解：read_sav、read_dta、read_sas。"
+    "body": ["# haven::read_sav(\"file.sav\")", "# haven::read_dta(\"file.dta\")"],
+    "description": "统计软件数据"
   },
-  "JSON": {
+  "020 JSON": {
     "prefix": "json",
-    "body": [
-      "jsonlite::fromJSON(\"${1:file.json}\")",
-      "jsonlite::toJSON(${1:df}, pretty = TRUE)"
-    ],
-    "description": "【必须掌握】JSON IO。理解：fromJSON、toJSON。"
+    "body": ["tf <- tempfile(fileext=\".json\")", "jsonlite::write_json(mtcars, tf)", "jsonlite::fromJSON(tf)"],
+    "description": "JSON IO"
   },
-  "RDS 与 RData": {
+  "021 RDS 与 RData": {
     "prefix": "rds",
-    "body": [
-      "saveRDS(${1:obj}, \"${2:file.rds}\")",
-      "${1:obj} <- readRDS(\"${2:file.rds}\")",
-      "save(${1:obj}, file = \"${3:file.RData}\")",
-      "load(\"${3:file.RData}\")"
-    ],
-    "description": "【必须掌握】原生序列化。理解：saveRDS/readRDS、save/load。"
+    "body": ["tf <- tempfile(fileext=\".rds\")", "saveRDS(mtcars, tf)", "readRDS(tf)"],
+    "description": "原生序列化"
   },
-  "管道": {
+  "022 管道": {
     "prefix": "pipe",
-    "body": [
-      "${1:df} |>",
-      "  ${2:dplyr::filter}(${3:...})"
-    ],
-    "description": "【必须掌握】管道。理解：|>、%>%、链式数据操作。"
+    "body": ["mtcars |> dplyr::filter(mpg > 20)"],
+    "description": "管道"
   },
-  "dply单表操作": {
+  "023 dply单表操作": {
     "prefix": "dplyr",
-    "body": [
-      "dplyr::filter(${1:df}, ${2:条件})",
-      "dplyr::select(${1:df}, ${3:列})",
-      "dplyr::mutate(${1:df}, ${4:新列} = ${5:表达式})",
-      "dplyr::arrange(${1:df}, ${6:列})",
-      "dplyr::distinct(${1:df})",
-      "dplyr::rename(${1:df}, ${7:新名} = ${8:旧名})"
-    ],
-    "description": "【必须掌握】dply单表。理解：filter、select、mutate、arrange、distinct、rename。"
+    "body": ["dplyr::filter(mtcars, mpg>20)", "dplyr::select(mtcars, mpg, cyl)", "dplyr::mutate(mtcars, new=mpg/cyl)", "dplyr::arrange(mtcars, mpg)"],
+    "description": "dplyr 单表"
   },
-  "dply分组汇总": {
+  "024 dply分组汇总": {
     "prefix": "group",
-    "body": [
-      "${1:df} |>",
-      "  dplyr::group_by(${2:组}) |>",
-      "  dplyr::summarise(${3:均值} = mean(${4:变量}, na.rm = TRUE))"
-    ],
-    "description": "【必须掌握】分组汇总。理解：group_by、summarise、count。"
+    "body": ["mtcars |> dplyr::group_by(cyl) |> dplyr::summarise(mean_mpg=mean(mpg))"],
+    "description": "分组汇总"
   },
-  "dplyacross": {
+  "025 dplyacross": {
     "prefix": "across",
-    "body": [
-      "${1:df} |>",
-      "  dplyr::summarise(dplyr::across(dplyr::where(is.numeric), mean, na.rm = TRUE))",
-      "${1:df} |>",
-      "  dplyr::mutate(dplyr::across(dplyr::where(is.numeric), ~ .x * ${2:100}))"
-    ],
-    "description": "【必须掌握】across。理解：where、if_any、if_all、批量操作列。"
+    "body": ["mtcars |> dplyr::summarise(dplyr::across(dplyr::where(is.numeric), mean))"],
+    "description": "across"
   },
-  "dply连接": {
+  "026 dply连接": {
     "prefix": "join",
-    "body": [
-      "dplyr::left_join(${1:x}, ${2:y}, by = \"${3:key}\")",
-      "dplyr::inner_join(${1:x}, ${2:y}, by = \"${3:key}\")",
-      "dplyr::anti_join(${1:x}, ${2:y}, by = \"${3:key}\")",
-      "dplyr::bind_rows(${1:df1}, ${2:df2})"
-    ],
-    "description": "【必须掌握】连接。理解：left_join、inner_join、anti_join、bind_rows。"
+    "body": ["dplyr::left_join(mtcars, mtcars, by=\"cyl\")", "dplyr::inner_join(mtcars, mtcars, by=\"cyl\")"],
+    "description": "连接"
   },
-  "tidy长宽转换": {
+  "027 tidy长宽转换": {
     "prefix": "pivot",
-    "body": [
-      "tidyr::pivot_longer(${1:df}, cols = ${2:...}, names_to = \"${3:name}\", values_to = \"${4:value}\")",
-      "tidyr::pivot_wider(${1:df}, names_from = ${2:...}, values_from = ${3:...})",
-      "tidyr::separate(${1:df}, ${4:col}, into = c(\"${5:a}\", \"${6:b}\"))",
-      "tidyr::unite(${1:df}, ${7:new}, ${8:col1}, ${9:col2})"
-    ],
-    "description": "【必须掌握】长宽转换。理解：pivot_longer、pivot_wider、separate、unite。"
+    "body": ["tidyr::pivot_longer(mtcars, cols=c(mpg,cyl), names_to=\"name\", values_to=\"value\")"],
+    "description": "长宽转换"
   },
-  "缺失值处理": {
+  "028 缺失值处理": {
     "prefix": "na-handle",
-    "body": [
-      "tidyr::drop_na(${1:df})",
-      "tidyr::replace_na(${1:df}, list(${2:col} = ${3:0}))",
-      "tidyr::fill(${1:df}, ${2:col}, .direction = \"${3:down}\")"
-    ],
-    "description": "【必须掌握】缺失值。理解：drop_na、replace_na、fill。"
+    "body": ["tidyr::drop_na(mtcars)", "tidyr::replace_na(mtcars, list(mpg=0))"],
+    "description": "缺失值"
   },
-  "stringr": {
+  "029 stringr": {
     "prefix": "stringr",
-    "body": [
-      "stringr::str_detect(${1:x}, \"${2:pattern}\")",
-      "stringr::str_replace(${1:x}, \"${2:pattern}\", \"${3:replacement}\")",
-      "stringr::str_split(${1:x}, \"${2:,}\")",
-      "stringr::str_trim(${1:x})",
-      "stringr::str_sub(${1:x}, ${4:1}, ${5:3})"
-    ],
-    "description": "【必须掌握】字符串。理解：str_detect、str_replace、str_split、str_trim、正则基础。"
+    "body": ["stringr::str_detect(\"abc\",\"a\")", "stringr::str_replace(\"abc\",\"a\",\"x\")", "stringr::str_split(\"a,b\",\",\")"],
+    "description": "字符串"
   },
-  "lubridate": {
+  "030 lubridate": {
     "prefix": "lubridate",
-    "body": [
-      "lubridate::ymd(\"${1:2024-01-01}\")",
-      "lubridate::mdy(\"${2:01/01/2024}\")",
-      "lubridate::ymd_hms(\"${3:2024-01-01 12:00:00}\")",
-      "lubridate::floor_date(${1:date}, \"${4:month}\")",
-      "lubridate::year(${1:date})",
-      "lubridate::month(${1:date})"
-    ],
-    "description": "【必须掌握】日期时间。理解：ymd、mdy、ymd_hms、floor_date、year、month。"
+    "body": ["lubridate::ymd(\"2024-01-01\")", "lubridate::floor_date(as.Date(\"2024-01-01\"),\"month\")"],
+    "description": "日期时间"
   },
-  "forcats": {
+  "031 forcats": {
     "prefix": "forcats",
-    "body": [
-      "forcats::fct_reorder(${1:f}, ${2:x})",
-      "forcats::fct_lump(${1:f}, n = ${2:5})",
-      "forcats::fct_infreq(${1:f})",
-      "forcats::fct_relevel(${1:f}, \"${3:level}\")"
-    ],
-    "description": "【必须掌握】因子操作。理解：fct_reorder、fct_lump、fct_infreq、fct_relevel。"
+    "body": ["f <- factor(c(\"a\",\"b\",\"a\"))", "forcats::fct_relevel(f, \"b\")", "forcats::fct_infreq(f)"],
+    "description": "因子操作"
   },
-  "janitor": {
+  "032 janitor": {
     "prefix": "janitor",
-    "body": [
-      "janitor::clean_names(${1:df})",
-      "janitor::tabyl(${1:df}, ${2:col})",
-      "janitor::remove_empty(${1:df})"
-    ],
-    "description": "【实战必须】数据清洗辅助。理解：clean_names、tabyl、remove_empty。"
+    "body": ["janitor::clean_names(mtcars)", "janitor::tabyl(mtcars, cyl)"],
+    "description": "数据清洗辅助"
   },
-  "if 分支": {
+  "033 if 分支": {
     "prefix": "if",
-    "body": [
-      "if (${1:条件}) {",
-      "  ${2:...}",
-      "} else {",
-      "  ${3:...}",
-      "}"
-    ],
-    "description": "【必须掌握】条件分支。理解：if/else。"
+    "body": ["if (TRUE) { 1 } else { 2 }"],
+    "description": "条件分支"
   },
-  "case_when": {
+  "034 case_when": {
     "prefix": "case",
-    "body": [
-      "dplyr::case_when(",
-      "  ${1:条件1} ~ ${2:值1},",
-      "  ${3:条件2} ~ ${4:值2},",
-      "  TRUE ~ ${5:默认值}",
-      ")"
-    ],
-    "description": "【必须掌握】多条件分支。理解：case_when、ifelse。"
+    "body": ["dplyr::case_when(mtcars$mpg>20 ~ \"high\", TRUE ~ \"low\")"],
+    "description": "多条件分支"
   },
-  "fo循环": {
+  "035 fo循环": {
     "prefix": "for",
-    "body": [
-      "fo(${1:i} in ${2:seq_along(${3:x})}) {",
-      "  ${4:...}",
-      "}"
-    ],
-    "description": "【必须掌握】循环。理解：for、while、break、next。"
+    "body": ["for (i in 1:3) { print(i) }"],
+    "description": "循环"
   },
-  "自定义函数": {
+  "036 自定义函数": {
     "prefix": "function",
-    "body": [
-      "${1:my_fun} <- function(${2:x}, ${3:y = ${4:默认值}}) {",
-      "  ${5:...}",
-      "  return(${6:结果})",
-      "}"
-    ],
-    "description": "【必须掌握】函数。理解：function、参数、默认值、...、返回值、作用域。"
+    "body": ["my_fun <- function(x, y=1) { x + y }", "my_fun(1,2)"],
+    "description": "函数"
   },
-  "错误处理": {
+  "037 错误处理": {
     "prefix": "trycatch",
-    "body": [
-      "tryCatch(",
-      "  {",
-      "    ${1:...}",
-      "  },",
-      "  erro= function(e) {",
-      "    message(\"Error: \", e$message)",
-      "    NULL",
-      "  }",
-      ")"
-    ],
-    "description": "【必须掌握】错误处理。理解：tryCatch、stop、warning、message。"
+    "body": ["tryCatch(stop(\"error\"), error=function(e) NULL)"],
+    "description": "错误处理"
   },
-  "apply 族": {
+  "038 apply 族": {
     "prefix": "apply",
-    "body": [
-      "apply(${1:mat}, ${2:1}, ${3:mean}, na.rm = TRUE)",
-      "lapply(${1:lst}, ${2:function(x) ${3:...}})",
-      "vapply(${1:lst}, ${2:function(x) ${3:...}}, ${4:numeric(1)})",
-      "tapply(${1:x}, ${2:group}, ${3:mean}, na.rm = TRUE)"
-    ],
-    "description": "【必须掌握】apply 族。理解：apply、lapply、vapply、tapply、mapply。"
+    "body": ["apply(matrix(1:9,3), 1, mean)", "lapply(1:3, function(x) x+1)"],
+    "description": "apply 族"
   },
-  "purrmap": {
+  "039 purrmap": {
     "prefix": "map",
-    "body": [
-      "purrr::map(${1:lst}, ${2:~ ${3:...}})",
-      "purrr::map_dbl(${1:lst}, ${2:~ mean(.x)})",
-      "purrr::map_dfr(${1:lst}, ${2:~ ${3:...}})",
-      "purrr::map2(${1:x}, ${2:y}, ${3:~ .x + .y})",
-      "purrr::pmap(${1:list}, ${2:~ ...})"
-    ],
-    "description": "【进阶必须】purrr。理解：map、map_dbl、map_dfr、map2、pmap、匿名函数。"
+    "body": ["purrr::map(1:3, ~ .x+1)", "purrr::map_dbl(1:3, ~ mean(.x))"],
+    "description": "purrr"
   },
-  "purr安全函数": {
+  "040 purr安全函数": {
     "prefix": "safely",
-    "body": [
-      "purrr::safely(${1:fun})(${2:...})",
-      "purrr::possibly(${1:fun}, otherwise = ${3:NULL})(${2:...})",
-      "purrr::walk(${1:lst}, ${2:~ print(.x)})"
-    ],
-    "description": "【进阶必须】安全函数。理解：safely、possibly、quietly、walk。"
+    "body": ["purrr::safely(mean)(1:10)", "purrr::possibly(mean, otherwise=NULL)(1:10)"],
+    "description": "安全函数"
   },
-  "ggplot 基础": {
+  "041 ggplot 基础": {
     "prefix": "ggplot",
-    "body": [
-      "ggplot2::ggplot(${1:df}, ggplot2::aes(x = ${2:x}, y = ${3:y})) +",
-      "  ggplot2::geom_point()"
-    ],
-    "description": "【必须掌握】ggplot2 图层语法。理解：ggplot、aes、geom_*。"
+    "body": ["ggplot2::ggplot(mtcars, ggplot2::aes(mpg, hp)) + ggplot2::geom_point()"],
+    "description": "ggplot2 图层语法"
   },
-  "ggplot 常用几何": {
+  "042 ggplot 常用几何": {
     "prefix": "geom",
-    "body": [
-      "ggplot2::geom_point()",
-      "ggplot2::geom_line()",
-      "ggplot2::geom_col()",
-      "ggplot2::geom_boxplot()",
-      "ggplot2::geom_histogram()",
-      "ggplot2::geom_density()"
-    ],
-    "description": "【必须掌握】常用图形。理解：散点、折线、柱状、箱线、直方、密度。"
+    "body": ["ggplot2::geom_point()", "ggplot2::geom_line()", "ggplot2::geom_col()"],
+    "description": "常用图形"
   },
-  "ggplot 分面": {
+  "043 ggplot 分面": {
     "prefix": "facet",
-    "body": [
-      "ggplot2::facet_wrap(~ ${1:变量})",
-      "ggplot2::facet_grid(${2:行} ~ ${3:列})"
-    ],
-    "description": "【必须掌握】分面。理解：facet_wrap、facet_grid。"
+    "body": ["ggplot2::facet_wrap(~ cyl)", "ggplot2::facet_grid(cyl ~ am)"],
+    "description": "分面"
   },
-  "ggplot 标度与主题": {
+  "044 ggplot 标度与主题": {
     "prefix": "scale",
-    "body": [
-      "ggplot2::scale_fill_manual(values = c(\"${1:red}\", \"${2:blue}\"))",
-      "ggplot2::scale_color_brewer(palette = \"${3:Set1}\")",
-      "ggplot2::labs(title = \"${4:标题}\", x = \"${5:x}\", y = \"${6:y}\")",
-      "ggplot2::theme_minimal()"
-    ],
-    "description": "【必须掌握】标度、标签、主题。理解：scale_*、labs、theme_*。"
+    "body": ["ggplot2::scale_fill_manual(values=c(\"red\",\"blue\"))", "ggplot2::labs(title=\"标题\")", "ggplot2::theme_minimal()"],
+    "description": "标度、标签、主题"
   },
-  "ggsave": {
+  "045 ggsave": {
     "prefix": "ggsave",
-    "body": [
-      "ggplot2::ggsave(\"${1:plot.png}\", width = ${2:8}, height = ${3:6}, dpi = ${4:300})"
-    ],
-    "description": "【必须掌握】图形导出。理解：ggsave、尺寸、分辨率、格式。"
+    "body": ["p <- ggplot2::ggplot(mtcars, ggplot2::aes(mpg,hp)) + ggplot2::geom_point()", "ggplot2::ggsave(tempfile(fileext=\".png\"), plot=p)"],
+    "description": "图形导出"
   },
-  "描述统计": {
+  "046 描述统计": {
     "prefix": "desc",
-    "body": [
-      "summary(${1:df})",
-      "mean(${1:x}, na.rm = TRUE)",
-      "median(${1:x}, na.rm = TRUE)",
-      "sd(${1:x}, na.rm = TRUE)",
-      "quantile(${1:x}, na.rm = TRUE)",
-      "table(${1:df}$${2:col})"
-    ],
-    "description": "【必须掌握】描述统计。理解：summary、mean、median、sd、quantile、table。"
+    "body": ["summary(mtcars)", "mean(mtcars$mpg)", "sd(mtcars$mpg)", "table(mtcars$cyl)"],
+    "description": "描述统计"
   },
-  "假设检验": {
+  "047 假设检验": {
     "prefix": "test",
-    "body": [
-      "t.test(${1:y} ~ ${2:group}, data = ${3:df})",
-      "chisq.test(${1:table})",
-      "fisher.test(${1:table})",
-      "wilcox.test(${1:y} ~ ${2:group}, data = ${3:df})",
-      "cor.test(${1:x}, ${2:y})"
-    ],
-    "description": "【必须掌握】假设检验。理解：t.test、chisq.test、fisher.test、wilcox.test、cor.test。"
+    "body": ["t.test(mpg ~ am, data=mtcars)", "cor.test(mtcars$mpg, mtcars$hp)"],
+    "description": "假设检验"
   },
-  "线性回归": {
+  "048 线性回归": {
     "prefix": "lm",
-    "body": [
-      "${1:fit} <- lm(${2:y} ~ ${3:x1} + ${4:x2}, data = ${5:df})",
-      "summary(${1:fit})",
-      "coef(${1:fit})",
-      "confint(${1:fit})"
-    ],
-    "description": "【必须掌握】线性回归。理解：lm、公式、交互、因子、summary、coef、confint。"
+    "body": ["fit <- lm(mpg ~ cyl + hp, data=mtcars)", "summary(fit)", "coef(fit)"],
+    "description": "线性回归"
   },
-  "广义线性模型": {
+  "049 广义线性模型": {
     "prefix": "glm",
-    "body": [
-      "${1:fit} <- glm(${2:y} ~ ${3:x}, data = ${4:df}, family = ${5:binomial})",
-      "summary(${1:fit})",
-      "predict(${1:fit}, newdata = ${6:newdata}, type = \"${7:response}\")"
-    ],
-    "description": "【必须掌握】GLM。理解：glm、family、predict、响应尺度。"
+    "body": ["fit <- glm(am ~ mpg + hp, data=mtcars, family=binomial)", "summary(fit)"],
+    "description": "GLM"
   },
-  "方差分析": {
+  "050 方差分析": {
     "prefix": "aov",
-    "body": [
-      "${1:fit} <- aov(${2:y} ~ ${3:group}, data = ${4:df})",
-      "anova(${1:fit})"
-    ],
-    "description": "【必须掌握】方差分析。理解：aov、anova。"
+    "body": ["fit <- aov(mpg ~ factor(cyl), data=mtcars)", "anova(fit)"],
+    "description": "方差分析"
   },
-  "模型诊断": {
+  "051 模型诊断": {
     "prefix": "lm-diag",
-    "body": [
-      "plot(${1:fit})",
-      "residuals(${1:fit})",
-      "fitted(${1:fit})",
-      "car::vif(${1:fit})"
-    ],
-    "description": "【必须掌握】模型诊断。理解：残差、QQ、异常值、共线性。"
+    "body": ["plot(fit)", "residuals(fit)", "fitted(fit)"],
+    "description": "模型诊断"
   },
-  "broom 整理模型": {
+  "052 broom 整理模型": {
     "prefix": "broom",
-    "body": [
-      "broom::tidy(${1:fit})",
-      "broom::glance(${1:fit})",
-      "broom::augment(${1:fit})"
-    ],
-    "description": "【必须掌握】模型结果整理。理解：tidy、glance、augment。"
+    "body": ["broom::tidy(fit)", "broom::glance(fit)"],
+    "description": "模型结果整理"
   },
-  "Quarto/Rmd": {
+  "053 Quarto/Rmd": {
     "prefix": "quarto",
-    "body": [
-      "---",
-      "title: \"${1:标题}\"",
-      "format: html",
-      "---",
-      "",
-      "```{r}",
-      "${2:...}",
-      "```"
-    ],
-    "description": "【必须掌握】可重复报告。理解：YAML、代码块、行内代码、多格式输出。"
+    "body": ["# ---", "# title: \"标题\"", "# format: html", "# ---"],
+    "description": "可重复报告"
   },
-  "knit选项": {
+  "054 knit选项": {
     "prefix": "knitr",
-    "body": [
-      "```{r, echo=${1:FALSE}, eval=${2:TRUE}, warning=${3:FALSE}, message=${4:FALSE}}",
-      "${5:...}",
-      "```"
-    ],
-    "description": "【必须掌握】knit选项。理解：echo、eval、warning、message、fig.*。"
+    "body": ["# ```{r, echo=FALSE}", "# 1+1", "# ```"],
+    "description": "knit选项"
   },
-  "表格输出": {
+  "055 表格输出": {
     "prefix": "kable",
-    "body": [
-      "knitr::kable(${1:df}, caption = \"${2:表1}\")",
-      "gt::gt(${1:df})"
-    ],
-    "description": "【必须掌握】表格。理解：kable、gt、flextable。"
+    "body": ["knitr::kable(head(mtcars))", "gt::gt(head(mtcars))"],
+    "description": "表格"
   },
-  "参数化报告": {
+  "056 参数化报告": {
     "prefix": "params",
-    "body": [
-      "params:",
-      "  ${1:data}: \"${2:file.csv}\""
-    ],
-    "description": "【实战必须】参数化报告。理解：params、一键换数据生成报告。"
+    "body": ["# params:", "#   data: \"file.csv\""],
+    "description": "参数化报告"
   },
-  "环境与作用域": {
+  "057 环境与作用域": {
     "prefix": "env",
-    "body": [
-      "globalenv()",
-      "baseenv()",
-      "emptyenv()",
-      "new.env()",
-      "parent.env(${1:env})"
-    ],
-    "description": "【进阶必须】环境。理解：globalenv、baseenv、new.env、parent.env、词法作用域。"
+    "body": ["globalenv()", "new.env()"],
+    "description": "环境"
   },
-  "闭包": {
+  "058 闭包": {
     "prefix": "closure",
-    "body": [
-      "${1:make_counter} <- function() {",
-      "  ${2:i} <- 0",
-      "  function() {",
-      "    ${2:i} <<- ${2:i} + 1",
-      "    ${2:i}",
-      "  }",
-      "}"
-    ],
-    "description": "【进阶必须】闭包。理解：函数工厂、<<-、词法作用域。"
+    "body": ["make_counter <- function() { i <- 0; function() { i <<- i+1; i } }", "counter <- make_counter(); counter()"],
+    "description": "闭包"
   },
-  "表达式与 eval": {
+  "059 表达式与 eval": {
     "prefix": "eval",
-    "body": [
-      "exp<- quote(${1:x + y})",
-      "eval(expr, envi= list(${1:x} = ${2:1}, ${1:y} = ${3:2}))"
-    ],
-    "description": "【进阶必须】元编程。理解：quote、expression、eval、substitute、parse。"
+    "body": ["expr <- quote(x + y)", "eval(expr, envir=list(x=1,y=2))"],
+    "description": "元编程"
   },
-  "tidy eval": {
+  "060 tidy eval": {
     "prefix": "tidyeval",
-    "body": [
-      "${1:my_summary} <- function(data, var) {",
-      "  data |>",
-      "    dplyr::summarise(mean = mean({{ va}}, na.rm = TRUE))",
-      "}"
-    ],
-    "description": "【进阶必须】tidy eval。理解：{{ }}、enquo、!!、.data、.env。"
+    "body": ["my_summary <- function(data, var) { data |> dplyr::summarise(mean=mean({{var}})) }", "my_summary(mtcars, mpg)"],
+    "description": "tidy eval"
   },
-  "S3 泛型": {
+  "061 S3 泛型": {
     "prefix": "s3",
-    "body": [
-      "${1:my_generic} <- function(x, ...) {",
-      "  UseMethod(\"${1:my_generic}\")",
-      "}",
-      "",
-      "${1:my_generic}.${2:class} <- function(x, ...) {",
-      "  ${3:...}",
-      "}"
-    ],
-    "description": "【进阶必须】S3。理解：UseMethod、泛型、方法命名、NextMethod。"
+    "body": ["my_generic <- function(x, ...) UseMethod(\"my_generic\")", "my_generic.default <- function(x, ...) x", "my_generic(1)"],
+    "description": "S3"
   },
-  "S4": {
+  "062 S4": {
     "prefix": "s4",
-    "body": [
-      "setClass(\"${1:Person}\", slots = list(name = \"character\", age = \"numeric\"))",
-      "setGeneric(\"${2:greet}\", function(object) standardGeneric(\"${2:greet}\"))",
-      "setMethod(\"${2:greet}\", \"Person\", function(object) ${3:...})"
-    ],
-    "description": "【按需】S4。理解：setClass、setGeneric、setMethod、slot、@。"
+    "body": ["setClass(\"Person\", slots=list(name=\"character\"))", "setGeneric(\"greet\", function(object) standardGeneric(\"greet\"))"],
+    "description": "S4"
   },
-  "R6": {
+  "063 R6": {
     "prefix": "r6",
-    "body": [
-      "${1:MyClass} <- R6::R6Class(\"${1:MyClass}\",",
-      "  public = list(",
-      "    ${2:field} = NULL,",
-      "    initialize = function(${3:...}) {",
-      "      ${4:...}",
-      "    }",
-      "  )",
-      ")"
-    ],
-    "description": "【按需】R6。理解：R6Class、公有/私有、引用语义。"
+    "body": ["MyClass <- R6::R6Class(\"MyClass\", public=list(field=NULL))", "MyClass$new()"],
+    "description": "R6"
   },
-  "调试": {
+  "064 调试": {
     "prefix": "debug",
-    "body": [
-      "traceback()",
-      "browser()",
-      "debug(${1:fun})",
-      "debugonce(${1:fun})",
-      "undebug(${1:fun})"
-    ],
-    "description": "【进阶必须】调试。理解：traceback、browser、debug、debugonce、undebug。"
+    "body": ["traceback()", "# browser()", "# debug(mean)"],
+    "description": "调试"
   },
-  "性能测量": {
+  "065 性能测量": {
     "prefix": "bench",
-    "body": [
-      "bench::mark(",
-      "  ${1:方法1} = ${2:...},",
-      "  ${3:方法2} = ${4:...}",
-      ")"
-    ],
-    "description": "【进阶必须】性能测量。理解：bench、system.time、profvis。"
+    "body": ["# bench::mark(method1=mean(1:1000), method2=sum(1:1000)/1000)"],
+    "description": "性能测量"
   },
-  "性能优化": {
+  "066 性能优化": {
     "prefix": "optim",
-    "body": [
-      "# 向量化、预分配、避免循环增长",
-      "${1:out} <- vector(\"${2:list}\", length = ${3:n})"
-    ],
-    "description": "【进阶必须】性能优化。理解：向量化、预分配、data.table、Rcpp。"
+    "body": ["out <- vector(\"list\", length=3)"],
+    "description": "性能优化"
   },
-  "包创建": {
+  "067 包创建": {
     "prefix": "pkg-create",
-    "body": [
-      "usethis::create_package(\"${1:path/to/pkg}\")"
-    ],
-    "description": "【进阶必须】包开发。理解：DESCRIPTION、NAMESPACE、R/、man/、tests/。"
+    "body": ["# usethis::create_package(\"path/to/pkg\")"],
+    "description": "包开发"
   },
-  "roxygen 文档": {
+  "068 roxygen 文档": {
     "prefix": "roxygen",
-    "body": [
-      "#' ${1:标题}",
-      "#'",
-      "#' @param ${2:x} ${3:说明}",
-      "#' @return ${4:返回值}",
-      "#' @export",
-      "#' @examples",
-      "#' ${5:示例}",
-      "${6:fun} <- function(${2:x}) {",
-      "  ${7:...}",
-      "}"
-    ],
-    "description": "【进阶必须】包文档。理解：roxygen2、@export、@param、@return、@examples。"
+    "body": ["# #' 标题", "# #' @param x 说明", "# #' @export", "# fun <- function(x) x"],
+    "description": "包文档"
   },
-  "testthat": {
+  "069 testthat": {
     "prefix": "testthat",
-    "body": [
-      "testthat::test_that(\"${1:描述}\", {",
-      "  expect_equal(${2:object}, ${3:expected})",
-      "})"
-    ],
-    "description": "【进阶必须】单元测试。理解：test_that、expect_*、边缘条件。"
+    "body": ["testthat::test_that(\"描述\", { testthat::expect_equal(1+1, 2) })"],
+    "description": "单元测试"
   },
-  "CMD check": {
+  "070 CMD check": {
     "prefix": "check",
-    "body": [
-      "devtools::check()",
-      "# 或 CMD check --as-cran"
-    ],
-    "description": "【进阶必须】包检查。理解：devtools::check、CMD check、--as-cran。"
+    "body": ["# devtools::check()"],
+    "description": "包检查"
   },
-  "DBI 数据库": {
+  "071 DBI 数据库": {
     "prefix": "dbi",
-    "body": [
-      "con <- DBI::dbConnect(RSQLite::SQLite(), \"${1:db.sqlite}\")",
-      "DBI::dbGetQuery(con, \"${2:SELECT * FROM table}\")",
-      "DBI::dbWriteTable(con, \"${3:table}\", ${4:df})",
-      "DBI::dbDisconnect(con)"
-    ],
-    "description": "【实战必须】数据库。理解：dbConnect、dbGetQuery、dbWriteTable、dbDisconnect。"
+    "body": ["con <- DBI::dbConnect(RSQLite::SQLite(), tempfile())", "DBI::dbWriteTable(con, \"mtcars\", mtcars)", "DBI::dbGetQuery(con, \"SELECT * FROM mtcars LIMIT 3\")", "DBI::dbDisconnect(con)"],
+    "description": "数据库"
   },
-  "dbplyr": {
+  "072 dbplyr": {
     "prefix": "dbplyr",
-    "body": [
-      "tbl <- dplyr::tbl(con, \"${1:table}\")",
-      "tbl |> dplyr::filter(${2:...})"
-    ],
-    "description": "【实战必须】dbplyr。理解：tbl、惰性查询、翻译为 SQL。"
+    "body": ["con <- DBI::dbConnect(RSQLite::SQLite(), tempfile())", "DBI::dbWriteTable(con, \"mtcars\", mtcars)", "dplyr::tbl(con, \"mtcars\") |> dplyr::filter(mpg>20)", "DBI::dbDisconnect(con)"],
+    "description": "dbplyr"
   },
-  "httr2 API": {
+  "073 httr2 API": {
     "prefix": "httr2",
-    "body": [
-      "httr2::request(\"${1:url}\") |>",
-      "  httr2::req_perform() |>",
-      "  httr2::resp_body_json()"
-    ],
-    "description": "【实战必须】API。理解：request、req_perform、resp_body_json、认证、分页。"
+    "body": ["# httr2::request(\"https://api.github.com\") |> httr2::req_perform()"],
+    "description": "API"
   },
-  "rvest 爬虫": {
+  "074 rvest 爬虫": {
     "prefix": "rvest",
-    "body": [
-      "rvest::read_html(\"${1:url}\") |>",
-      "  rvest::html_elements(\"${2:css}\") |>",
-      "  rvest::html_text()"
-    ],
-    "description": "【实战必须】网页抓取。理解：read_html、html_elements、html_text、html_attr。"
+    "body": ["# rvest::read_html(\"https://example.com\") |> rvest::html_elements(\"h1\") |> rvest::html_text()"],
+    "description": "网页抓取"
   },
-  "并行 future": {
+  "075 并行 future": {
     "prefix": "future",
-    "body": [
-      "future::plan(future::multisession)",
-      "furrr::future_map(${1:lst}, ${2:~ ${3:...}})"
-    ],
-    "description": "【进阶必须】并行。理解：future、plan、furrr、parallel。"
+    "body": ["future::plan(future::multisession)", "furrr::future_map(1:3, ~ .x+1)"],
+    "description": "并行"
   },
-  "tidymodels 拆分": {
+  "076 tidymodels 拆分": {
     "prefix": "tidymodels",
-    "body": [
-      "library(tidymodels)",
-      "split <- initial_split(${1:df})",
-      "train <- training(split)",
-      "test <- testing(split)"
-    ],
-    "description": "【进阶必须】tidymodels。理解：initial_split、training、testing。"
+    "body": ["split <- rsample::initial_split(mtcars)", "train <- rsample::training(split)", "test <- rsample::testing(split)"],
+    "description": "tidymodels"
   },
-  "recipes": {
+  "077 recipes": {
     "prefix": "recipes",
-    "body": [
-      "rec <- recipe(${1:y} ~ ., data = ${2:train}) |>",
-      "  step_normalize(all_numeric_predictors())"
-    ],
-    "description": "【进阶必须】特征工程。理解：recipe、step_*、预处理。"
+    "body": ["rec <- recipes::recipe(mpg ~ ., data=train) |> recipes::step_normalize(recipes::all_numeric_predictors())"],
+    "description": "特征工程"
   },
-  "parsnip": {
+  "078 parsnip": {
     "prefix": "parsnip",
-    "body": [
-      "model <- ${1:linear_reg}() |>",
-      "  set_engine(\"${2:lm}\")"
-    ],
-    "description": "【进阶必须】模型定义。理解：parsnip、set_engine、模型统一接口。"
+    "body": ["model <- parsnip::linear_reg() |> parsnip::set_engine(\"lm\")"],
+    "description": "模型定义"
   },
-  "workflow": {
+  "079 workflow": {
     "prefix": "workflow",
-    "body": [
-      "wf <- workflow() |>",
-      "  add_recipe(${1:rec}) |>",
-      "  add_model(${2:model})",
-      "fit <- fit(wf, data = ${3:train})"
-    ],
-    "description": "【进阶必须】工作流。理解：workflow、add_recipe、add_model、fit。"
+    "body": ["wf <- workflows::workflow() |> workflows::add_recipe(rec) |> workflows::add_model(model)", "fit <- workflows::fit(wf, data=train)"],
+    "description": "工作流"
   },
-  "yardstick 评估": {
+  "080 yardstick 评估": {
     "prefix": "yardstick",
-    "body": [
-      "predictions <- predict(${1:fit}, ${2:test}) |>",
-      "  bind_cols(${2:test})",
-      "rmse(predictions, truth = ${3:y}, estimate = .pred)"
-    ],
-    "description": "【进阶必须】模型评估。理解：rmse、accuracy、roc_auc、conf_mat。"
+    "body": ["predictions <- predict(fit, test) |> dplyr::bind_cols(test)", "yardstick::rmse(predictions, truth=mpg, estimate=.pred)"],
+    "description": "模型评估"
   },
-  "Shiny": {
+  "081 Shiny": {
     "prefix": "shiny",
-    "body": [
-      "library(shiny)",
-      "ui <- fluidPage(",
-      "  ${1:...}",
-      ")",
-      "serve<- function(input, output, session) {",
-      "  ${2:...}",
-      "}",
-      "shinyApp(ui, server)"
-    ],
-    "description": "【实战必须】交互应用。理解：fluidPage、server、shinyApp、reactive。"
+    "body": ["# library(shiny)", "# ui <- fluidPage(\"Hello\")", "# server <- function(input, output, session) {}", "# shinyApp(ui, server)"],
+    "description": "交互应用"
   },
-  "plumbeAPI": {
+  "082 plumbeAPI": {
     "prefix": "plumber",
-    "body": [
-      "#* @get /${1:endpoint}",
-      "function() {",
-      "  list(${2:result} = ${3:...})",
-      "}"
-    ],
-    "description": "【实战必须】API 部署。理解：plumber、@get、@post、JSON 返回。"
+    "body": ["# #* @get /endpoint", "# function() list(result=1)"],
+    "description": "API 部署"
   },
-  "vetive部署": {
+  "083 vetive部署": {
     "prefix": "vetiver",
-    "body": [
-      "vetiver::vetiver_model(${1:model}, \"${2:model_name}\")"
-    ],
-    "description": "【按需】模型部署。理解：vetiver_model、API、版本管理。"
+    "body": ["# vetiver::vetiver_model(fit, \"model_name\")"],
+    "description": "模型部署"
   },
-  "数据清洗流程": {
+  "084 数据清洗流程": {
     "prefix": "clean-pipeline",
-    "body": [
-      "${1:raw} |>",
-      "  janitor::clean_names() |>",
-      "  dplyr::filter(${2:...}) |>",
-      "  dplyr::mutate(${3:...}) |>",
-      "  tidyr::drop_na()"
-    ],
-    "description": "【实战必须】清洗流程。理解：导入 → 清洗 → 校验 → 分析表。"
+    "body": ["mtcars |> janitor::clean_names() |> dplyr::filter(mpg>20) |> tidyr::drop_na()"],
+    "description": "清洗流程"
   },
-  "建模流程": {
+  "085 建模流程": {
     "prefix": "model-pipeline",
-    "body": [
-      "${1:split} <- rsample::initial_split(${2:df})",
-      "${3:train} <- rsample::training(${1:split})",
-      "${4:test} <- rsample::testing(${1:split})"
-    ],
-    "description": "【实战必须】建模流程。理解：划分、预处理、训练、评估、预测。"
+    "body": ["split <- rsample::initial_split(mtcars)", "train <- rsample::training(split)", "test <- rsample::testing(split)"],
+    "description": "建模流程"
   },
-  "报告流程": {
+  "086 报告流程": {
     "prefix": "report",
-    "body": [
-      "# Quarto 文档",
-      "# 参数化报告",
-      "# 一键渲染"
-    ],
-    "description": "【实战必须】报告流程。理解：数据换新 → 一键生成 HTML/PDF/Word。"
+    "body": ["# Quarto 文档", "# 参数化报告", "# 一键渲染"],
+    "description": "报告流程"
   },
-  "部署流程": {
+  "087 部署流程": {
     "prefix": "deploy",
-    "body": [
-      "# Shiny / plumbe/ vetiver"
-    ],
-    "description": "【实战必须】部署流程。理解：让别人不装 也能用你的结果。"
+    "body": ["# Shiny / plumber / vetiver"],
+    "description": "部署流程"
   },
-  "dplyr filter 筛选行": {
+  "088 dplyr filter 筛选行": {
     "prefix": "dplyfilter",
-    "body": [
-      "# filter() 按条件筛选行",
-      "filter(df, condition1, condition2)",
-      "# 多个条件逗号分隔，相当于 &",
-      "# 示例：filter(mtcars, cyl == 4, hp > 100)"
-    ],
-    "description": "dplyr::filter 筛选行。"
+    "body": ["dplyr::filter(mtcars, cyl==4, hp>100)"],
+    "description": "筛选行"
   },
-  "dplyr select 选择列": {
+  "089 dplyr select 选择列": {
     "prefix": "dplyselect",
-    "body": [
-      "# select() 选择列",
-      "select(df, col1, col2)",
-      "select(df, starts_with(\"x\"))",
-      "select(df, -col1)",
-      "# 示例：select(mtcars, mpg, cyl, hp)"
-    ],
-    "description": "dplyr::select 选择列，支持辅助函数。"
+    "body": ["dplyr::select(mtcars, mpg, cyl, hp)", "dplyr::select(mtcars, dplyr::starts_with(\"m\"))"],
+    "description": "选择列"
   },
-  "dplyr mutate 新增列": {
+  "090 dplyr mutate 新增列": {
     "prefix": "dplymutate",
-    "body": [
-      "# mutate() 新增或修改列",
-      "mutate(df, new_col = expression)",
-      "# 示例：mutate(mtcars, hp_per_cyl = hp / cyl)"
-    ],
-    "description": "dplyr::mutate 创建新列。"
+    "body": ["dplyr::mutate(mtcars, hp_per_cyl=hp/cyl)"],
+    "description": "新增列"
   },
-  "dplyr arrange 排序": {
+  "091 dplyr arrange 排序": {
     "prefix": "dplyarrange",
-    "body": [
-      "# arrange() 排序",
-      "arrange(df, col1, desc(col2))",
-      "# 示例：arrange(mtcars, mpg, desc(hp))"
-    ],
-    "description": "dplyr::arrange 排序行。"
+    "body": ["dplyr::arrange(mtcars, mpg, dplyr::desc(hp))"],
+    "description": "排序"
   },
-  "dplyr summarise 汇总": {
+  "092 dplyr summarise 汇总": {
     "prefix": "dplysummarise",
-    "body": [
-      "# summarise() 汇总",
-      "summarise(df, mean_x = mean(x, na.rm = TRUE))",
-      "# 常与 group_by() 连用",
-      "# 示例：df |> group_by(g) |> summarise(mean_x = mean(x))"
-    ],
-    "description": "dplyr::summarise 汇总统计。"
+    "body": ["dplyr::summarise(mtcars, mean_mpg=mean(mpg))"],
+    "description": "汇总"
   },
-  "dplyr group_by 分组": {
+  "093 dplyr group_by 分组": {
     "prefix": "dplygroup_by",
-    "body": [
-      "# group_by() 分组",
-      "df |> group_by(group_col) |> summarise(...)",
-      "# 示例：mtcars |> group_by(cyl) |> summarise(mean_mpg = mean(mpg))"
-    ],
-    "description": "dplyr::group_by 分组。"
+    "body": ["mtcars |> dplyr::group_by(cyl) |> dplyr::summarise(mean_mpg=mean(mpg))"],
+    "description": "分组"
   },
-  "dplyr ungroup 取消分组": {
+  "094 dplyr ungroup 取消分组": {
     "prefix": "dplyungroup",
-    "body": [
-      "# ungroup() 取消分组",
-      "df |> ungroup()"
-    ],
-    "description": "dplyr::ungroup 取消分组。"
+    "body": ["mtcars |> dplyr::group_by(cyl) |> dplyr::ungroup()"],
+    "description": "取消分组"
   },
-  "dplyr count 计数": {
+  "095 dplyr count 计数": {
     "prefix": "dplycount",
-    "body": [
-      "# count() 计数",
-      "count(df, col)",
-      "count(df, col, sort = TRUE)",
-      "# 示例：count(mtcars, cyl)"
-    ],
-    "description": "dplyr::count 计数。"
+    "body": ["dplyr::count(mtcars, cyl)", "dplyr::count(mtcars, cyl, sort=TRUE)"],
+    "description": "计数"
   },
-  "dplyr distinct 去重": {
+  "096 dplyr distinct 去重": {
     "prefix": "dplydistinct",
-    "body": [
-      "# distinct() 去重",
-      "distinct(df)",
-      "distinct(df, col1, .keep_all = TRUE)"
-    ],
-    "description": "dplyr::distinct 去除重复行。"
+    "body": ["dplyr::distinct(mtcars)", "dplyr::distinct(mtcars, cyl, .keep_all=TRUE)"],
+    "description": "去重"
   },
-  "dplyr rename 重命名列": {
+  "097 dplyr rename 重命名列": {
     "prefix": "dplyrename",
-    "body": [
-      "# rename() 重命名列",
-      "rename(df, new_name = old_name)",
-      "# 示例：rename(mtcars, mpg_new = mpg)"
-    ],
-    "description": "dplyr::rename 重命名列。"
+    "body": ["dplyr::rename(mtcars, mpg_new=mpg)"],
+    "description": "重命名列"
   },
-  "dplyr relocate 调整列顺序": {
+  "098 dplyr relocate 调整列顺序": {
     "prefix": "dplyrelocate",
-    "body": [
-      "# relocate() 调整列顺序",
-      "relocate(df, col, .before = other_col)",
-      "relocate(df, col, .after = other_col)"
-    ],
-    "description": "dplyr::relocate 移动列位置。"
+    "body": ["dplyr::relocate(mtcars, cyl, .before=mpg)"],
+    "description": "调整列顺序"
   },
-  "dplyr pull 提取列": {
+  "099 dplyr pull 提取列": {
     "prefix": "dplypull",
-    "body": [
-      "# pull() 提取列向量",
-      "pull(df, col)",
-      "# 示例：mtcars |> pull(mpg)"
-    ],
-    "description": "dplyr::pull 提取列。"
+    "body": ["dplyr::pull(mtcars, mpg)"],
+    "description": "提取列"
   },
-  "dplyr slice 按行选取": {
+  "100 dplyr slice 按行选取": {
     "prefix": "dplyslice",
-    "body": [
-      "# slice() 按行号选取",
-      "slice(df, 1:5)",
-      "slice_head(df, n = 5)",
-      "slice_max(df, order_by = col, n = 5)"
-    ],
-    "description": "dplyr::slice 按行选取。"
+    "body": ["dplyr::slice(mtcars, 1:5)", "dplyr::slice_max(mtcars, order_by=mpg, n=5)"],
+    "description": "按行选取"
   },
-  "dplyr across 批量操作列": {
+  "101 dplyr across 批量操作列": {
     "prefix": "dplyacross",
-    "body": [
-      "# across() 批量操作列",
-      "df |> summarise(across(where(is.numeric), mean, na.rm = TRUE))",
-      "df |> mutate(across(where(is.numeric), ~ .x * 100))"
-    ],
-    "description": "dplyr::across 批量操作。"
+    "body": ["mtcars |> dplyr::summarise(dplyr::across(dplyr::where(is.numeric), mean))"],
+    "description": "批量操作"
   },
-  "dplyr if_any 任一条件": {
+  "102 dplyr if_any 任一条件": {
     "prefix": "dplyif_any",
-    "body": [
-      "# if_any() 任一条件为真",
-      "filter(df, if_any(c(col1, col2), ~ .x > 0))"
-    ],
-    "description": "dplyr::if_any 任一满足。"
+    "body": ["dplyr::filter(mtcars, dplyr::if_any(c(mpg,hp), ~ .x>0))"],
+    "description": "任一条件"
   },
-  "dplyr if_all 所有条件": {
+  "103 dplyr if_all 所有条件": {
     "prefix": "dplyif_all",
-    "body": [
-      "# if_all() 所有条件为真",
-      "filter(df, if_all(c(col1, col2), ~ .x > 0))"
-    ],
-    "description": "dplyr::if_all 全部满足。"
+    "body": ["dplyr::filter(mtcars, dplyr::if_all(c(mpg,hp), ~ .x>0))"],
+    "description": "所有条件"
   },
-  "dplyr case_when 多条件分支": {
+  "104 dplyr case_when 多条件分支": {
     "prefix": "dplycase_when",
-    "body": [
-      "# case_when() 多条件分支",
-      "mutate(df, new = case_when(",
-      "  condition1 ~ value1,",
-      "  condition2 ~ value2,",
-      "  TRUE ~ default",
-      "))"
-    ],
-    "description": "dplyr::case_when 多条件赋值。"
+    "body": ["dplyr::mutate(mtcars, new=dplyr::case_when(mpg>20 ~ \"high\", TRUE ~ \"low\"))"],
+    "description": "多条件赋值"
   },
-  "dplyr coalesce 合并缺失值": {
+  "105 dplyr coalesce 合并缺失值": {
     "prefix": "dplycoalesce",
-    "body": [
-      "# coalesce() 合并缺失值",
-      "coalesce(x, y)",
-      "# 返回 x 中非 NA 值，若 NA 则取 y"
-    ],
-    "description": "dplyr::coalesce 填补缺失。"
+    "body": ["dplyr::coalesce(c(1,NA), c(2,3))"],
+    "description": "合并缺失值"
   },
-  "dplyr na_if 转NA": {
+  "106 dplyr na_if 转NA": {
     "prefix": "dplyna_if",
-    "body": [
-      "# na_if() 将特定值转为 NA",
-      "na_if(x, \"\")"
-    ],
-    "description": "dplyr::na_if 条件转 NA。"
+    "body": ["dplyr::na_if(c(\"a\", \"\"), \"\")"],
+    "description": "条件转 NA"
   },
-  "dplyr left_join 左连接": {
+  "107 dplyr left_join 左连接": {
     "prefix": "dplyleft_join",
-    "body": [
-      "# left_join() 左连接",
-      "left_join(x, y, by = \"key\")",
-      "left_join(x, y, by = c(\"key1\" = \"key2\"))"
-    ],
-    "description": "dplyr::left_join 保留左表全部行。"
+    "body": ["dplyr::left_join(mtcars, mtcars, by=\"cyl\")"],
+    "description": "左连接"
   },
-  "dplyr inner_join 内连接": {
+  "108 dplyr inner_join 内连接": {
     "prefix": "dplyinner_join",
-    "body": [
-      "# inner_join() 内连接",
-      "inner_join(x, y, by = \"key\")"
-    ],
-    "description": "dplyr::inner_join 只保留匹配行。"
+    "body": ["dplyr::inner_join(mtcars, mtcars, by=\"cyl\")"],
+    "description": "内连接"
   },
-  "dplyr right_join 右连接": {
+  "109 dplyr right_join 右连接": {
     "prefix": "dplyright_join",
-    "body": [
-      "# right_join() 右连接",
-      "right_join(x, y, by = \"key\")"
-    ],
-    "description": "dplyr::right_join 保留右表全部行。"
+    "body": ["dplyr::right_join(mtcars, mtcars, by=\"cyl\")"],
+    "description": "右连接"
   },
-  "dplyr full_join 全连接": {
+  "110 dplyr full_join 全连接": {
     "prefix": "dplyfull_join",
-    "body": [
-      "# full_join() 全连接",
-      "full_join(x, y, by = \"key\")"
-    ],
-    "description": "dplyr::full_join 保留两表全部行。"
+    "body": ["dplyr::full_join(mtcars, mtcars, by=\"cyl\")"],
+    "description": "全连接"
   },
-  "dplyr semi_join 半连接": {
+  "111 dplyr semi_join 半连接": {
     "prefix": "dplysemi_join",
-    "body": [
-      "# semi_join() 半连接",
-      "semi_join(x, y, by = \"key\")"
-    ],
-    "description": "dplyr::semi_join 保留 x 中能匹配 y 的行。"
+    "body": ["dplyr::semi_join(mtcars, mtcars, by=\"cyl\")"],
+    "description": "半连接"
   },
-  "dplyr anti_join 反连接": {
+  "112 dplyr anti_join 反连接": {
     "prefix": "dplyanti_join",
-    "body": [
-      "# anti_join() 反连接",
-      "anti_join(x, y, by = \"key\")"
-    ],
-    "description": "dplyr::anti_join 保留 x 中不能匹配 y 的行。"
+    "body": ["dplyr::anti_join(mtcars, mtcars, by=\"cyl\")"],
+    "description": "反连接"
   },
-  "dplyr bind_rows 按行合并": {
+  "113 dplyr bind_rows 按行合并": {
     "prefix": "dplybind_rows",
-    "body": [
-      "# bind_rows() 按行合并",
-      "bind_rows(df1, df2)"
-    ],
-    "description": "dplyr::bind_rows 合并数据框行。"
+    "body": ["dplyr::bind_rows(mtcars, mtcars)"],
+    "description": "按行合并"
   },
-  "dplyr bind_cols 按列合并": {
+  "114 dplyr bind_cols 按列合并": {
     "prefix": "dplybind_cols",
-    "body": [
-      "# bind_cols() 按列合并",
-      "bind_cols(df1, df2)"
-    ],
-    "description": "dplyr::bind_cols 合并数据框列。"
+    "body": ["dplyr::bind_cols(mtcars, mtcars)"],
+    "description": "按列合并"
   },
-  "tidyr pivot_longer 宽转长": {
+  "115 tidyr pivot_longer 宽转长": {
     "prefix": "tidypivot_longer",
-    "body": [
-      "# pivot_longer() 宽转长",
-      "pivot_longer(df, cols = c(col1, col2), names_to = \"name\", values_to = \"value\")",
-      "pivot_longer(df, cols = -id, names_to = \"name\", values_to = \"value\")"
-    ],
-    "description": "tidyr::pivot_longer 宽表转长表。"
+    "body": ["tidyr::pivot_longer(mtcars, cols=c(mpg,cyl), names_to=\"name\", values_to=\"value\")"],
+    "description": "宽转长"
   },
-  "tidyr pivot_wider 长转宽": {
+  "116 tidyr pivot_wider 长转宽": {
     "prefix": "tidypivot_wider",
-    "body": [
-      "# pivot_wider() 长转宽",
-      "pivot_wider(df, names_from = name, values_from = value)",
-      "pivot_wider(df, names_from = name, values_from = value, values_fill = 0)"
-    ],
-    "description": "tidyr::pivot_wider 长表转宽表。"
+    "body": ["tidyr::pivot_wider(mtcars, names_from=cyl, values_from=mpg)"],
+    "description": "长转宽"
   },
-  "tidyr separate 拆分列": {
+  "117 tidyr separate 拆分列": {
     "prefix": "tidyseparate",
-    "body": [
-      "# separate() 拆分列",
-      "separate(df, col, into = c(\"a\", \"b\"), sep = \"_\")"
-    ],
-    "description": "tidyr::separate 拆分一列为多列。"
+    "body": ["tidyr::separate(mtcars, cyl, into=c(\"a\",\"b\"), sep=\"_\")"],
+    "description": "拆分列"
   },
-  "tidyr unite 合并列": {
+  "118 tidyr unite 合并列": {
     "prefix": "tidyunite",
-    "body": [
-      "# unite() 合并列",
-      "unite(df, new_col, col1, col2, sep = \"_\")"
-    ],
-    "description": "tidyr::unite 合并多列为一列。"
+    "body": ["tidyr::unite(mtcars, new_col, mpg, cyl, sep=\"_\")"],
+    "description": "合并列"
   },
-  "tidyr drop_na 删除缺失行": {
+  "119 tidyr drop_na 删除缺失行": {
     "prefix": "tidydrop_na",
-    "body": [
-      "# drop_na() 删除缺失行",
-      "drop_na(df)",
-      "drop_na(df, col1, col2)"
-    ],
-    "description": "tidyr::drop_na 删除含 NA 的行。"
+    "body": ["tidyr::drop_na(mtcars)", "tidyr::drop_na(mtcars, mpg, cyl)"],
+    "description": "删除缺失行"
   },
-  "tidyr replace_na 替换缺失值": {
+  "120 tidyr replace_na 替换缺失值": {
     "prefix": "tidyreplace_na",
-    "body": [
-      "# replace_na() 替换缺失值",
-      "replace_na(df, list(col1 = 0, col2 = \"unknown\"))"
-    ],
-    "description": "tidyr::replace_na 替换 NA。"
+    "body": ["tidyr::replace_na(mtcars, list(mpg=0, cyl=0))"],
+    "description": "替换缺失值"
   },
-  "tidyr fill 填充缺失值": {
+  "121 tidyr fill 填充缺失值": {
     "prefix": "tidyfill",
-    "body": [
-      "# fill() 填充缺失值",
-      "fill(df, col, .direction = \"down\")",
-      "fill(df, col, .direction = \"up\")"
-    ],
-    "description": "tidyr::fill 用相邻值填充 NA。"
+    "body": ["tidyr::fill(mtcars, mpg, .direction=\"down\")"],
+    "description": "填充缺失值"
   },
-  "tidyr nest 嵌套数据框": {
+  "122 tidyr nest 嵌套数据框": {
     "prefix": "tidynest",
-    "body": [
-      "# nest() 嵌套数据框",
-      "nest(df, data = c(col1, col2))"
-    ],
-    "description": "tidyr::nest 创建嵌套数据框。"
+    "body": ["tidyr::nest(mtcars, data=c(mpg, cyl))"],
+    "description": "嵌套数据框"
   },
-  "tidyr unnest 展开嵌套": {
+  "123 tidyr unnest 展开嵌套": {
     "prefix": "tidyunnest",
-    "body": [
-      "# unnest() 展开嵌套列",
-      "unnest(df, data)",
-      "unnest_wider(df, col)",
-      "unnest_longer(df, col)"
-    ],
-    "description": "tidyr::unnest 展开嵌套。"
+    "body": ["nested <- tidyr::nest(mtcars, data=c(mpg, cyl))", "tidyr::unnest(nested, data)"],
+    "description": "展开嵌套"
   },
-  "readr read_csv 读取CSV": {
+  "124 readr read_csv 读取CSV": {
     "prefix": "readread_csv",
-    "body": [
-      "# read_csv() 读取 CSV",
-      "read_csv(\"file.csv\")",
-      "read_csv(\"file.csv\", col_types = cols(col1 = col_double()))"
-    ],
-    "description": "readr::read_csv 读取 CSV。"
+    "body": ["tf <- tempfile(fileext=\".csv\")", "readr::write_csv(mtcars, tf)", "readr::read_csv(tf)"],
+    "description": "读取 CSV"
   },
-  "readr read_tsv 读取TSV": {
+  "125 readr read_tsv 读取TSV": {
     "prefix": "readread_tsv",
-    "body": [
-      "# read_tsv() 读取 TSV",
-      "read_tsv(\"file.tsv\")"
-    ],
-    "description": "readr::read_tsv 读取 TSV。"
+    "body": ["tf <- tempfile(fileext=\".tsv\")", "readr::write_tsv(mtcars, tf)", "readr::read_tsv(tf)"],
+    "description": "读取 TSV"
   },
-  "readr read_delim 读取分隔文件": {
+  "126 readr read_delim 读取分隔文件": {
     "prefix": "readread_delim",
-    "body": [
-      "# read_delim() 读取分隔文件",
-      "read_delim(\"file.txt\", delim = \"|\")"
-    ],
-    "description": "readr::read_delim 通用分隔读取。"
+    "body": ["tf <- tempfile(fileext=\".txt\")", "writeLines(\"a|b\\n1|2\", tf)", "readr::read_delim(tf, delim=\"|\")"],
+    "description": "通用分隔读取"
   },
-  "readr write_csv 写出CSV": {
+  "127 readr write_csv 写出CSV": {
     "prefix": "readwrite_csv",
-    "body": [
-      "# write_csv() 写出 CSV",
-      "write_csv(df, \"out.csv\")"
-    ],
-    "description": "readr::write_csv 写出 CSV。"
+    "body": ["tf <- tempfile(fileext=\".csv\")", "readr::write_csv(mtcars, tf)"],
+    "description": "写出 CSV"
   },
-  "readr write_tsv 写出TSV": {
+  "128 readr write_tsv 写出TSV": {
     "prefix": "readwrite_tsv",
-    "body": [
-      "# write_tsv() 写出 TSV",
-      "write_tsv(df, \"out.tsv\")"
-    ],
-    "description": "readr::write_tsv 写出 TSV。"
+    "body": ["tf <- tempfile(fileext=\".tsv\")", "readr::write_tsv(mtcars, tf)"],
+    "description": "写出 TSV"
   },
-  "readr cols 指定列类型": {
+  "129 readr cols 指定列类型": {
     "prefix": "readcols",
-    "body": [
-      "# cols() 指定列类型",
-      "cols(col1 = col_double(), col2 = col_character(), col3 = col_date())"
-    ],
-    "description": "readr::cols 指定列类型。"
+    "body": ["readr::cols(mpg=readr::col_double(), cyl=readr::col_double())"],
+    "description": "指定列类型"
   },
-  "readr problems 查看解析问题": {
+  "130 readr problems 查看解析问题": {
     "prefix": "readproblems",
-    "body": [
-      "# problems() 查看解析问题",
-      "problems(df)"
-    ],
-    "description": "readr::problems 查看读取问题。"
+    "body": ["tf <- tempfile(fileext=\".csv\")", "readr::write_csv(mtcars, tf)", "readr::read_csv(tf) |> readr::problems()"],
+    "description": "查看解析问题"
   },
-  "tibble tibble 创建": {
+  "131 tibble tibble 创建": {
     "prefix": "tibble-tibble",
-    "body": [
-      "# tibble() 创建 tibble",
-      "tibble(col1 = ..., col2 = ...)"
-    ],
-    "description": "tibble::tibble 创建现代数据框。"
+    "body": ["tibble::tibble(col1=1:3, col2=letters[1:3])"],
+    "description": "创建 tibble"
   },
-  "tibble as_tibble 转换": {
+  "132 tibble as_tibble 转换": {
     "prefix": "tibble-as_tibble",
-    "body": [
-      "# as_tibble() 转换为 tibble",
-      "as_tibble(df)"
-    ],
-    "description": "tibble::as_tibble 转换。"
+    "body": ["tibble::as_tibble(mtcars)"],
+    "description": "转换"
   },
-  "tibble tribble 行式创建": {
+  "133 tibble tribble 行式创建": {
     "prefix": "tibble-tribble",
-    "body": [
-      "# tribble() 按行创建 tibble",
-      "tribble(",
-      "  ~col1, ~col2,",
-      "  \"a\", 1,",
-      "  \"b\", 2",
-      ")"
-    ],
-    "description": "tibble::tribble 行式创建。"
+    "body": ["tibble::tribble(~col1, ~col2, \"a\", 1, \"b\", 2)"],
+    "description": "行式创建"
   },
-  "tibble glimpse 查看数据": {
+  "134 tibble glimpse 查看数据": {
     "prefix": "tibble-glimpse",
-    "body": [
-      "# glimpse() 查看数据结构",
-      "glimpse(df)"
-    ],
-    "description": "tibble::glimpse 查看数据。"
+    "body": ["tibble::glimpse(mtcars)"],
+    "description": "查看数据"
   },
-  "tibble rownames_to_column 行名转列": {
+  "135 tibble rownames_to_column 行名转列": {
     "prefix": "tibble-rownames_to_column",
-    "body": [
-      "# rownames_to_column() 行名转列",
-      "rownames_to_column(df, var = \"row\")"
-    ],
-    "description": "tibble::rownames_to_column 行名转列。"
+    "body": ["tibble::rownames_to_column(mtcars, var=\"row\")"],
+    "description": "行名转列"
   },
-  "tibble column_to_rownames 列转行名": {
+  "136 tibble column_to_rownames 列转行名": {
     "prefix": "tibble-column_to_rownames",
-    "body": [
-      "# column_to_rownames() 列转行名",
-      "column_to_rownames(df, var = \"row\")"
-    ],
-    "description": "tibble::column_to_rownames 列转行名。"
+    "body": ["tibble::column_to_rownames(mtcars, var=\"mpg\")"],
+    "description": "列转行名"
   },
-  "stringr str_detect 检测模式": {
+  "137 stringr str_detect 检测模式": {
     "prefix": "stringstr_detect",
-    "body": [
-      "# str_detect() 检测模式",
-      "str_detect(x, \"pattern\")",
-      "str_detect(x, regex(\"pattern\", ignore_case = TRUE))"
-    ],
-    "description": "stringr::str_detect 检测字符串。"
+    "body": ["stringr::str_detect(\"abc\", \"a\")", "stringr::str_detect(\"abc\", stringr::regex(\"A\", ignore_case=TRUE))"],
+    "description": "检测字符串"
   },
-  "stringr str_replace 替换首个": {
+  "138 stringr str_replace 替换首个": {
     "prefix": "stringstr_replace",
-    "body": [
-      "# str_replace() 替换首个匹配",
-      "str_replace(x, \"pattern\", \"replacement\")"
-    ],
-    "description": "stringr::str_replace 替换首个。"
+    "body": ["stringr::str_replace(\"abc\", \"a\", \"x\")"],
+    "description": "替换首个"
   },
-  "stringr str_replace_all 替换所有": {
+  "139 stringr str_replace_all 替换所有": {
     "prefix": "stringstr_replace_all",
-    "body": [
-      "# str_replace_all() 替换所有匹配",
-      "str_replace_all(x, \"pattern\", \"replacement\")"
-    ],
-    "description": "stringr::str_replace_all 替换所有。"
+    "body": ["stringr::str_replace_all(\"abcabc\", \"a\", \"x\")"],
+    "description": "替换所有"
   },
-  "stringr str_split 拆分字符串": {
+  "140 stringr str_split 拆分字符串": {
     "prefix": "stringstr_split",
-    "body": [
-      "# str_split() 拆分字符串",
-      "str_split(x, \",\")",
-      "str_split_fixed(x, \",\", n = 2)"
-    ],
-    "description": "stringr::str_split 拆分。"
+    "body": ["stringr::str_split(\"a,b\", \",\")", "stringr::str_split_fixed(\"a,b\", \",\", n=2)"],
+    "description": "拆分"
   },
-  "stringr str_trim 去空白": {
+  "141 stringr str_trim 去空白": {
     "prefix": "stringstr_trim",
-    "body": [
-      "# str_trim() 去除首尾空白",
-      "str_trim(x)",
-      "str_squish(x)"
-    ],
-    "description": "stringr::str_trim 去空白。"
+    "body": ["stringr::str_trim(\"  a  \")", "stringr::str_squish(\"  a  b  \")"],
+    "description": "去空白"
   },
-  "stringr str_sub 截取子串": {
+  "142 stringr str_sub 截取子串": {
     "prefix": "stringstr_sub",
-    "body": [
-      "# str_sub() 按位置截取",
-      "str_sub(x, 1, 3)"
-    ],
-    "description": "stringr::str_sub 截取子串。"
+    "body": ["stringr::str_sub(\"abc\", 1, 2)"],
+    "description": "截取子串"
   },
-  "stringr str_extract 提取匹配": {
+  "143 stringr str_extract 提取匹配": {
     "prefix": "stringstr_extract",
-    "body": [
-      "# str_extract() 提取匹配",
-      "str_extract(x, \"pattern\")",
-      "str_extract_all(x, \"pattern\")"
-    ],
-    "description": "stringr::str_extract 提取。"
+    "body": ["stringr::str_extract(\"abc123\", \"\\\\d+\")", "stringr::str_extract_all(\"abc123\", \"\\\\d+\")"],
+    "description": "提取"
   },
-  "stringr str_c 连接字符串": {
+  "144 stringr str_c 连接字符串": {
     "prefix": "stringstr_c",
-    "body": [
-      "# str_c() 连接字符串",
-      "str_c(x, y, sep = \" \")"
-    ],
-    "description": "stringr::str_c 连接。"
+    "body": ["stringr::str_c(\"a\", \"b\", sep=\" \")"],
+    "description": "连接"
   },
-  "stringr str_to_lower 大小写转换": {
+  "145 stringr str_to_lower 大小写转换": {
     "prefix": "stringstr_to_lower",
-    "body": [
-      "# str_to_lower() 转小写",
-      "str_to_lower(x)",
-      "str_to_upper(x)",
-      "str_to_title(x)"
-    ],
-    "description": "stringr::str_to_lower 大小写转换。"
+    "body": ["stringr::str_to_lower(\"ABC\")", "stringr::str_to_upper(\"abc\")", "stringr::str_to_title(\"abc def\")"],
+    "description": "大小写转换"
   },
-  "lubridate ymd 解析日期": {
+  "146 lubridate ymd 解析日期": {
     "prefix": "lubridate-ymd",
-    "body": [
-      "# ymd() 解析年月日",
-      "ymd(\"2024-01-01\")",
-      "mdy(\"01/01/2024\")",
-      "dmy(\"01/01/2024\")"
-    ],
-    "description": "lubridate::ymd 解析日期。"
+    "body": ["lubridate::ymd(\"2024-01-01\")", "lubridate::mdy(\"01/01/2024\")", "lubridate::dmy(\"01/01/2024\")"],
+    "description": "解析日期"
   },
-  "lubridate ymd_hms 解析日期时间": {
+  "147 lubridate ymd_hms 解析日期时间": {
     "prefix": "lubridate-ymd_hms",
-    "body": [
-      "# ymd_hms() 解析日期时间",
-      "ymd_hms(\"2024-01-01 12:00:00\")"
-    ],
-    "description": "lubridate::ymd_hms 解析日期时间。"
+    "body": ["lubridate::ymd_hms(\"2024-01-01 12:00:00\")"],
+    "description": "解析日期时间"
   },
-  "lubridate floor_date 日期取整": {
+  "148 lubridate floor_date 日期取整": {
     "prefix": "lubridate-floor_date",
-    "body": [
-      "# floor_date() 向下取整日期",
-      "floor_date(date, \"month\")",
-      "ceiling_date(date, \"month\")",
-      "round_date(date, \"month\")"
-    ],
-    "description": "lubridate::floor_date 日期取整。"
+    "body": ["lubridate::floor_date(as.Date(\"2024-01-01\"), \"month\")", "lubridate::ceiling_date(as.Date(\"2024-01-01\"), \"month\")"],
+    "description": "日期取整"
   },
-  "lubridate year 提取日期成分": {
+  "149 lubridate year 提取日期成分": {
     "prefix": "lubridate-year",
-    "body": [
-      "# year() 提取年份",
-      "year(date)",
-      "month(date)",
-      "day(date)",
-      "wday(date)",
-      "week(date)",
-      "quarter(date)"
-    ],
-    "description": "lubridate::year 提取日期成分。"
+    "body": ["date <- as.Date(\"2024-01-01\")", "lubridate::year(date)", "lubridate::month(date)", "lubridate::day(date)"],
+    "description": "提取日期成分"
   },
-  "lubridate interval 区间与运算": {
+  "150 lubridate interval 区间与运算": {
     "prefix": "lubridate-interval",
-    "body": [
-      "# interval() 创建区间",
-      "interval(start, end)",
-      "duration(x)",
-      "period(x)",
-      "date %within% interval",
-      "date %m+% months(1)"
-    ],
-    "description": "lubridate::interval 区间与运算。"
+    "body": ["date <- as.Date(\"2024-01-01\")", "lubridate::interval(date, date+1)", "date %m+% months(1)"],
+    "description": "区间与运算"
   },
-  "forcats fct_relevel 重排水平": {
+  "151 forcats fct_relevel 重排水平": {
     "prefix": "forcats-fct_relevel",
-    "body": [
-      "# fct_relevel() 重设因子水平顺序",
-      "fct_relevel(f, \"level\")"
-    ],
-    "description": "forcats::fct_relevel 重排水平。"
+    "body": ["f <- factor(c(\"a\",\"b\",\"a\"))", "forcats::fct_relevel(f, \"b\")"],
+    "description": "重排水平"
   },
-  "forcats fct_reorder 按数值排序": {
+  "152 forcats fct_reorder 按数值排序": {
     "prefix": "forcats-fct_reorder",
-    "body": [
-      "# fct_reorder() 按变量排序水平",
-      "fct_reorder(f, x)"
-    ],
-    "description": "forcats::fct_reorder 按数值排序。"
+    "body": ["f <- factor(c(\"a\",\"b\",\"a\"))", "forcats::fct_reorder(f, c(1,2,1))"],
+    "description": "按数值排序"
   },
-  "forcats fct_infreq 按频数排序": {
+  "153 forcats fct_infreq 按频数排序": {
     "prefix": "forcats-fct_infreq",
-    "body": [
-      "# fct_infreq() 按频率排序",
-      "fct_infreq(f)"
-    ],
-    "description": "forcats::fct_infreq 按频数排序。"
+    "body": ["f <- factor(c(\"a\",\"b\",\"a\"))", "forcats::fct_infreq(f)"],
+    "description": "按频数排序"
   },
-  "forcats fct_lump 合并稀有水平": {
+  "154 forcats fct_lump 合并稀有水平": {
     "prefix": "forcats-fct_lump",
-    "body": [
-      "# fct_lump() 合并稀有水平",
-      "fct_lump(f, n = 5)",
-      "fct_lump_min(f, min = 10)",
-      "fct_lump_prop(f, prop = 0.1)"
-    ],
-    "description": "forcats::fct_lump 合并稀有类别。"
+    "body": ["f <- factor(c(\"a\",\"b\",\"a\"))", "forcats::fct_lump(f, n=1)"],
+    "description": "合并稀有水平"
   },
-  "forcats fct_collapse 合并水平": {
+  "155 forcats fct_collapse 合并水平": {
     "prefix": "forcats-fct_collapse",
-    "body": [
-      "# fct_collapse() 合并水平",
-      "fct_collapse(f, new = c(\"a\", \"b\"))"
-    ],
-    "description": "forcats::fct_collapse 合并水平。"
+    "body": ["f <- factor(c(\"a\",\"b\",\"a\"))", "forcats::fct_collapse(f, new=c(\"a\",\"b\"))"],
+    "description": "合并水平"
   },
-  "forcats fct_recode 重编码水平": {
+  "156 forcats fct_recode 重编码水平": {
     "prefix": "forcats-fct_recode",
-    "body": [
-      "# fct_recode() 重编码水平",
-      "fct_recode(f, new = \"old\")"
-    ],
-    "description": "forcats::fct_recode 重命名水平。"
+    "body": ["f <- factor(c(\"a\",\"b\",\"a\"))", "forcats::fct_recode(f, new=\"a\")"],
+    "description": "重命名水平"
   },
-  "forcats fct_other 其他类别处理": {
+  "157 forcats fct_other 其他类别处理": {
     "prefix": "forcats-fct_other",
-    "body": [
-      "# fct_other() 保留或合并其他",
-      "fct_other(f, keep = c(\"a\", \"b\"))"
-    ],
-    "description": "forcats::fct_other 其他类别处理。"
+    "body": ["f <- factor(c(\"a\",\"b\",\"a\"))", "forcats::fct_other(f, keep=c(\"a\"))"],
+    "description": "其他类别处理"
   },
-  "purrr map 函数式遍历": {
+  "158 purrr map 函数式遍历": {
     "prefix": "purrmap",
-    "body": [
-      "# map() 遍历列表/向量",
-      "map(lst, ~ ...)",
-      "map_dbl(lst, ~ mean(.x))",
-      "map_chr(lst, ~ as.character(.x))",
-      "map_dfr(lst, ~ ...)"
-    ],
-    "description": "purrr::map 函数式遍历。"
+    "body": ["purrr::map(1:3, ~ .x+1)", "purrr::map_dbl(1:3, ~ mean(.x))", "purrr::map_dfr(1:3, ~ data.frame(x=.x))"],
+    "description": "函数式遍历"
   },
-  "purrr map2 双输入遍历": {
+  "159 purrr map2 双输入遍历": {
     "prefix": "purrmap2",
-    "body": [
-      "# map2() 双输入遍历",
-      "map2(x, y, ~ .x + .y)"
-    ],
-    "description": "purrr::map2 双参数遍历。"
+    "body": ["purrr::map2(1:3, 4:6, ~ .x+.y)"],
+    "description": "双参数遍历"
   },
-  "purrr pmap 多输入遍历": {
+  "160 purrr pmap 多输入遍历": {
     "prefix": "purrpmap",
-    "body": [
-      "# pmap() 多输入遍历",
-      "pmap(list(x, y, z), ~ ...)"
-    ],
-    "description": "purrr::pmap 多参数遍历。"
+    "body": ["purrr::pmap(list(1:3, 4:6), ~ ..1+..2)"],
+    "description": "多参数遍历"
   },
-  "purrr walk 遍历执行": {
+  "161 purrr walk 遍历执行": {
     "prefix": "purrwalk",
-    "body": [
-      "# walk() 遍历并执行副作用",
-      "walk(lst, ~ print(.x))",
-      "walk2(x, y, ~ ...)"
-    ],
-    "description": "purrr::walk 遍历执行。"
+    "body": ["purrr::walk(1:3, ~ print(.x))", "purrr::walk2(1:3, 4:6, ~ print(.x+.y))"],
+    "description": "遍历执行"
   },
-  "purrr safely 安全执行": {
+  "162 purrr safely 安全执行": {
     "prefix": "purrsafely",
-    "body": [
-      "# safely() 安全执行",
-      "safely(fun)(...)",
-      "possibly(fun, otherwise = NULL)(...)",
-      "quietly(fun)(...)"
-    ],
-    "description": "purrr::safely 安全函数。"
+    "body": ["purrr::safely(mean)(1:10)", "purrr::possibly(mean, otherwise=NULL)(1:10)"],
+    "description": "安全函数"
   },
-  "purrr reduce 归约": {
+  "163 purrr reduce 归约": {
     "prefix": "purrreduce",
-    "body": [
-      "# reduce() 归约",
-      "reduce(lst, `+`)",
-      "accumulate(lst, `+`)"
-    ],
-    "description": "purrr::reduce 归约。"
+    "body": ["purrr::reduce(1:3, `+`)", "purrr::accumulate(1:3, `+`)"],
+    "description": "归约"
   },
-  "ggplot2 ggplot 初始化图形": {
+  "164 ggplot2 ggplot 初始化图形": {
     "prefix": "ggplot2-ggplot",
-    "body": [
-      "# ggplot() 初始化图形",
-      "ggplot(df, aes(x = x, y = y)) +",
-      "  geom_point()"
-    ],
-    "description": "ggplot2::ggplot 基础。"
+    "body": ["ggplot2::ggplot(mtcars, ggplot2::aes(mpg, hp)) + ggplot2::geom_point()"],
+    "description": "初始化图形"
   },
-  "ggplot2 geom_point 散点图": {
+  "165 ggplot2 geom_point 散点图": {
     "prefix": "ggplot2-geom_point",
-    "body": [
-      "# geom_point() 散点图",
-      "geom_point()",
-      "geom_point(aes(color = group, size = value))"
-    ],
-    "description": "ggplot2::geom_point 散点。"
+    "body": ["ggplot2::ggplot(mtcars, ggplot2::aes(mpg, hp)) + ggplot2::geom_point()"],
+    "description": "散点图"
   },
-  "ggplot2 geom_line 折线图": {
+  "166 ggplot2 geom_line 折线图": {
     "prefix": "ggplot2-geom_line",
-    "body": [
-      "# geom_line() 折线图",
-      "geom_line()",
-      "geom_line(aes(group = group))"
-    ],
-    "description": "ggplot2::geom_line 折线。"
+    "body": ["ggplot2::ggplot(mtcars, ggplot2::aes(mpg, hp)) + ggplot2::geom_line()"],
+    "description": "折线图"
   },
-  "ggplot2 geom_col 柱状图": {
+  "167 ggplot2 geom_col 柱状图": {
     "prefix": "ggplot2-geom_col",
-    "body": [
-      "# geom_col() 柱状图",
-      "geom_col()",
-      "geom_col(aes(fill = group), position = \"dodge\")"
-    ],
-    "description": "ggplot2::geom_col 柱状。"
+    "body": ["ggplot2::ggplot(mtcars, ggplot2::aes(factor(cyl))) + ggplot2::geom_col()"],
+    "description": "柱状图"
   },
-  "ggplot2 geom_boxplot 箱线图": {
+  "168 ggplot2 geom_boxplot 箱线图": {
     "prefix": "ggplot2-geom_boxplot",
-    "body": [
-      "# geom_boxplot() 箱线图",
-      "geom_boxplot()",
-      "geom_boxplot(aes(fill = group))"
-    ],
-    "description": "ggplot2::geom_boxplot 箱线。"
+    "body": ["ggplot2::ggplot(mtcars, ggplot2::aes(factor(cyl), mpg)) + ggplot2::geom_boxplot()"],
+    "description": "箱线图"
   },
-  "ggplot2 geom_histogram 直方图": {
+  "169 ggplot2 geom_histogram 直方图": {
     "prefix": "ggplot2-geom_histogram",
-    "body": [
-      "# geom_histogram() 直方图",
-      "geom_histogram(bins = 30)",
-      "geom_histogram(aes(fill = group), position = \"dodge\")"
-    ],
-    "description": "ggplot2::geom_histogram 直方。"
+    "body": ["ggplot2::ggplot(mtcars, ggplot2::aes(mpg)) + ggplot2::geom_histogram(bins=30)"],
+    "description": "直方图"
   },
-  "ggplot2 geom_density 密度图": {
+  "170 ggplot2 geom_density 密度图": {
     "prefix": "ggplot2-geom_density",
-    "body": [
-      "# geom_density() 密度图",
-      "geom_density()",
-      "geom_density(aes(color = group))"
-    ],
-    "description": "ggplot2::geom_density 密度。"
+    "body": ["ggplot2::ggplot(mtcars, ggplot2::aes(mpg)) + ggplot2::geom_density()"],
+    "description": "密度图"
   },
-  "ggplot2 geom_smooth 拟合线": {
+  "171 ggplot2 geom_smooth 拟合线": {
     "prefix": "ggplot2-geom_smooth",
-    "body": [
-      "# geom_smooth() 拟合线",
-      "geom_smooth(method = \"lm\")",
-      "geom_smooth(method = \"loess\")"
-    ],
-    "description": "ggplot2::geom_smooth 拟合。"
+    "body": ["ggplot2::ggplot(mtcars, ggplot2::aes(mpg, hp)) + ggplot2::geom_smooth(method=\"lm\")"],
+    "description": "拟合线"
   },
-  "ggplot2 facet_wrap 分面": {
+  "172 ggplot2 facet_wrap 分面": {
     "prefix": "ggplot2-facet_wrap",
-    "body": [
-      "# facet_wrap() 分面",
-      "facet_wrap(~ variable)",
-      "facet_grid(rows ~ cols)"
-    ],
-    "description": "ggplot2::facet_wrap 分面。"
+    "body": ["ggplot2::ggplot(mtcars, ggplot2::aes(mpg, hp)) + ggplot2::geom_point() + ggplot2::facet_wrap(~ cyl)"],
+    "description": "分面"
   },
-  "ggplot2 scale_fill_manual 手动填充色": {
+  "173 ggplot2 scale_fill_manual 手动填充色": {
     "prefix": "ggplot2-scale_fill_manual",
-    "body": [
-      "# scale_fill_manual() 手动填充色",
-      "scale_fill_manual(values = c(\"red\", \"blue\"))",
-      "scale_color_manual(values = c(\"red\", \"blue\"))"
-    ],
-    "description": "ggplot2::scale_fill_manual 手动颜色。"
+    "body": ["ggplot2::ggplot(mtcars, ggplot2::aes(factor(cyl), fill=factor(cyl))) + ggplot2::geom_bar() + ggplot2::scale_fill_manual(values=c(\"red\",\"blue\",\"green\"))"],
+    "description": "手动颜色"
   },
-  "ggplot2 scale_fill_brewer 调色板": {
+  "174 ggplot2 scale_fill_brewer 调色板": {
     "prefix": "ggplot2-scale_fill_brewer",
-    "body": [
-      "# scale_fill_brewer() 调色板",
-      "scale_fill_brewer(palette = \"Set1\")",
-      "scale_color_brewer(palette = \"Set1\")"
-    ],
-    "description": "ggplot2::scale_fill_brewer 调色板。"
+    "body": ["ggplot2::ggplot(mtcars, ggplot2::aes(factor(cyl), fill=factor(cyl))) + ggplot2::geom_bar() + ggplot2::scale_fill_brewer(palette=\"Set1\")"],
+    "description": "调色板"
   },
-  "ggplot2 labs 添加标签": {
+  "175 ggplot2 labs 添加标签": {
     "prefix": "ggplot2-labs",
-    "body": [
-      "# labs() 添加标签",
-      "labs(title = \"标题\", x = \"X\", y = \"Y\", fill = \"图例\")"
-    ],
-    "description": "ggplot2::labs 标签。"
+    "body": ["ggplot2::ggplot(mtcars, ggplot2::aes(mpg, hp)) + ggplot2::geom_point() + ggplot2::labs(title=\"标题\", x=\"X\", y=\"Y\")"],
+    "description": "标签"
   },
-  "ggplot2 theme_minimal 简洁主题": {
+  "176 ggplot2 theme_minimal 简洁主题": {
     "prefix": "ggplot2-theme_minimal",
-    "body": [
-      "# theme_minimal() 简洁主题",
-      "theme_minimal()",
-      "theme_bw()",
-      "theme_classic()",
-      "theme(element_text(size = 12))",
-      "element_blank()"
-    ],
-    "description": "ggplot2::theme_minimal 主题。"
+    "body": ["ggplot2::ggplot(mtcars, ggplot2::aes(mpg, hp)) + ggplot2::geom_point() + ggplot2::theme_minimal()"],
+    "description": "主题"
   },
-  "ggplot2 ggsave 保存图形": {
+  "177 ggplot2 ggsave 保存图形": {
     "prefix": "ggplot2-ggsave",
-    "body": [
-      "# ggsave() 保存图形",
-      "ggsave(\"plot.png\", width = 8, height = 6, dpi = 300)"
-    ],
-    "description": "ggplot2::ggsave 保存。"
+    "body": ["p <- ggplot2::ggplot(mtcars, ggplot2::aes(mpg, hp)) + ggplot2::geom_point()", "ggplot2::ggsave(tempfile(fileext=\".png\"), plot=p)"],
+    "description": "保存"
   },
-  "ggplot2 coord_flip 翻转坐标轴": {
+  "178 ggplot2 coord_flip 翻转坐标轴": {
     "prefix": "ggplot2-coord_flip",
-    "body": [
-      "# coord_flip() 翻转坐标轴",
-      "coord_flip()",
-      "coord_cartesian(xlim = c(0, 10))"
-    ],
-    "description": "ggplot2::coord_flip 坐标轴。"
+    "body": ["ggplot2::ggplot(mtcars, ggplot2::aes(factor(cyl))) + ggplot2::geom_bar() + ggplot2::coord_flip()"],
+    "description": "坐标轴"
   },
-  "管道基础": {
+  "179 管道基础": {
     "prefix": "pipe",
-    "body": [
-      "# 管道操作",
-      "df |>",
-      "  filter(condition) |>",
-      "  select(col1, col2) |>",
-      "  mutate(new = expression) |>",
-      "  group_by(group) |>",
-      "  summarise(mean = mean(value, na.rm = TRUE))"
-    ],
-    "description": "tidyverse 管道组合。"
+    "body": ["mtcars |> dplyr::filter(mpg>20) |> dplyr::select(mpg, cyl) |> dplyr::mutate(new=mpg/cyl)"],
+    "description": "管道组合"
   },
-  "usethis 创建包": {
+  "180 usethis 创建包": {
     "prefix": "usethis-create_package",
-    "body": [
-      "# create_package() 创建 R 包",
-      "usethis::create_package(\"path/to/pkg\")"
-    ],
-    "description": "usethis::create_package 创建包骨架。"
+    "body": ["# usethis::create_package(\"path/to/pkg\")"],
+    "description": "创建包骨架"
   },
-  "usethis 初始化 Git": {
+  "181 usethis 初始化 Git": {
     "prefix": "usethis-use_git",
-    "body": [
-      "# use_git() 初始化 Git",
-      "usethis::use_git()",
-      "usethis::use_github()"
-    ],
-    "description": "usethis::use_git 初始化 Git 与 GitHub。"
+    "body": ["# usethis::use_git()", "# usethis::use_github()"],
+    "description": "初始化 Git"
   },
-  "usethis 创建 R 文件": {
+  "182 usethis 创建 R 文件": {
     "prefix": "usethis-use_r",
-    "body": [
-      "# use_r() 创建 R 脚本",
-      "usethis::use_r(\"function_name\")"
-    ],
-    "description": "usethis::use_r 创建 R 文件。"
+    "body": ["# usethis::use_r(\"function_name\")"],
+    "description": "创建 R 文件"
   },
-  "usethis 启用测试": {
+  "183 usethis 启用测试": {
     "prefix": "usethis-use_testthat",
-    "body": [
-      "# use_testthat() 启用 testthat",
-      "usethis::use_testthat()",
-      "usethis::use_test(\"function_name\")"
-    ],
-    "description": "usethis::use_testthat 启用测试。"
+    "body": ["# usethis::use_testthat()", "# usethis::use_test(\"function_name\")"],
+    "description": "启用测试"
   },
-  "usethis 添加依赖": {
+  "184 usethis 添加依赖": {
     "prefix": "usethis-use_package",
-    "body": [
-      "# use_package() 添加包依赖",
-      "usethis::use_package(\"dplyr\")",
-      "usethis::use_package(\"dplyr\", type = \"Suggests\")"
-    ],
-    "description": "usethis::use_package 添加依赖。"
+    "body": ["# usethis::use_package(\"dplyr\")"],
+    "description": "添加依赖"
   },
-  "usethis 导入函数": {
+  "185 usethis 导入函数": {
     "prefix": "usethis-use_import_from",
-    "body": [
-      "# use_import_from() 导入单个函数",
-      "usethis::use_import_from(\"dplyr\", \"filter\")"
-    ],
-    "description": "usethis::use_import_from 导入函数。"
+    "body": ["# usethis::use_import_from(\"dplyr\", \"filter\")"],
+    "description": "导入函数"
   },
-  "usethis 使用 README": {
+  "186 usethis 使用 README": {
     "prefix": "usethis-use_readme",
-    "body": [
-      "# use_readme_rmd() 创建 README",
-      "usethis::use_readme_rmd()",
-      "usethis::use_news_md()",
-      "usethis::use_vignette(\"intro\")"
-    ],
-    "description": "usethis 文档文件创建。"
+    "body": ["# usethis::use_readme_rmd()", "# usethis::use_vignette(\"intro\")"],
+    "description": "文档文件"
   },
-  "usethis 许可证": {
+  "187 usethis 许可证": {
     "prefix": "usethis-use_mit_license",
-    "body": [
-      "# use_mit_license() 添加许可证",
-      "usethis::use_mit_license(\"Your Name\")",
-      "usethis::use_gpl3_license()"
-    ],
-    "description": "usethis::use_mit_license 许可证。"
+    "body": ["# usethis::use_mit_license(\"Your Name\")"],
+    "description": "许可证"
   },
-  "usethis 版本号": {
+  "188 usethis 版本号": {
     "prefix": "usethis-use_version",
-    "body": [
-      "# use_version() 更新版本号",
-      "usethis::use_version(\"minor\")",
-      "usethis::use_dev_version()"
-    ],
-    "description": "usethis::use_version 版本号。"
+    "body": ["# usethis::use_version(\"minor\")"],
+    "description": "版本号"
   },
-  "usethis 数据文档": {
+  "189 usethis 数据文档": {
     "prefix": "usethis-use_data",
-    "body": [
-      "# use_data() 保存数据到包",
-      "usethis::use_data(df, overwrite = TRUE)",
-      "usethis::use_data_raw(\"df\")"
-    ],
-    "description": "usethis::use_data 数据集。"
+    "body": ["# usethis::use_data(mtcars, overwrite=TRUE)"],
+    "description": "数据集"
   },
-  "usethis pkgdown": {
+  "190 usethis pkgdown": {
     "prefix": "usethis-use_pkgdown",
-    "body": [
-      "# use_pkgdown() 创建网站",
-      "usethis::use_pkgdown()"
-    ],
-    "description": "usethis::use_pkgdown 包网站。"
+    "body": ["# usethis::use_pkgdown()"],
+    "description": "包网站"
   },
-  "devtools 文档生成": {
+  "191 devtools 文档生成": {
     "prefix": "devtools-document",
-    "body": [
-      "# document() 生成文档",
-      "devtools::document()"
-    ],
-    "description": "devtools::document 生成 Rd 文档。"
+    "body": ["# devtools::document()"],
+    "description": "生成文档"
   },
-  "devtools 加载全部": {
+  "192 devtools 加载全部": {
     "prefix": "devtools-load_all",
-    "body": [
-      "# load_all() 加载开发包",
-      "devtools::load_all()"
-    ],
-    "description": "devtools::load_all 加载所有函数。"
+    "body": ["# devtools::load_all()"],
+    "description": "加载开发包"
   },
-  "devtools 检查包": {
+  "193 devtools 检查包": {
     "prefix": "devtools-check",
-    "body": [
-      "# check() 检查包",
-      "devtools::check()",
-      "devtools::check(args = \"--as-cran\")"
-    ],
-    "description": "devtools::check CRAN 检查。"
+    "body": ["# devtools::check()"],
+    "description": "检查包"
   },
-  "devtools 运行测试": {
+  "194 devtools 运行测试": {
     "prefix": "devtools-test",
-    "body": [
-      "# test() 运行测试",
-      "devtools::test()"
-    ],
-    "description": "devtools::test 运行测试。"
+    "body": ["# devtools::test()"],
+    "description": "运行测试"
   },
-  "devtools 构建包": {
+  "195 devtools 构建包": {
     "prefix": "devtools-build",
-    "body": [
-      "# build() 构建 tarball",
-      "devtools::build()",
-      "devtools::build(vignettes = FALSE)"
-    ],
-    "description": "devtools::build 构建。"
+    "body": ["# devtools::build()"],
+    "description": "构建"
   },
-  "devtools 安装包": {
+  "196 devtools 安装包": {
     "prefix": "devtools-install",
-    "body": [
-      "# install() 安装包",
-      "devtools::install()",
-      "devtools::install_github(\"user/repo\")"
-    ],
-    "description": "devtools::install 安装。"
+    "body": ["# devtools::install()", "# devtools::install_github(\"user/repo\")"],
+    "description": "安装"
   },
-  "devtools 覆盖率": {
+  "197 devtools 覆盖率": {
     "prefix": "devtools-coverage",
-    "body": [
-      "# test_coverage() 测试覆盖率",
-      "devtools::test_coverage()"
-    ],
-    "description": "devtools::test_coverage 覆盖率。"
+    "body": ["# devtools::test_coverage()"],
+    "description": "覆盖率"
   },
-  "roxygen2 导出函数": {
+  "198 roxygen2 导出函数": {
     "prefix": "roxygen2-export",
-    "body": [
-      "#' @export",
-      "${1:fun} <- function(${2:x}) {",
-      "  ${3:...}",
-      "}"
-    ],
-    "description": "roxygen2 @export 导出。"
+    "body": ["# #' @export", "# fun <- function(x) x"],
+    "description": "导出"
   },
-  "roxygen2 参数文档": {
+  "199 roxygen2 参数文档": {
     "prefix": "roxygen2-param",
-    "body": [
-      "#' @param ${1:x} ${2:参数说明}",
-      "#' @param ${3:y} ${4:参数说明}"
-    ],
-    "description": "roxygen2 @param 参数。"
+    "body": ["# #' @param x 参数说明"],
+    "description": "参数"
   },
-  "roxygen2 返回值": {
+  "200 roxygen2 返回值": {
     "prefix": "roxygen2-return",
-    "body": [
-      "#' @return ${1:返回值说明}"
-    ],
-    "description": "roxygen2 @return 返回值。"
+    "body": ["# #' @return 返回值说明"],
+    "description": "返回值"
   },
-  "roxygen2 示例": {
+  "201 roxygen2 示例": {
     "prefix": "roxygen2-examples",
-    "body": [
-      "#' @examples",
-      "#' ${1:示例代码}"
-    ],
-    "description": "roxygen2 @examples 示例。"
+    "body": ["# #' @examples", "# #' fun(1)"],
+    "description": "示例"
   },
-  "roxygen2 导入": {
+  "202 roxygen2 导入": {
     "prefix": "roxygen2-importFrom",
-    "body": [
-      "#' @importFrom ${1:pkg} ${2:fun}",
-      "#' @import ${1:pkg}"
-    ],
-    "description": "roxygen2 @importFrom 导入。"
+    "body": ["# #' @importFrom dplyr filter", "# #' @import dplyr"],
+    "description": "导入"
   },
-  "roxygen2 完整函数模板": {
+  "203 roxygen2 完整函数模板": {
     "prefix": "roxygen2-template",
-    "body": [
-      "#' ${1:标题}",
-      "#'",
-      "#' ${2:详细说明}",
-      "#'",
-      "#' @param ${3:x} ${4:参数}",
-      "#' @return ${5:返回值}",
-      "#' @export",
-      "#' @examples",
-      "#' ${6:示例}",
-      "${7:fun} <- function(${3:x}) {",
-      "  ${8:...}",
-      "}"
-    ],
-    "description": "roxygen2 完整函数文档模板。"
+    "body": ["# #' 标题", "# #' @param x 参数", "# #' @return 返回值", "# #' @export", "# fun <- function(x) x"],
+    "description": "完整模板"
   },
-  "testthat 测试块": {
+  "204 testthat 测试块": {
     "prefix": "testthat-test_that",
-    "body": [
-      "test_that(\"${1:描述}\", {",
-      "  ${2:...}",
-      "})"
-    ],
-    "description": "testthat::test_that 测试块。"
+    "body": ["testthat::test_that(\"描述\", { 1+1 })"],
+    "description": "测试块"
   },
-  "testthat 相等断言": {
+  "205 testthat 相等断言": {
     "prefix": "testthat-expect_equal",
-    "body": [
-      "expect_equal(${1:object}, ${2:expected})",
-      "expect_identical(${1:object}, ${2:expected})"
-    ],
-    "description": "testthat::expect_equal 相等断言。"
+    "body": ["testthat::expect_equal(1+1, 2)", "testthat::expect_identical(1+1, 2)"],
+    "description": "相等断言"
   },
-  "testthat 错误断言": {
+  "206 testthat 错误断言": {
     "prefix": "testthat-expect_error",
-    "body": [
-      "expect_error(${1:expr})",
-      "expect_error(${1:expr}, \"${2:pattern}\")",
-      "expect_warning(${1:expr})",
-      "expect_message(${1:expr})"
-    ],
-    "description": "testthat 错误与警告断言。"
+    "body": ["testthat::expect_error(stop(\"error\"))", "testthat::expect_warning(warning(\"warning\"))"],
+    "description": "错误与警告断言"
   },
-  "testthat 类型断言": {
+  "207 testthat 类型断言": {
     "prefix": "testthat-expect_type",
-    "body": [
-      "expect_true(${1:condition})",
-      "expect_false(${1:condition})",
-      "expect_s3_class(${1:object}, \"${2:class}\")",
-      "expect_type(${1:object}, \"${2:type}\")"
-    ],
-    "description": "testthat 类型断言。"
+    "body": ["testthat::expect_true(TRUE)", "testthat::expect_s3_class(mtcars, \"data.frame\")", "testthat::expect_type(1, \"double\")"],
+    "description": "类型断言"
   },
-  "testthat 快照": {
+  "208 testthat 快照": {
     "prefix": "testthat-expect_snapshot",
-    "body": [
-      "expect_snapshot(${1:expr})"
-    ],
-    "description": "testthat::expect_snapshot 快照测试。"
+    "body": ["# testthat::expect_snapshot(1+1)"],
+    "description": "快照测试"
   },
-  "styler 格式化文件": {
+  "209 styler 格式化文件": {
     "prefix": "stylestyle_file",
-    "body": [
-      "# style_file() 格式化单个文件",
-      "styler::style_file(\"script.R\")",
-      "styler::style_dir(\"R/\")",
-      "styler::style_pkg()"
-    ],
-    "description": "styler 格式化文件。"
+    "body": ["# styler::style_file(\"script.R\")", "# styler::style_dir(\"R/\")"],
+    "description": "格式化文件"
   },
-  "styler 格式化文本": {
+  "210 styler 格式化文本": {
     "prefix": "stylestyle_text",
-    "body": [
-      "# style_text() 格式化文本",
-      "styler::style_text(\"x<-1\")",
-      "style = tidyverse_style()"
-    ],
-    "description": "styler::style_text 格式化文本。"
+    "body": ["styler::style_text(\"x<-1\")"],
+    "description": "格式化文本"
   },
-  "lintr 检查代码": {
+  "211 lintr 检查代码": {
     "prefix": "lintlint",
-    "body": [
-      "# lint() 静态检查",
-      "lintr::lint(\"script.R\")",
-      "lintr::lint_dir(\"R/\")",
-      "lintr::lint_package()"
-    ],
-    "description": "lintr 静态检查。"
+    "body": ["# lintr::lint(\"script.R\")", "# lintr::lint_dir(\"R/\")"],
+    "description": "静态检查"
   },
-  "renv 初始化": {
+  "212 renv 初始化": {
     "prefix": "renv-init",
-    "body": [
-      "# init() 初始化项目依赖",
-      "renv::init()"
-    ],
-    "description": "renv::init 初始化。"
+    "body": ["# renv::init()"],
+    "description": "初始化"
   },
-  "renv 快照": {
+  "213 renv 快照": {
     "prefix": "renv-snapshot",
-    "body": [
-      "# snapshot() 记录依赖",
-      "renv::snapshot()"
-    ],
-    "description": "renv::snapshot 记录依赖。"
+    "body": ["# renv::snapshot()"],
+    "description": "记录依赖"
   },
-  "renv 恢复": {
+  "214 renv 恢复": {
     "prefix": "renv-restore",
-    "body": [
-      "# restore() 恢复依赖",
-      "renv::restore()",
-      "renv::status()",
-      "renv::clean()"
-    ],
-    "description": "renv::restore 恢复依赖。"
+    "body": ["# renv::restore()", "# renv::status()"],
+    "description": "恢复依赖"
   },
-  "renv 隔离": {
+  "215 renv 隔离": {
     "prefix": "renv-isolate",
-    "body": [
-      "# isolate() 隔离依赖",
-      "renv::isolate()"
-    ],
-    "description": "renv::isolate 隔离。"
+    "body": ["# renv::isolate()"],
+    "description": "隔离"
   },
-  "pak 安装包": {
+  "216 pak 安装包": {
     "prefix": "pak-pkg_install",
-    "body": [
-      "# pkg_install() 极速安装包",
-      "pak::pkg_install(\"dplyr\")",
-      "pak::pkg_install(c(\"dplyr\", \"ggplot2\"))",
-      "pak::pkg_install(\"github::user/repo\")"
-    ],
-    "description": "pak::pkg_install 安装。"
+    "body": ["# pak::pkg_install(\"dplyr\")", "# pak::pkg_install(c(\"dplyr\", \"ggplot2\"))"],
+    "description": "安装"
   },
-  "pak 检查更新": {
+  "217 pak 检查更新": {
     "prefix": "pak-pkg_update",
-    "body": [
-      "# pkg_update() 更新包",
-      "pak::pkg_update()",
-      "pak::pkg_remove(\"pkg\")",
-      "pak::pkg_status()"
-    ],
-    "description": "pak 包更新。"
+    "body": ["# pak::pkg_update()", "# pak::pkg_status()"],
+    "description": "包更新"
   },
-  "config 读取配置": {
+  "218 config 读取配置": {
     "prefix": "config-get",
-    "body": [
-      "# get() 读取配置",
-      "config::get(\"${1:key}\")",
-      "config::get(\"${1:key}\", file = \"config.yml\")"
-    ],
-    "description": "config::get 读取配置。"
+    "body": ["# config::get(\"key\")"],
+    "description": "读取配置"
   },
-  "config 完整用例": {
+  "219 config 完整用例": {
     "prefix": "config-full",
-    "body": [
-      "# config.yml:",
-      "# default:",
-      "#   db_host: localhost",
-      "config::get(\"db_host\")",
-      "config::get(\"db_host\", config = \"production\")"
-    ],
-    "description": "config 完整用例。"
+    "body": ["# config::get(\"db_host\")", "# config::get(\"db_host\", config=\"production\")"],
+    "description": "完整用例"
   },
-  "dotenv 加载环境变量": {
+  "220 dotenv 加载环境变量": {
     "prefix": "dotenv-load_dot_env",
-    "body": [
-      "# load_dot_env() 加载 .env",
-      "dotenv::load_dot_env(\".env\")",
-      "Sys.getenv(\"${1:API_KEY}\")"
-    ],
-    "description": "dotenv 加载环境变量。"
+    "body": ["# dotenv::load_dot_env(\".env\")", "# Sys.getenv(\"API_KEY\")"],
+    "description": "环境变量"
   },
-  "keyring 密钥管理": {
+  "221 keyring 密钥管理": {
     "prefix": "keyring-key_set",
-    "body": [
-      "# key_set() 保存密钥",
-      "keyring::key_set(\"${1:service}\")",
-      "keyring::key_get(\"${1:service}\")",
-      "keyring::key_list()",
-      "keyring::key_delete(\"${1:service}\")"
-    ],
-    "description": "keyring 密钥管理。"
+    "body": ["# keyring::key_set(\"service\")", "# keyring::key_get(\"service\")"],
+    "description": "密钥管理"
   },
-  "logger 日志": {
+  "222 logger 日志": {
     "prefix": "loggelog_info",
-    "body": [
-      "# log_info() 日志",
-      "logger::log_info(\"${1:message}\")",
-      "logger::log_warn(\"${1:warning}\")",
-      "logger::log_error(\"${1:error}\")",
-      "logger::log_debug(\"${1:debug}\")"
-    ],
-    "description": "logger 日志。"
+    "body": ["logger::log_info(\"message\")", "logger::log_warn(\"warning\")", "logger::log_error(\"error\")"],
+    "description": "日志"
   },
-  "logger 配置": {
+  "223 logger 配置": {
     "prefix": "loggeconfig",
-    "body": [
-      "# 日志布局与阈值",
-      "logger::log_threshold(logger::INFO)",
-      "logger::log_layout(logger::layout_glue_generator(",
-      "  format = \"{level} [{time}] {msg}\"",
-      "))",
-      "logger::log_appender(logger::appender_file(\"log.txt\"))"
-    ],
-    "description": "logger 配置。"
+    "body": ["logger::log_threshold(logger::INFO)", "logger::log_appender(logger::appender_file(tempfile()))"],
+    "description": "日志配置"
   },
-  "cli 提示信息": {
+  "224 cli 提示信息": {
     "prefix": "cli-alert",
-    "body": [
-      "cli::cli_alert_info(\"${1:message}\")",
-      "cli::cli_alert_success(\"${1:done}\")",
-      "cli::cli_alert_warning(\"${1:warning}\")",
-      "cli::cli_alert_danger(\"${1:error}\")"
-    ],
-    "description": "cli 提示信息。"
+    "body": ["cli::cli_alert_info(\"message\")", "cli::cli_alert_success(\"done\")"],
+    "description": "提示信息"
   },
-  "cli 进度条": {
+  "225 cli 进度条": {
     "prefix": "cli-progress_bar",
-    "body": [
-      "cli::cli_progress_bar(\"${1:working}\", total = ${2:100})",
-      "for (i in 1:${2:100}) {",
-      "  cli::cli_progress_update()",
-      "}",
-      "cli::cli_progress_done()"
-    ],
-    "description": "cli 进度条。"
+    "body": ["cli::cli_progress_bar(\"working\", total=3)", "for (i in 1:3) cli::cli_progress_update()", "cli::cli_progress_done()"],
+    "description": "进度条"
   },
-  "cli 格式化文本": {
+  "226 cli 格式化文本": {
     "prefix": "cli-text",
-    "body": [
-      "cli::cli_text(\"Hello {.val {x}}\")",
-      "cli::cli_h1(\"${1:标题}\")",
-      "cli::cli_ul(c(\"${1:item1}\", \"${2:item2}\"))"
-    ],
-    "description": "cli 格式化文本。"
+    "body": ["cli::cli_text(\"Hello {.val {1}}\")", "cli::cli_h1(\"标题\")"],
+    "description": "格式化文本"
   },
-  "progress 进度条": {
+  "227 progress 进度条": {
     "prefix": "progress-progress_bar",
-    "body": [
-      "pb <- progress::progress_bar$new(total = ${1:100})",
-      "for (i in 1:${1:100}) {",
-      "  pb$tick()",
-      "  ${2:...}",
-      "}"
-    ],
-    "description": "progress 进度条。"
+    "body": ["pb <- progress::progress_bar$new(total=3)", "for (i in 1:3) pb$tick()"],
+    "description": "进度条"
   },
-  "progress 预估进度": {
+  "228 progress 预估进度": {
     "prefix": "progress-estimated",
-    "body": [
-      "pb <- progress::progress_estimated(${1:100})",
-      "for (i in 1:${1:100}) {",
-      "  pb$tick()$print()",
-      "}"
-    ],
-    "description": "progress 预估进度。"
+    "body": ["pb <- progress::progress_estimated(3)", "for (i in 1:3) pb$tick()$print()"],
+    "description": "预估进度"
   },
-  "pool 连接池": {
+  "229 pool 连接池": {
     "prefix": "pool-dbPool",
-    "body": [
-      "# dbPool() 创建连接池",
-      "pool <- pool::dbPool(",
-      "  RPostgres::Postgres(),",
-      "  dbname = \"${1:db}\",",
-      "  host = \"${2:host}\",",
-      "  user = \"${3:user}\",",
-      "  password = \"${4:pwd}\"",
-      ")",
-      "pool::poolClose(pool)"
-    ],
-    "description": "pool 数据库连接池。"
+    "body": ["# pool <- pool::dbPool(RPostgres::Postgres(), dbname=\"db\")", "# pool::poolClose(pool)"],
+    "description": "连接池"
   },
-  "pool 使用连接": {
+  "230 pool 使用连接": {
     "prefix": "pool-query",
-    "body": [
-      "dplyr::tbl(pool, \"${1:table}\")",
-      "DBI::dbGetQuery(pool, \"SELECT * FROM ${1:table}\")"
-    ],
-    "description": "pool 查询。"
+    "body": ["# dplyr::tbl(pool, \"table\")", "# DBI::dbGetQuery(pool, \"SELECT * FROM table\")"],
+    "description": "查询"
   },
-  "arrow 读写 Parquet": {
+  "231 arrow 读写 Parquet": {
     "prefix": "arrow-parquet",
-    "body": [
-      "# read_parquet() 读写 Parquet",
-      "arrow::read_parquet(\"file.parquet\")",
-      "arrow::write_parquet(df, \"out.parquet\")"
-    ],
-    "description": "arrow Parquet 读写。"
+    "body": ["# arrow::read_parquet(\"file.parquet\")", "# arrow::write_parquet(mtcars, \"out.parquet\")"],
+    "description": "Parquet 读写"
   },
-  "arrow 读写 Feather": {
+  "232 arrow 读写 Feather": {
     "prefix": "arrow-feather",
-    "body": [
-      "# read_feather() 读写 Feather",
-      "arrow::read_feather(\"file.feather\")",
-      "arrow::write_feather(df, \"out.feather\")"
-    ],
-    "description": "arrow Feather 读写。"
+    "body": ["# arrow::read_feather(\"file.feather\")", "# arrow::write_feather(mtcars, \"out.feather\")"],
+    "description": "Feather 读写"
   },
-  "arrow 打开数据集": {
+  "233 arrow 打开数据集": {
     "prefix": "arrow-open_dataset",
-    "body": [
-      "# open_dataset() 打开大数据集",
-      "ds <- arrow::open_dataset(\"dir/\")",
-      "ds |> dplyr::filter(${1:condition}) |> dplyr::collect()"
-    ],
-    "description": "arrow 数据集。"
+    "body": ["# ds <- arrow::open_dataset(\"dir/\")", "# ds |> dplyr::filter(mpg>20) |> dplyr::collect()"],
+    "description": "数据集"
   },
-  "duckdb 连接": {
+  "234 duckdb 连接": {
     "prefix": "duckdb-connect",
-    "body": [
-      "# duckdb 连接",
-      "con <- DBI::dbConnect(duckdb::duckdb(), \"${1:db.duckdb}\")",
-      "DBI::dbGetQuery(con, \"SELECT * FROM ${2:table}\")",
-      "DBI::dbDisconnect(con, shutdown = TRUE)"
-    ],
-    "description": "duckdb 连接。"
+    "body": ["con <- DBI::dbConnect(duckdb::duckdb(), tempfile(fileext=\".duckdb\"))", "DBI::dbGetQuery(con, \"SELECT 1\")", "DBI::dbDisconnect(con, shutdown=TRUE)"],
+    "description": "连接"
   },
-  "duckdb 查询 Parquet": {
+  "235 duckdb 查询 Parquet": {
     "prefix": "duckdb-parquet",
-    "body": [
-      "DBI::dbGetQuery(con, \"SELECT * FROM 'file.parquet'\")",
-      "DBI::dbWriteTable(con, \"${1:table}\", df)"
-    ],
-    "description": "duckdb 查询 Parquet。"
+    "body": ["con <- DBI::dbConnect(duckdb::duckdb(), tempfile(fileext=\".duckdb\"))", "DBI::dbWriteTable(con, \"table\", mtcars)", "DBI::dbDisconnect(con, shutdown=TRUE)"],
+    "description": "查询 Parquet"
   },
-  "data.table 读取": {
+  "236 data.table 读取": {
     "prefix": "data.table-fread",
-    "body": [
-      "# fread() 快速读取",
-      "data.table::fread(\"file.csv\")",
-      "data.table::fwrite(dt, \"out.csv\")"
-    ],
-    "description": "data.table 快速读写。"
+    "body": ["tf <- tempfile(fileext=\".csv\")", "readr::write_csv(mtcars, tf)", "data.table::fread(tf)"],
+    "description": "快速读写"
   },
-  "data.table 转换": {
+  "237 data.table 转换": {
     "prefix": "data.table-setDT",
-    "body": [
-      "# setDT() 转换为 data.table",
-      "data.table::setDT(df)",
-      "data.table::setDF(dt)"
-    ],
-    "description": "data.table 转换。"
+    "body": ["dt <- data.table::setDT(mtcars)", "data.table::setDF(dt)"],
+    "description": "转换"
   },
-  "data.table 修改列": {
+  "238 data.table 修改列": {
     "prefix": "data.table-assign",
-    "body": [
-      "# := 修改/新增列",
-      "dt[, new := expression]",
-      "dt[, c(\"a\", \"b\") := .(x + 1, y * 2)]"
-    ],
-    "description": "data.table 修改列。"
+    "body": ["dt <- data.table::as.data.table(mtcars)", "dt[, new := mpg/cyl]"],
+    "description": "修改列"
   },
-  "data.table 分组": {
+  "239 data.table 分组": {
     "prefix": "data.table-group",
-    "body": [
-      "dt[, .(mean_x = mean(x)), by = group]",
-      "dt[, .N, by = group]",
-      "dt[, .SD, .SDcols = c(\"a\", \"b\")]"
-    ],
-    "description": "data.table 分组。"
+    "body": ["dt <- data.table::as.data.table(mtcars)", "dt[, .(mean_x=mean(mpg)), by=cyl]", "dt[, .N, by=cyl]"],
+    "description": "分组"
   },
-  "data.table 键与连接": {
+  "240 data.table 键与连接": {
     "prefix": "data.table-setkey",
-    "body": [
-      "data.table::setkey(dt, col)",
-      "merge(x, y, by = \"key\")",
-      "x[y, on = \"key\"]"
-    ],
-    "description": "data.table 键与连接。"
+    "body": ["dt <- data.table::as.data.table(mtcars)", "data.table::setkey(dt, cyl)", "merge(dt, dt, by=\"cyl\")"],
+    "description": "键与连接"
   },
-  "data.table 长宽转换": {
+  "241 data.table 长宽转换": {
     "prefix": "data.table-dcast",
-    "body": [
-      "data.table::dcast(dt, formula, value.var = \"value\")",
-      "data.table::melt(dt, id.vars = \"id\")"
-    ],
-    "description": "data.table 长宽转换。"
+    "body": ["dt <- data.table::as.data.table(mtcars)", "data.table::dcast(dt, cyl ~ am, value.var=\"mpg\")", "data.table::melt(dt, id.vars=\"cyl\")"],
+    "description": "长宽转换"
   },
-  "data.table 条件赋值": {
+  "242 data.table 条件赋值": {
     "prefix": "data.table-fcase",
-    "body": [
-      "dt[, new := data.table::fifelse(condition, a, b)]",
-      "dt[, new := data.table::fcase(",
-      "  condition1, value1,",
-      "  condition2, value2,",
-      "  default = value3",
-      ")]"
-    ],
-    "description": "data.table 条件赋值。"
+    "body": ["dt <- data.table::as.data.table(mtcars)", "dt[, new := data.table::fifelse(mpg>20, \"high\", \"low\")]"],
+    "description": "条件赋值"
   },
-  "data.table 位移": {
+  "243 data.table 位移": {
     "prefix": "data.table-shift",
-    "body": [
-      "dt[, lag_x := data.table::shift(x, 1, type = \"lag\")]",
-      "dt[, lead_x := data.table::shift(x, 1, type = \"lead\")]"
-    ],
-    "description": "data.table shift 位移。"
+    "body": ["dt <- data.table::as.data.table(mtcars)", "dt[, lag_x := data.table::shift(mpg, 1, type=\"lag\")]"],
+    "description": "位移"
   },
-  "collapse 分组统计": {
+  "244 collapse 分组统计": {
     "prefix": "collapse-collap",
-    "body": [
-      "collapse::collap(df, ~ group, FUN = fmean)",
-      "collapse::fmean(x)",
-      "collapse::fsum(x)",
-      "collapse::fmedian(x)"
-    ],
-    "description": "collapse 快速分组统计。"
+    "body": ["collapse::fmean(mtcars$mpg)", "collapse::fsum(mtcars$mpg)"],
+    "description": "快速分组统计"
   },
-  "collapse 转换": {
+  "245 collapse 转换": {
     "prefix": "collapse-qDF",
-    "body": [
-      "collapse::qDF(df)",
-      "collapse::qTBL(df)",
-      "collapse::qDT(df)"
-    ],
-    "description": "collapse 数据转换。"
+    "body": ["collapse::qDF(mtcars)", "collapse::qTBL(mtcars)", "collapse::qDT(mtcars)"],
+    "description": "数据转换"
   },
-  "collapse 时间序列": {
+  "246 collapse 时间序列": {
     "prefix": "collapse-flag",
-    "body": [
-      "collapse::flag(x)",
-      "collapse::fdiff(x)",
-      "collapse::fgrowth(x)"
-    ],
-    "description": "collapse 时间序列工具。"
+    "body": ["collapse::flag(mtcars$mpg)", "collapse::fdiff(mtcars$mpg)", "collapse::fgrowth(mtcars$mpg)"],
+    "description": "时间序列工具"
   },
-  "paws S3": {
+  "247 paws S3": {
     "prefix": "paws-s3",
-    "body": [
-      "s3 <- paws::s3()",
-      "s3$put_object(Bucket = \"${1:bucket}\", Key = \"${2:key}\", Body = \"file\")",
-      "s3$get_object(Bucket = \"${1:bucket}\", Key = \"${2:key}\")",
-      "s3$list_objects(Bucket = \"${1:bucket}\")"
-    ],
-    "description": "paws S3 操作。"
+    "body": ["# s3 <- paws::s3()", "# s3$list_objects(Bucket=\"bucket\")"],
+    "description": "S3 操作"
   },
-  "paws DynamoDB": {
+  "248 paws DynamoDB": {
     "prefix": "paws-dynamodb",
-    "body": [
-      "ddb <- paws::dynamodb()",
-      "ddb$put_item(TableName = \"${1:table}\", Item = list(...))",
-      "ddb$get_item(TableName = \"${1:table}\", Key = list(...))",
-      "ddb$scan(TableName = \"${1:table}\")"
-    ],
-    "description": "paws DynamoDB。"
+    "body": ["# ddb <- paws::dynamodb()", "# ddb$scan(TableName=\"table\")"],
+    "description": "DynamoDB"
   },
-  "future 并行计划": {
+  "249 future 并行计划": {
     "prefix": "future-plan",
-    "body": [
-      "# plan() 设置并行方案",
-      "future::plan(future::multisession, workers = 4)",
-      "future::plan(future::multicore)",
-      "future::plan(future::sequential)"
-    ],
-    "description": "future 并行方案。"
+    "body": ["future::plan(future::multisession, workers=2)", "future::plan(future::sequential)"],
+    "description": "并行方案"
   },
-  "future 异步任务": {
+  "250 future 异步任务": {
     "prefix": "future-future",
-    "body": [
-      "# future() 异步任务",
-      "f <- future::future({",
-      "  ${1:...}",
-      "})",
-      "res <- future::value(f)"
-    ],
-    "description": "future 异步。"
+    "body": ["f <- future::future({ 1+1 })", "res <- future::value(f)"],
+    "description": "异步"
   },
-  "furrr 并行 map": {
+  "251 furrr 并行 map": {
     "prefix": "furrfuture_map",
-    "body": [
-      "furrr::future_map(lst, ~ ${1:...})",
-      "furrr::future_map_dbl(lst, ~ mean(.x))",
-      "furrr::future_map_dfr(lst, ~ ${2:...})",
-      "furrr::future_pmap(list, ~ ${3:...})"
-    ],
-    "description": "furrr 并行 map。"
+    "body": ["furrr::future_map(1:3, ~ .x+1)", "furrr::future_map_dbl(1:3, ~ mean(.x))"],
+    "description": "并行 map"
   },
-  "targets 流水线": {
+  "252 targets 流水线": {
     "prefix": "targets-tar_target",
-    "body": [
-      "# tar_target() 定义目标",
-      "targets::tar_target(${1:name}, ${2:command})",
-      "targets::tar_plan(",
-      "  ${1:name} = ${2:command},",
-      "  ${3:name2} = ${4:command2}",
-      ")"
-    ],
-    "description": "targets 定义流水线。"
+    "body": ["# targets::tar_target(name, command)"],
+    "description": "定义流水线"
   },
-  "targets 运行": {
+  "253 targets 运行": {
     "prefix": "targets-tar_make",
-    "body": [
-      "targets::tar_make()",
-      "targets::tar_read(${1:name})",
-      "targets::tar_load(${1:name})",
-      "targets::tar_outdated()",
-      "targets::tar_visnetwork()"
-    ],
-    "description": "targets 运行与查看。"
+    "body": ["# targets::tar_make()", "# targets::tar_read(name)"],
+    "description": "运行与查看"
   },
-  "cronR 定时任务": {
+  "254 cronR 定时任务": {
     "prefix": "croncron_add",
-    "body": [
-      "# cron_add() 添加定时任务",
-      "cronR::cron_add(",
-      "  command = \"Rscript script.R\",",
-      "  frequency = \"daily\",",
-      "  at = \"08:00\"",
-      ")",
-      "cronR::cron_ls()",
-      "cronR::cron_rm(id)"
-    ],
-    "description": "cronR 定时任务。"
+    "body": ["# cronR::cron_add(command=\"Rscript script.R\", frequency=\"daily\", at=\"08:00\")"],
+    "description": "定时任务"
   },
-  "plumber 定义 API": {
+  "255 plumber 定义 API": {
     "prefix": "plumbepr",
-    "body": [
-      "# plumber 定义 API",
-      "pr <- plumber::pr()",
-      "pr$handle(\"GET\", \"/health\", function() list(status = \"ok\"))",
-      "pr$run(port = 8000)"
-    ],
-    "description": "plumber 定义 API。"
+    "body": ["# pr <- plumber::pr()", "# pr$handle(\"GET\", \"/health\", function() list(status=\"ok\"))", "# pr$run(port=8000)"],
+    "description": "定义 API"
   },
-  "plumber GET/POST": {
+  "256 plumber GET/POST": {
     "prefix": "plumbeget",
-    "body": [
-      "#* @get /${1:endpoint}",
-      "function(${2:param}) {",
-      "  list(result = ${3:...})",
-      "}",
-      "#* @post /${1:endpoint}",
-      "function(req, res) {",
-      "  body <- jsonlite::fromJSON(req$postBody)",
-      "  list(result = ${4:...})",
-      "}"
-    ],
-    "description": "plumber GET/POST。"
+    "body": ["# #* @get /endpoint", "# function(param) list(result=1)"],
+    "description": "GET/POST"
   },
-  "vetiver 模型部署": {
+  "257 vetiver 模型部署": {
     "prefix": "vetivevetiver_model",
-    "body": [
-      "# vetiver_model() 封装模型",
-      "v <- vetiver::vetiver_model(${1:model}, \"${2:model_name}\")",
-      "vetiver::vetiver_api(v)",
-      "vetiver::vetiver_pin_write(v, ${1:model})"
-    ],
-    "description": "vetiver 模型部署。"
+    "body": ["# v <- vetiver::vetiver_model(fit, \"model_name\")"],
+    "description": "模型部署"
   },
-  "vetiver 部署流程": {
+  "258 vetiver 部署流程": {
     "prefix": "vetivedeploy",
-    "body": [
-      "pr <- vetiver::vetiver_api(v)",
-      "pr$run(port = 8080)",
-      "vetiver::vetiver_pin_read(board, \"${1:name}\")"
-    ],
-    "description": "vetiver 部署。"
+    "body": ["# pr <- vetiver::vetiver_api(v)", "# pr$run(port=8080)"],
+    "description": "部署"
   },
-  "pins 数据版本": {
+  "259 pins 数据版本": {
     "prefix": "pins-pin_write",
-    "body": [
-      "# pin_write() 保存对象",
-      "board <- pins::board_folder(\"data/pins\")",
-      "pins::pin_write(board, df, \"${1:name}\")",
-      "pins::pin_read(board, \"${1:name}\")",
-      "pins::pin_list(board)"
-    ],
-    "description": "pins 数据版本。"
+    "body": ["board <- pins::board_folder(tempdir())", "pins::pin_write(board, mtcars, \"name\")", "pins::pin_read(board, \"name\")"],
+    "description": "数据版本"
   },
-  "dockerfiler 生成 Dockerfile": {
+  "260 dockerfiler 生成 Dockerfile": {
     "prefix": "dockerfileDockerfile",
-    "body": [
-      "# Dockerfile 生成",
-      "df <- dockerfiler::Dockerfile$new(\"${1:image}\")",
-      "df$RUN(\"apt-get update\")",
-      "df$COPY(\"${2:src}\", \"${3:dest}\")",
-      "df$CMD(\"Rscript ${4:script.R}\")",
-      "df$write(\"Dockerfile\")"
-    ],
-    "description": "dockerfiler 生成 Dockerfile。"
+    "body": ["# df <- dockerfiler::Dockerfile$new(\"rocker/r-ver:4.4\")", "# df$write(\"Dockerfile\")"],
+    "description": "生成 Dockerfile"
   },
-  "flextable 创建表格": {
+  "261 flextable 创建表格": {
     "prefix": "flextable-flextable",
-    "body": [
-      "# flextable() 创建表格",
-      "ft <- flextable::flextable(df)",
-      "ft <- flextable::autofit(ft)",
-      "ft <- flextable::theme_booktabs(ft)",
-      "flextable::save_as_docx(ft, path = \"out.docx\")"
-    ],
-    "description": "flextable 表格。"
+    "body": ["ft <- flextable::flextable(head(mtcars))", "ft <- flextable::autofit(ft)"],
+    "description": "表格"
   },
-  "flextable 格式化": {
+  "262 flextable 格式化": {
     "prefix": "flextable-format",
-    "body": [
-      "flextable::colformat_double(ft, digits = 2)",
-      "flextable::bold(ft, part = \"header\")",
-      "flextable::bg(ft, bg = \"lightblue\", part = \"header\")",
-      "flextable::add_footer_lines(ft, \"${1:注}\")"
-    ],
-    "description": "flextable 格式化。"
+    "body": ["ft <- flextable::flextable(head(mtcars))", "flextable::colformat_double(ft, digits=2)", "flextable::bold(ft, part=\"header\")"],
+    "description": "格式化"
   },
-  "officer 读取 Word": {
+  "263 officer 读取 Word": {
     "prefix": "officeread_docx",
-    "body": [
-      "doc <- officer::read_docx()",
-      "doc <- officer::body_add_par(doc, \"${1:段落}\", style = \"heading 1\")",
-      "doc <- officer::body_add_table(doc, df)",
-      "print(doc, target = \"out.docx\")"
-    ],
-    "description": "officer Word 操作。"
+    "body": ["doc <- officer::read_docx()", "doc <- officer::body_add_par(doc, \"段落\")", "print(doc, target=tempfile(fileext=\".docx\"))"],
+    "description": "Word 操作"
   },
-  "officer PowerPoint": {
+  "264 officer PowerPoint": {
     "prefix": "officepptx",
-    "body": [
-      "ppt <- officer::read_pptx()",
-      "ppt <- officer::add_slide(ppt, layout = \"Title and Content\")",
-      "ppt <- officer::ph_with(ppt, \"${1:标题}\", location = officer::ph_location_type(\"title\"))",
-      "print(ppt, target = \"out.pptx\")"
-    ],
-    "description": "officer PPT 操作。"
+    "body": ["ppt <- officer::read_pptx()", "ppt <- officer::add_slide(ppt, layout=\"Title and Content\")", "print(ppt, target=tempfile(fileext=\".pptx\"))"],
+    "description": "PPT 操作"
   },
-  "kableExtra 样式": {
+  "265 kableExtra 样式": {
     "prefix": "kableExtra-kable_styling",
-    "body": [
-      "knitr::kable(df) |>",
-      "  kableExtra::kable_styling(",
-      "    bootstrap_options = c(\"striped\", \"hover\"),",
-      "    full_width = FALSE",
-      "  )",
-      "  kableExtra::column_spec(1, bold = TRUE)"
-    ],
-    "description": "kableExtra 样式。"
+    "body": ["knitr::kable(head(mtcars)) |> kableExtra::kable_styling()"],
+    "description": "样式"
   },
-  "kableExtra 分组行": {
+  "266 kableExtra 分组行": {
     "prefix": "kableExtra-pack_rows",
-    "body": [
-      "knitr::kable(df) |>",
-      "  kableExtra::pack_rows(\"${1:组1}\", 1, 5) |>",
-      "  kableExtra::add_header_above(c(\" \" = 1, \"${2:组}\" = 2))"
-    ],
-    "description": "kableExtra 分组行。"
+    "body": ["knitr::kable(head(mtcars)) |> kableExtra::pack_rows(\"组1\", 1, 3)"],
+    "description": "分组行"
   },
-  "gtExtras 图形": {
+  "267 gtExtras 图形": {
     "prefix": "gtExtras-gt_plt",
-    "body": [
-      "gt::gt(df) |>",
-      "  gtExtras::gt_plt_bar(column = ${1:col})",
-      "  gtExtras::gt_plt_sparkline(column = ${2:col})",
-      "  gtExtras::gt_theme_538()"
-    ],
-    "description": "gtExtras 图表。"
+    "body": ["gt::gt(head(mtcars)) |> gtExtras::gt_plt_bar(column=mpg)"],
+    "description": "图表"
   },
-  "performance 模型诊断": {
+  "268 performance 模型诊断": {
     "prefix": "performance-check_model",
-    "body": [
-      "performance::check_model(${1:fit})",
-      "performance::check_normality(${1:fit})",
-      "performance::check_heteroscedasticity(${1:fit})",
-      "performance::check_collinearity(${1:fit})",
-      "performance::r2(${1:fit})",
-      "performance::model_performance(${1:fit})"
-    ],
-    "description": "performance 模型诊断。"
+    "body": ["fit <- lm(mpg ~ cyl, data=mtcars)", "performance::check_model(fit)", "performance::r2(fit)"],
+    "description": "模型诊断"
   },
-  "parameters 参数提取": {
+  "269 parameters 参数提取": {
     "prefix": "parameters-model_parameters",
-    "body": [
-      "parameters::model_parameters(${1:fit})",
-      "parameters::parameters(${1:fit})",
-      "parameters::standardize_names = TRUE"
-    ],
-    "description": "parameters 参数提取。"
+    "body": ["fit <- lm(mpg ~ cyl, data=mtcars)", "parameters::model_parameters(fit)"],
+    "description": "参数提取"
   },
-  "effectsize 效应量": {
+  "270 effectsize 效应量": {
     "prefix": "effectsize-effectsize",
-    "body": [
-      "effectsize::eta_squared(${1:fit})",
-      "effectsize::cohens_d(${1:x}, ${2:y})",
-      "effectsize::cramers_v(${1:table})",
-      "effectsize::interpret_eta_squared(${3:value})"
-    ],
-    "description": "effectsize 效应量。"
+    "body": ["fit <- lm(mpg ~ cyl, data=mtcars)", "effectsize::eta_squared(fit)"],
+    "description": "效应量"
   },
-  "modelsummary 表格": {
+  "271 modelsummary 表格": {
     "prefix": "modelsummary-modelsummary",
-    "body": [
-      "modelsummary::modelsummary(list(${1:fit1}, ${2:fit2}))",
-      "modelsummary::modelplot(list(${1:fit1}, ${2:fit2}))",
-      "modelsummary::modelsummary(..., output = \"table.docx\")"
-    ],
-    "description": "modelsummary 多模型表。"
+    "body": ["fit <- lm(mpg ~ cyl, data=mtcars)", "modelsummary::modelsummary(list(fit, fit))"],
+    "description": "多模型表"
   },
-  "marginaleffects 边际效应": {
+  "272 marginaleffects 边际效应": {
     "prefix": "marginaleffects-slopes",
-    "body": [
-      "marginaleffects::slopes(${1:fit})",
-      "marginaleffects::comparisons(${1:fit})",
-      "marginaleffects::marginalmeans(${1:fit})",
-      "marginaleffects::plot_slopes(${1:fit})"
-    ],
-    "description": "marginaleffects 边际效应。"
+    "body": ["fit <- lm(mpg ~ cyl, data=mtcars)", "marginaleffects::slopes(fit)"],
+    "description": "边际效应"
   },
-  "googledrive 上传下载": {
+  "273 googledrive 上传下载": {
     "prefix": "googledrive-drive",
-    "body": [
-      "googledrive::drive_auth()",
-      "googledrive::drive_upload(\"${1:file}\")",
-      "googledrive::drive_download(\"${2:file_id}\")",
-      "googledrive::drive_find(\"${3:name}\")"
-    ],
-    "description": "googledrive 上传下载。"
+    "body": ["# googledrive::drive_auth()", "# googledrive::drive_upload(\"file\")"],
+    "description": "上传下载"
   },
-  "googlesheets4 读写": {
+  "274 googlesheets4 读写": {
     "prefix": "googlesheets4-sheet",
-    "body": [
-      "googlesheets4::gs4_auth()",
-      "googlesheets4::read_sheet(\"${1:sheet_id}\")",
-      "googlesheets4::write_sheet(df, \"${1:sheet_id}\", sheet = \"${2:Sheet1}\")",
-      "googlesheets4::sheet_append(\"${1:sheet_id}\", df)"
-    ],
-    "description": "googlesheets4 读写。"
+    "body": ["# googlesheets4::gs4_auth()", "# googlesheets4::read_sheet(\"sheet_id\")"],
+    "description": "读写"
   },
-  "aws.s3 操作": {
+  "275 aws.s3 操作": {
     "prefix": "aws.s3-s3",
-    "body": [
-      "aws.s3::s3read_using(readr::read_csv, object = \"${1:key}\", bucket = \"${2:bucket}\")",
-      "aws.s3::s3write_using(df, write.csv, object = \"${1:key}\", bucket = \"${2:bucket}\")",
-      "aws.s3::get_bucket(\"${2:bucket}\")"
-    ],
-    "description": "aws.s3 操作。"
+    "body": ["# aws.s3::s3read_using(readr::read_csv, object=\"key\", bucket=\"bucket\")"],
+    "description": "操作"
   },
-  "gh GitHub API": {
+  "276 gh GitHub API": {
     "prefix": "gh-gh",
-    "body": [
-      "gh::gh(\"GET /repos/{owner}/{repo}\")",
-      "gh::gh(\"POST /repos/{owner}/{repo}/issues\", title = \"${1:title}\")",
-      "gh::gh_token()"
-    ],
-    "description": "gh GitHub API。"
+    "body": ["# gh::gh(\"GET /repos/{owner}/{repo}\")"],
+    "description": "GitHub API"
   },
-  "gh 创建仓库": {
+  "277 gh 创建仓库": {
     "prefix": "gh-repo",
-    "body": [
-      "gh::gh(\"POST /user/repos\", name = \"${1:repo}\", private = FALSE)",
-      "gh::gh(\"GET /user/repos\")"
-    ],
-    "description": "gh 创建仓库。"
+    "body": ["# gh::gh(\"POST /user/repos\", name=\"repo\")"],
+    "description": "创建仓库"
   }
 }
