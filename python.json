@@ -1679,30 +1679,5 @@
       "\t\t\t- id: mypy"
     ],
     "description": "【必须掌握】pre-commit。理解：提交前自动跑 lint/format/typecheck；避免脏代码入库；团队统一。"
-},
-"测试": {
-    "prefix": "测试",
-    "body": [
-        "import pandas as pd",
-        "",
-        "df = pd.read_csv(\"data.csv\")",
-        "df = df.dropna().query(\"age > 18\")",
-        "df.to_parquet(\"out.parquet\")"
-    ],
-    "description": "从选中代码生成 - 2026/10/14"
-},
-"ceshi": {
-    "prefix": "ceshi",
-    "body": [
-        "测试"
-    ],
-    "description": "从选中代码生成 - 2026/10/14"
-},
-"测试pandas": {
-    "prefix": "测试pandas",
-    "body": [
-        "测试pandas文件夹"
-    ],
-    "description": "从选中代码生成 - 2026/10/14"
 }
 }
